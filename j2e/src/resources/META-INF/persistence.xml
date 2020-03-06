@@ -7,17 +7,19 @@
 
         <jta-data-source>DDDataSource</jta-data-source>
 
-        <!--
-        <class>fr.unice.polytech.isa.tcf.entities.Customer</class>
-        <class>fr.unice.polytech.isa.tcf.entities.Item</class>
-        <class>fr.unice.polytech.isa.tcf.entities.Order</class>
-        -->
+        <!--&lt;!&ndash;-->
+        <class>fr.unice.polytech.isa.dd.entities.Customer</class>
+        <class>fr.unice.polytech.isa.dd.entities.Delivery</class>
+        <class>fr.unice.polytech.isa.dd.entities.Package</class>
+        <class>fr.unice.polytech.isa.dd.entities.Provider</class>
+
+        <!--&ndash;&gt;-->
 
         <exclude-unlisted-classes>true</exclude-unlisted-classes>
 
         <properties>
             <property name="openjpa.jdbc.SynchronizeMappings" value="buildSchema(ForeignKeys=true)"/>
-            <property name="openjpa.RuntimeUnenhancedClasses" value="unsupported" />
+            <property name="openjpa.RuntimeUnenhancedClasses" value="unsupported"/>
         </properties>
 
     </persistence-unit>
