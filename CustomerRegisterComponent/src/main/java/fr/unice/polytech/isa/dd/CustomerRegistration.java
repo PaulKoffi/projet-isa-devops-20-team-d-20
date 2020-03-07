@@ -1,4 +1,4 @@
-package fr.unice.polytech.isa.dd.interfaces;
+package fr.unice.polytech.isa.dd;
 
 public interface CustomerRegistration {
 

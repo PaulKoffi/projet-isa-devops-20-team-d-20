@@ -1,11 +1,9 @@
-package fr.unice.polytech.isa.dd.entities;
+package fr.unice.polytech.isa.dd;
+import org.jetbrains.annotations.NotNull;
+
 import javax.persistence.*;
-import javax.validation.constraints.NotNull;
 import java.io.Serializable;
-import java.sql.Time;
 import java.util.Date;
-import java.util.Objects;
-import java.util.Timer;
 
 enum DRONE_STATES {
     AVAILABLE, AWAITING_DELIVER, IN_DELIVERING, AWAITING_LOADING, IN_LOADING, AWAITING_TO_BE_AVAILABLE, AWAITING_REPAIR, BEING_REPAIRED

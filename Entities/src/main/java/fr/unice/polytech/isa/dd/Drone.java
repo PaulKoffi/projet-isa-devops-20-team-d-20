@@ -1,4 +1,4 @@
-package fr.unice.polytech.isa.dd.entities;
+package fr.unice.polytech.isa.dd;
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import java.io.Serializable;

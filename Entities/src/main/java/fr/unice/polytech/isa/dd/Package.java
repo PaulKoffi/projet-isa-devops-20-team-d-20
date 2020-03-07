@@ -1,4 +1,4 @@
-package fr.unice.polytech.isa.dd.entities;
+package fr.unice.polytech.isa.dd;
 import org.joda.time.DateTime;
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
