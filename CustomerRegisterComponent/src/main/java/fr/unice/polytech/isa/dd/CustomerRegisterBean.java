@@ -1,10 +1,6 @@
-package fr.unice.polytech.isa.dd.Components;
+package fr.unice.polytech.isa.dd;
 
-import fr.unice.polytech.isa.dd.entities.Customer;
-import fr.unice.polytech.isa.dd.interfaces.CustomerFinder;
-import fr.unice.polytech.isa.dd.interfaces.CustomerRegistration;
-
-public class CustomerRegister implements CustomerRegistration, CustomerFinder {
+public class CustomerRegisterBean implements CustomerRegistration, CustomerFinder {
 
     private String generateID(){
         //TODO
