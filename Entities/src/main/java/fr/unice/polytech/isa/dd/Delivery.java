@@ -1,4 +1,6 @@
 package fr.unice.polytech.isa.dd;
+import org.joda.time.DateTime;
+
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import java.io.Serializable;
@@ -18,7 +20,7 @@ public class Delivery implements Serializable {
     private Package packageDelivered;
 
     @NotNull
-    private Date deliveryDate;
+    private DateTime deliveryDate;
 
     @NotNull
     private String beginTime;
@@ -37,7 +39,7 @@ public class Delivery implements Serializable {
         // Necessary for JPA instantiation process
     }
 
-    public Delivery(Customer c, Package p, Date d, String b) {
+    public Delivery(Customer c, Package p, DateTime d, String b) {
         customer = c;
         packageDelivered = p;
         deliveryDate = d;
@@ -60,6 +62,9 @@ public class Delivery implements Serializable {
         status = s;
     }
 
+    public Package getPackageDelivered() {
+        return packageDelivered;
+    }
 
     /*** ecriture de la méthode equals et hash à faire ****/
 

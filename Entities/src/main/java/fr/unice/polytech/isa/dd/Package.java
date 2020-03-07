@@ -17,18 +17,26 @@ public class Package implements Serializable {
     @NotNull
     private DateTime deliveryDate;
 
+    @NotNull
+    private String provider_id;
+
     public Package() {
         // Necessary for JPA instantiation process
     }
 
-    public Package(String i,Double w,DateTime d) {
+    public Package(String i,Double w,DateTime d, String pro_id) {
         id = i;
         weight = w;
         deliveryDate = d;
+        provider_id = pro_id;
     }
 
     public double getWeight() {
         return weight;
+    }
+
+    public String getProvider_id() {
+        return provider_id;
     }
 
     /*** ecriture de la méthode hash à faire ****/

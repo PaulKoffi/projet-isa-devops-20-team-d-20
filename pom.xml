@@ -11,6 +11,7 @@
     <modules>
         <module>CustomerRegisterComponent</module>
         <module>Entities</module>
+        <module>DeliveryComponent</module>
     </modules>
 
 
