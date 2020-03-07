@@ -30,5 +30,5 @@
   ## Technological Stack
   
   <p align="center">
-    <img src="https://github.com/pns-isa-devops/projet-isa-devops-20-team-d-20/develop/docs/tech_stack.png"/>
+    <img src="https://raw.githubusercontent.com/pns-isa-devops/projet-isa-devops-20-team-d-20/develop/docs/tech_stack.png"/>
   </p>
