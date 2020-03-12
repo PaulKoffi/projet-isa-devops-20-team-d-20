@@ -3,7 +3,7 @@ package fr.unice.polytech.isa.dd;
 import java.util.ArrayList;
 import java.util.List;
 
-public class DeliveryBean implements DeliveryInterface {
+public class DeliveryBean implements DeliveryInterface, NextDeliveryInterface {
 
     List<Delivery> deliveries = new ArrayList<>() ;
     List<Delivery> provider_deliveries;
@@ -28,4 +28,14 @@ public class DeliveryBean implements DeliveryInterface {
         return this.provider_deliveries;
     }
 
+    @Override
+    public Delivery getNextDelivery() {
+        if(deliveries != null) {
+            for (Delivery del : deliveries
+            ) {
+                if (!del.getStatus()) return del;
+            }
+        }
+        return null;
+    }
 }
