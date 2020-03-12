@@ -10,7 +10,7 @@
   </parent>
   <modelVersion>4.0.0</modelVersion>
 
-  <groupId>fr.unice.polytech.isa.dd</groupId>
+  <!--<groupId>fr.unice.polytech.isa.dd</groupId>-->
   <artifactId>DeliveryComponent</artifactId>
   <version>1.0-SNAPSHOT</version>
   <packaging>war</packaging>
