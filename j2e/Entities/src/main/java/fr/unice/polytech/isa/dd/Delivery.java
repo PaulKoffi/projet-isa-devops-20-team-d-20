@@ -49,10 +49,15 @@ public class Delivery implements Serializable {
         price = p.getWeight() * 10;
     }
 
+    public double getPrice() {
+        return price;
+    }
+
     public void setEndTime(String e) {
         endTime = e;
         status = true;
     }
+
 
     public void setCustomerMark(int m) {
         customerMark = m;

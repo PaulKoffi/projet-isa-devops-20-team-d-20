@@ -23,8 +23,8 @@ public class Drone implements Serializable {
 
 
     public Drone(int n_battery, int  n_flightHours) {
-        this.battery=  n_battery;
-        this.flightHours = n_flightHours;
+        battery=  n_battery;
+        flightHours = n_flightHours;
     }
 
     public int getId() {
@@ -32,24 +32,24 @@ public class Drone implements Serializable {
     }
 
     public int getBatteryLife() {
-        return this.battery;
+        return battery;
     }
 
     public int getFlightHours() {
-        return this.flightHours;
+        return flightHours;
     }
 
     public DroneStatus getDroneStatus() {
-        return this.droneStatus;
+        return droneStatus;
     }
 
 
     public void setBatteryLife(int percentageToReduce) {
-        this.battery -= percentageToReduce;
+        battery -= percentageToReduce;
     }
 
     public void setFlightHours(int nbHours) {
-        this.flightHours += nbHours;
+        flightHours += nbHours;
     }
 
 

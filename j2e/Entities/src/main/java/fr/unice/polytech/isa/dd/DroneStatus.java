@@ -25,9 +25,9 @@ public class DroneStatus implements Serializable {
     private Date timeEndState;
 
     public DroneStatus(DRONE_STATES state, Date hourBeginning, Date hourEnd) {
-        this.libelleStatusDrone=  state;
-        this.timeStartState = hourBeginning;
-        this.timeEndState = hourEnd;
+        libelleStatusDrone=  state;
+        timeStartState = hourBeginning;
+        timeEndState = hourEnd;
     }
 
     public int getId() {
@@ -35,15 +35,15 @@ public class DroneStatus implements Serializable {
     }
 
     public DRONE_STATES getLibelleStatusDrone () {
-        return this.libelleStatusDrone;
+        return libelleStatusDrone;
     }
 
     public Date getTimeStartState() {
-        return this.timeStartState;
+        return timeStartState;
     }
 
     public Date getTimeEndState() {
-        return this.timeEndState;
+        return timeEndState;
     }
 
 
