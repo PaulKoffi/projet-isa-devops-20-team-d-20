@@ -13,7 +13,6 @@
         <module>j2e/Entities</module>
         <module>j2e/DeliveryComponent</module>
         <module>j2e/BillingComponent</module>
-
         <module>client/Cli-CustomerService</module>
     </modules>
 
