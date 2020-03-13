@@ -1,8 +1,10 @@
 package fr.unice.polytech.isa.dd;
 
+import javax.ejb.Stateless;
 import java.util.ArrayList;
 import java.util.List;
 
+@Stateless
 public class DeliveryBean implements DeliveryInterface, NextDeliveryInterface {
 
     List<Delivery> deliveries = new ArrayList<>() ;

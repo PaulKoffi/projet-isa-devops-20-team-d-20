@@ -12,6 +12,7 @@
         <module>j2e/CustomerRegisterComponent</module>
         <module>j2e/Entities</module>
         <module>j2e/DeliveryComponent</module>
+        <module>client/Cli-CustomerService</module>
     </modules>
 
     <properties>
