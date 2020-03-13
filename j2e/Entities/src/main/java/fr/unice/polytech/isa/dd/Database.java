@@ -1,19 +1,18 @@
 package fr.unice.polytech.isa.dd;
 
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 public class Database {
 
 
     private List<Delivery> deliveryList;
+    private List<Provider> providerList;
 
 
     private Database() {
         deliveryList = new ArrayList<>();
+        providerList = new ArrayList<>();
     }
 
     private static Database INSTANCE = new Database();
@@ -24,5 +23,9 @@ public class Database {
 
     public List<Delivery> getDeliveryList() {
         return deliveryList;
+    }
+
+    public List<Provider> getProviderList() {
+        return providerList;
     }
 }

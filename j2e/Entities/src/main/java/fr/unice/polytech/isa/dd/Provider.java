@@ -30,6 +30,14 @@ public class Provider implements Serializable {
 
     public Set<Package> getPackages() { return packages; }
 
+    public String getId() {
+        return id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
     /*** ecriture de la méthode hash + equals à faire ****/
 
 }
