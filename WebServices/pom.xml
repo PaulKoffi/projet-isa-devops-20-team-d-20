@@ -1,8 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
   <parent>
     <artifactId>projet-isa-devops-20-team-d-20</artifactId>
     <groupId>fr.unice.polytech.isa.dd</groupId>
@@ -10,10 +9,10 @@
   </parent>
   <modelVersion>4.0.0</modelVersion>
 
-  <artifactId>DeliveryComponent</artifactId>
+  <artifactId>WebServices</artifactId>
   <packaging>war</packaging>
 
-  <name>DeliveryComponent Maven Webapp</name>
+  <name>WebServices Maven Webapp</name>
   <!-- FIXME change it to the project's website -->
   <url>http://www.example.com</url>
 
@@ -32,14 +31,22 @@
     </dependency>
     <dependency>
       <groupId>fr.unice.polytech.isa.dd</groupId>
-      <artifactId>Entities</artifactId>
+      <artifactId>DeliveryComponent</artifactId>
       <version>1.0-SNAPSHOT</version>
       <scope>compile</scope>
     </dependency>
+    <!-- https://mvnrepository.com/artifact/javax.ejb/ejb-api -->
+    <dependency>
+      <groupId>javax.ejb</groupId>
+      <artifactId>ejb-api</artifactId>
+      <version>3.0</version>
+      <scope>provided</scope>
+    </dependency>
+
   </dependencies>
 
   <build>
-    <finalName>DeliveryComponent</finalName>
+    <finalName>WebServices</finalName>
     <pluginManagement><!-- lock down plugins versions to avoid using Maven defaults (may be moved to parent pom) -->
       <plugins>
         <plugin>

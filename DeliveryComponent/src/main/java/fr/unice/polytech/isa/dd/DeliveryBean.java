@@ -2,8 +2,9 @@ package fr.unice.polytech.isa.dd;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
-public class DeliveryBean implements DeliveryInterface {
+public class DeliveryBean implements DeliveryInterface, NextDeliveryInterface {
 
     List<Delivery> deliveries = new ArrayList<>() ;
     List<Delivery> provider_deliveries;
@@ -28,4 +29,13 @@ public class DeliveryBean implements DeliveryInterface {
         return this.provider_deliveries;
     }
 
+
+    @Override
+    public Delivery getNextDelivery() {
+        for (Delivery del:deliveries
+             ) {
+            if(!del.getStatus()) return del;
+        }
+        return null;
+    }
 }
