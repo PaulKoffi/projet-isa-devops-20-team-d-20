@@ -12,6 +12,7 @@
         <module>j2e/CustomerRegisterComponent</module>
         <module>j2e/Entities</module>
         <module>j2e/DeliveryComponent</module>
+        <module>j2e/BillingComponent</module>
     </modules>
 
     <properties>
@@ -46,7 +47,7 @@
         <repository>
             <id>central</id>
             <name>team-d-releases</name>
-            <url>https://localhost:8081/artifactory/libs-release-local</url>
+            <url>https://192.168.0.12:8082/artifactory/libs-release-local</url>
         </repository>
     </distributionManagement>
     -->
