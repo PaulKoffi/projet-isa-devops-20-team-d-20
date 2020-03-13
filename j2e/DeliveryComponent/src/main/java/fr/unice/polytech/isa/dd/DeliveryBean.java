@@ -2,32 +2,42 @@ package fr.unice.polytech.isa.dd;
 
 import javax.ejb.Stateless;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Stateless
 public class DeliveryBean implements DeliveryInterface, NextDeliveryInterface {
 
 
-    List<Delivery> provider_deliveries;
+
+    HashMap<Provider,List<Delivery>> deliveries_by_provider;
 
     public DeliveryBean(){
-        this.provider_deliveries = new ArrayList<>();
+        deliveries_by_provider = new HashMap<>();
     }
 
     @Override
-    public void getAllDayDeliveries(String provider_id) {
-
+    public HashMap<Provider,List<Delivery>> getAllDayDeliveries() {
+        List<Provider> provider_set = Database.getInstance().getProviderList();
+        for(Provider pro : provider_set){
+            List<Delivery> alldeliveries = getAllDeliveries(pro.getId());
+            alldeliveries = alldeliveries.stream().filter(d -> d.getStatus()).collect(Collectors.toList());
+            this.deliveries_by_provider.put(pro,alldeliveries);
+        }
+        return deliveries_by_provider;
     }
 
     @Override
     public List<Delivery> getAllDeliveries(String provider_id) {
         List<Delivery> deliveries = Database.getInstance().getDeliveryList();
+        List<Delivery> provider_deliveries = new ArrayList<>();
         for (Delivery dev:deliveries) {
             if(dev.getPackageDelivered().getProvider_id().equals(provider_id)){
-                this.provider_deliveries.add(dev);
+                provider_deliveries.add(dev);
             }
         }
-        return this.provider_deliveries;
+        return provider_deliveries;
     }
 
     @Override

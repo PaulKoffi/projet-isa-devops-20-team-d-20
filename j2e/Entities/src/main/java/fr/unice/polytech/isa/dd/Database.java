@@ -10,10 +10,14 @@ public class Database {
 
 
     private List<Delivery> deliveryList;
+    private List<Customer> customerList;
+    private List<Provider> providerList;
 
 
     private Database() {
+        customerList=new ArrayList<Customer>();
         deliveryList = new ArrayList<>();
+        providerList = new ArrayList<>();
     }
 
     private static Database INSTANCE = new Database();
@@ -24,5 +28,11 @@ public class Database {
 
     public List<Delivery> getDeliveryList() {
         return deliveryList;
+    }
+
+    public List<Customer> getCustomerList() { return customerList; }
+
+    public List<Provider> getProviderList() {
+        return providerList;
     }
 }
