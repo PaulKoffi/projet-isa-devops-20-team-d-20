@@ -12,7 +12,6 @@
         <module>CustomerRegisterComponent</module>
         <module>Entities</module>
         <module>DeliveryComponent</module>
-        <module>WebServices</module>
     </modules>
 
 

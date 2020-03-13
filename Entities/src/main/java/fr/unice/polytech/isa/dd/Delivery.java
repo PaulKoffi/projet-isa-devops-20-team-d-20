@@ -66,11 +66,6 @@ public class Delivery implements Serializable {
         return packageDelivered;
     }
 
-    public boolean getStatus(){
-        return this.status;
-    }
-
-
     /*** ecriture de la méthode equals et hash à faire ****/
 
 }
