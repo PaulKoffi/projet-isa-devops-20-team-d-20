@@ -1,4 +1,4 @@
-package fr.unice.polytech.isa.dd.webservices;
+package fr.unice.polytech.isa.dd.webservice;
 
 import fr.unice.polytech.isa.dd.Delivery;
 
@@ -9,7 +9,7 @@ import javax.jws.WebService;
 @WebService(targetNamespace = "http://www.polytech.unice.fr/si/4a/isa/dd/delivery")
 //@WebService(targetNamespace = "http://www.polytech.unice.fr/si/4a/isa/dd/delivery")
 //@WebService(targetNamespace = "http://www.group_d.fr.polytech.unice.isa.dd.DeliveryCare")
-public interface DeliveryWebServicesInterface {
+public interface DeliveryWebService {
 
     @WebMethod
     @WebResult(name="the_next_delivery")

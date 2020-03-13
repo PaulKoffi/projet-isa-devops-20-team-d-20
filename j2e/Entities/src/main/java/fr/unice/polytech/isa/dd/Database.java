@@ -10,11 +10,9 @@ public class Database {
 
 
     private List<Delivery> deliveryList;
-    private List<Customer> customerList;
 
 
     private Database() {
-        customerList=new ArrayList<Customer>();
         deliveryList = new ArrayList<>();
     }
 
@@ -27,6 +25,4 @@ public class Database {
     public List<Delivery> getDeliveryList() {
         return deliveryList;
     }
-
-    public List<Customer> getCustomerList() { return customerList; }
 }
