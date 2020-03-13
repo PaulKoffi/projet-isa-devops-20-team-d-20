@@ -31,9 +31,11 @@ public class DeliveryBeanTest {
         Delivery d3 = new Delivery(c,pk1,dt,null) ;
         Delivery d4 = new Delivery(c,pk3,dt,null) ;
 
-        List<Delivery> delivs = new ArrayList<>(Arrays.asList(d1,d2,d3,d4));
+        List<Delivery> delivs = Database.getInstance().getDeliveryList();
 
-        DeliveryBean deliveryBeantest = new DeliveryBean(delivs);
+        delivs.add(d1);delivs.add(d2);delivs.add(d3);delivs.add(d4);
+
+        DeliveryBean deliveryBeantest = new DeliveryBean();
 
         List<Delivery> providers_delivs = deliveryBeantest.getAllDeliveries("1");
 
@@ -43,32 +45,21 @@ public class DeliveryBeanTest {
     @Test
     public void getNextDelivery(){
 
-        Customer c = new Customer("Pm","adresse1");
-        DateTime dt = new DateTime();
-        Package pk1 = new Package("1",2.0,dt,"1");
-        Package pk2 = new Package("2",2.0,dt,"1");
-        Package pk3 = new Package("3",2.0,dt,"2");
+        List<Delivery> delivs = Database.getInstance().getDeliveryList();
 
-        Delivery d1 = new Delivery(c,pk1,dt,null) ;
-        Delivery d2 = new Delivery(c,pk1,dt,null) ;
-        Delivery d3 = new Delivery(c,pk1,dt,null) ;
-        Delivery d4 = new Delivery(c,pk3,dt,null) ;
-
-        List<Delivery> delivs = new ArrayList<>(Arrays.asList(d1,d2,d3,d4));
-
-        DeliveryBean deliveryBeantest = new DeliveryBean(delivs);
-        DeliveryBean deliveryBeanTestNull = new DeliveryBean(null);
+        DeliveryBean deliveryBeantest = new DeliveryBean();
+        DeliveryBean deliveryBeanTestNull = new DeliveryBean();
 
         Delivery nextdelivery = deliveryBeanTestNull.getNextDelivery();
 
-        assertNull(nextdelivery);
+        assertNotNull(nextdelivery);
 
-        d1.setStatus(true);
+        delivs.get(0).setStatus(true);
         nextdelivery = deliveryBeantest.getNextDelivery();
-        assertTrue(d2.equals(nextdelivery));
+        assertTrue(delivs.get(1).equals(nextdelivery));
 
-        d2.setStatus(true);
+        delivs.get(1).setStatus(true);
         nextdelivery = deliveryBeantest.getNextDelivery();
-        assertFalse(d2.equals(nextdelivery));
+        assertFalse(delivs.get(1).equals(nextdelivery));
     }
 }
