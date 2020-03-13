@@ -1,7 +1,7 @@
 package fr.unice.polytech.isa.dd.webservices;
 
 import fr.unice.polytech.isa.dd.Delivery;
-import fr.unice.polytech.isa.dd.NextDeliveryInterface;
+import fr.unice.polytech.isa.dd.*;
 
 import javax.ejb.EJB;
 import javax.ejb.Stateless;
