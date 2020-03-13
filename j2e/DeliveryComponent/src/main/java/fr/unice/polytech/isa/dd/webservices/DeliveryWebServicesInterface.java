@@ -7,6 +7,8 @@ import javax.jws.WebResult;
 import javax.jws.WebService;
 
 @WebService(targetNamespace = "http://www.polytech.unice.fr/si/4a/isa/dd/delivery")
+//@WebService(targetNamespace = "http://www.polytech.unice.fr/si/4a/isa/dd/delivery")
+//@WebService(targetNamespace = "http://www.group_d.fr.polytech.unice.isa.dd.DeliveryCare")
 public interface DeliveryWebServicesInterface {
 
     @WebMethod
