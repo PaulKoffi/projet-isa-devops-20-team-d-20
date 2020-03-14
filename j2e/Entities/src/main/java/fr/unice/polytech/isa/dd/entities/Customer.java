@@ -1,20 +1,20 @@
-package fr.unice.polytech.isa.dd;
-import javax.persistence.*;
-import javax.validation.constraints.NotNull;
+package fr.unice.polytech.isa.dd.entities;
+//import javax.persistence.*;
+//import javax.validation.constraints.NotNull;
 import java.io.Serializable;
 import java.util.Objects;
 
-@Entity
+//@Entity
 public class Customer implements Serializable {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+//    @Id
+//    @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
 
-    @NotNull
+//    @NotNull
     private String name;
 
-    @NotNull
+//    @NotNull
     private String address;
 
     public Customer() {
@@ -24,6 +24,10 @@ public class Customer implements Serializable {
     public Customer(String n,String a) {
         name = n;
         address = a;
+    }
+
+    public String getAddress() {
+        return address;
     }
 
     public int getId() {

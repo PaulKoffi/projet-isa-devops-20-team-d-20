@@ -1,12 +1,11 @@
 package fr.unice.polytech.isa.dd.business;
 
 import fr.unice.polytech.isa.dd.*;
-import fr.unice.polytech.isa.dd.Package;
+import fr.unice.polytech.isa.dd.entities.*;
+import fr.unice.polytech.isa.dd.entities.Package;
 import org.joda.time.DateTime;
 import org.junit.Test;
 
-import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 

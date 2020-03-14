@@ -1,24 +1,24 @@
-package fr.unice.polytech.isa.dd;
-import javax.persistence.*;
-import javax.validation.constraints.NotNull;
+package fr.unice.polytech.isa.dd.entities;
+//import javax.persistence.*;
+//import javax.validation.constraints.NotNull;
 import java.io.Serializable;
 import java.util.Date;
 import java.util.Objects;
 
-@Entity
+//@Entity
 public class Drone implements Serializable {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+//    @Id
+//    @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
 
-    @NotNull
+//    @NotNull
     private int battery; //In percentage
 
-    @NotNull
+//    @NotNull
     private int flightHours;
 
-    @NotNull
+//    @NotNull
     private DroneStatus droneStatus = new DroneStatus(DRONE_STATES.AVAILABLE, new Date(), null);
 
 

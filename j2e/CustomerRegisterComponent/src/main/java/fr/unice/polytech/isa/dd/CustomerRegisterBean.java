@@ -1,5 +1,8 @@
 package fr.unice.polytech.isa.dd;
 
+import fr.unice.polytech.isa.dd.entities.Customer;
+import fr.unice.polytech.isa.dd.entities.Database;
+
 public class CustomerRegisterBean implements CustomerRegistration, CustomerFinder {
 
     Database mydata = Database.getInstance();
@@ -17,7 +20,8 @@ public class CustomerRegisterBean implements CustomerRegistration, CustomerFinde
         Customer c = new Customer();
         for (Customer customer: mydata.getCustomerList()
         ) {
-            if(customer.getName()==customer_name){
+            if(customer.getName().equals(customer_name)){
+                System.out.println(customer.getId());
                 c=customer;
             }
         }

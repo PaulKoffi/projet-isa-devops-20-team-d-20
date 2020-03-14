@@ -1,20 +1,26 @@
 package fr.unice.polytech.isa.dd.webservice;
 
-import fr.unice.polytech.isa.dd.Delivery;
+import fr.unice.polytech.isa.dd.entities.Delivery;
+import fr.unice.polytech.isa.dd.NextDeliveryInterface;
 
+import javax.ejb.EJB;
 import javax.ejb.Stateless;
-import javax.jws.WebMethod;
-import javax.jws.WebResult;
 import javax.jws.WebService;
 
-@WebService(targetNamespace = "http://www.polytech.unice.fr/si/4a/isa/dd/delivery")
+@WebService(targetNamespace = "http://www.polytech.unice.fr/si/4a/isa/dd/deliveryService")
 //@WebService(targetNamespace = "http://www.polytech.unice.fr/si/4a/isa/dd/delivery")
 //@WebService(targetNamespace = "http://www.group_d.fr.polytech.unice.isa.dd.DeliveryCare")
 @Stateless(name = "DeliveryWS")
-public interface DeliveryWebServiceImp {
+public class DeliveryWebServiceImp implements DeliveryWebService {
 
-    @WebMethod
-    @WebResult(name="the_next_delivery")
-    Delivery getNextDelivery();
+    @EJB private NextDeliveryInterface nextDelivery;
+    @Override
+//    public Delivery getNextDelivery(Delivery delivery) {
+    public Delivery getNextDelivery() {
+        System.out.println("Passage dans mon service 1");
+        Delivery d = nextDelivery.getNextDelivery();
+        System.out.println("le prix est " + d.getPrice());
+        return d;
+    }
 
 }

@@ -1,5 +1,6 @@
 package fr.unice.polytech.isa.dd;
 
+import fr.unice.polytech.isa.dd.entities.Customer;
 import org.junit.Test;
 
 import static org.junit.Assert.*;

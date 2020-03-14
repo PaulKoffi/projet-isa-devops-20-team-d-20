@@ -24,8 +24,8 @@ import javax.xml.namespace.QName;
 @XmlRegistry
 public class ObjectFactory {
 
-    private final static QName _GetNextDelivery_QNAME = new QName("http://www.polytech.unice.fr/si/4a/isa/dd/delivery", "getNextDelivery");
-    private final static QName _GetNextDeliveryResponse_QNAME = new QName("http://www.polytech.unice.fr/si/4a/isa/dd/delivery", "getNextDeliveryResponse");
+    private final static QName _GetNextDelivery_QNAME = new QName("http://www.polytech.unice.fr/si/4a/isa/dd/deliveryService", "getNextDelivery");
+    private final static QName _GetNextDeliveryResponse_QNAME = new QName("http://www.polytech.unice.fr/si/4a/isa/dd/deliveryService", "getNextDeliveryResponse");
 
     /**
      * Create a new ObjectFactory that can be used to create new instances of schema derived classes for package: stubs.delivery
@@ -59,10 +59,34 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link Customer }
+     * 
+     */
+    public Customer createCustomer() {
+        return new Customer();
+    }
+
+    /**
+     * Create an instance of {@link DateTime }
+     * 
+     */
+    public DateTime createDateTime() {
+        return new DateTime();
+    }
+
+    /**
+     * Create an instance of {@link Package }
+     * 
+     */
+    public Package createPackage() {
+        return new Package();
+    }
+
+    /**
      * Create an instance of {@link JAXBElement }{@code <}{@link GetNextDelivery }{@code >}}
      * 
      */
-    @XmlElementDecl(namespace = "http://www.polytech.unice.fr/si/4a/isa/dd/delivery", name = "getNextDelivery")
+    @XmlElementDecl(namespace = "http://www.polytech.unice.fr/si/4a/isa/dd/deliveryService", name = "getNextDelivery")
     public JAXBElement<GetNextDelivery> createGetNextDelivery(GetNextDelivery value) {
         return new JAXBElement<GetNextDelivery>(_GetNextDelivery_QNAME, GetNextDelivery.class, null, value);
     }
@@ -71,7 +95,7 @@ public class ObjectFactory {
      * Create an instance of {@link JAXBElement }{@code <}{@link GetNextDeliveryResponse }{@code >}}
      * 
      */
-    @XmlElementDecl(namespace = "http://www.polytech.unice.fr/si/4a/isa/dd/delivery", name = "getNextDeliveryResponse")
+    @XmlElementDecl(namespace = "http://www.polytech.unice.fr/si/4a/isa/dd/deliveryService", name = "getNextDeliveryResponse")
     public JAXBElement<GetNextDeliveryResponse> createGetNextDeliveryResponse(GetNextDeliveryResponse value) {
         return new JAXBElement<GetNextDeliveryResponse>(_GetNextDeliveryResponse_QNAME, GetNextDeliveryResponse.class, null, value);
     }
