@@ -52,9 +52,9 @@ public class DeliveryBean implements DeliveryInterface, NextDeliveryInterface {
         if (deliveries != null) {
             for (Delivery del : deliveries
             ) {
-                if(del.getPrice()>=20){
+//                if(del.getPrice()>=20){
                     if (!del.getStatus()) return del;
-                }
+//                }
             }
         }
         return null;

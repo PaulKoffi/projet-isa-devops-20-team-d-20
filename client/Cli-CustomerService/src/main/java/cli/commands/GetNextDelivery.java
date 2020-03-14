@@ -16,6 +16,7 @@ public class GetNextDelivery extends Command<DDPublicAPI> {
 		Delivery d = shell.system.dws.getNextDelivery();
 		if(d != null){
 			System.out.println("Le prix de cette livraison est " + d.getPrice());
+			System.out.println("Le nom du client est " + d.getCustomer().getName());
 		}else {
 			System.out.println("  No delivery ");
 		}
