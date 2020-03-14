@@ -48,7 +48,7 @@ public class DeliveryBean implements DeliveryInterface, NextDeliveryInterface {
     @Override
     public Delivery getNextDelivery() {
         /******* TEST ******/
-        Database.getInstance().initializeDatabase();
+       // Database.getInstance().initializeDatabase();
         System.out.println("Passage dans mon service");
         List<Delivery> deliveries = Database.getInstance().getDeliveryList();
         if (deliveries != null) {

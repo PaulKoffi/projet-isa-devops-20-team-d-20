@@ -13,35 +13,15 @@ import static org.junit.Assert.*;
 
 public class DeliveryBeanTest {
 
+    Database database = Database.getInstance();
+
     @org.junit.Test
     public void getAllDayDeliveries() {
 
+        database.initializeDatabase();
         List<Provider> providers;
-        List<Delivery> delivs;
         DeliveryBean deliveryBeantest;
-
         providers = Database.getInstance().getProviderList();
-        delivs = Database.getInstance().getDeliveryList();
-
-        Customer c = new Customer("Pm","adresse1");
-        DateTime dt = new DateTime();
-
-        Provider pro1 = new Provider("1","Aug1");
-        Provider pro2 = new Provider("2","Aug2");
-        providers.add(pro1);providers.add(pro2);
-
-        Package pk1 = new Package("1",2.0,dt,"1");
-        Package pk2 = new Package("2",2.0,dt,"1");
-        Package pk3 = new Package("3",2.0,dt,"2");
-
-        Delivery d1 = new Delivery(c,pk1,dt,null) ;
-        Delivery d2 = new Delivery(c,pk2,dt,null) ;
-        Delivery d3 = new Delivery(c,pk3,dt,null) ;
-
-
-        delivs.add(d1);delivs.add(d2);delivs.add(d3);
-
-
         deliveryBeantest = new DeliveryBean();
         HashMap<Provider,List<Delivery>> alldeliveries = deliveryBeantest.getAllDayDeliveries();
 
