@@ -1,6 +1,10 @@
 package fr.unice.polytech.isa.dd.business;
 
 import fr.unice.polytech.isa.dd.*;
+import fr.unice.polytech.isa.dd.entities.Bill;
+import fr.unice.polytech.isa.dd.entities.Database;
+import fr.unice.polytech.isa.dd.entities.Delivery;
+import fr.unice.polytech.isa.dd.entities.Provider;
 
 import java.util.ArrayList;
 import java.util.HashMap;
