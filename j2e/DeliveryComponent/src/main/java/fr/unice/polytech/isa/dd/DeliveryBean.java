@@ -1,5 +1,9 @@
 package fr.unice.polytech.isa.dd;
 
+import fr.unice.polytech.isa.dd.entities.Database;
+import fr.unice.polytech.isa.dd.entities.Delivery;
+import fr.unice.polytech.isa.dd.entities.Provider;
+
 import javax.ejb.Stateless;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -10,17 +14,16 @@ import java.util.stream.Collectors;
 public class DeliveryBean implements DeliveryInterface, NextDeliveryInterface {
 
 
+    HashMap<Provider, List<Delivery>> deliveries_by_provider;
 
-    HashMap<Provider,List<Delivery>> deliveries_by_provider;
-
-    public DeliveryBean(){
+    public DeliveryBean() {
         deliveries_by_provider = new HashMap<>();
     }
 
     @Override
-    public HashMap<Provider,List<Delivery>> getAllDayDeliveries() {
+    public HashMap<Provider, List<Delivery>> getAllDayDeliveries() {
         List<Provider> provider_set = Database.getInstance().getProviderList();
-        for(Provider pro : provider_set){
+        for (Provider pro : provider_set) {
             List<Delivery> alldeliveries = getAllDeliveries(pro.getId());
             if(!alldeliveries.isEmpty()) {
                 alldeliveries = alldeliveries.stream().filter(d -> d.getStatus()).collect(Collectors.toList());
@@ -34,8 +37,8 @@ public class DeliveryBean implements DeliveryInterface, NextDeliveryInterface {
     public List<Delivery> getAllDeliveries(String provider_id) {
         List<Delivery> deliveries = Database.getInstance().getDeliveryList();
         List<Delivery> provider_deliveries = new ArrayList<>();
-        for (Delivery dev:deliveries) {
-            if(dev.getPackageDelivered().getProvider_id().equals(provider_id)){
+        for (Delivery dev : deliveries) {
+            if (dev.getPackageDelivered().getProvider_id().equals(provider_id)) {
                 provider_deliveries.add(dev);
             }
         }
@@ -44,11 +47,16 @@ public class DeliveryBean implements DeliveryInterface, NextDeliveryInterface {
 
     @Override
     public Delivery getNextDelivery() {
+        /******* TEST ******/
+        Database.getInstance().initializeDatabase();
+        System.out.println("Passage dans mon service");
         List<Delivery> deliveries = Database.getInstance().getDeliveryList();
-        if(deliveries != null) {
+        if (deliveries != null) {
             for (Delivery del : deliveries
             ) {
-                if (!del.getStatus()) return del;
+//                if(del.getPrice()>=20){
+                    if (!del.getStatus()) return del;
+//                }
             }
         }
         return null;

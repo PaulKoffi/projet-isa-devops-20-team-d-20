@@ -43,125 +43,126 @@
         <versions.java>1.8</versions.java>
     </properties>
 
-    <!--
+
+
     <distributionManagement>
         <repository>
             <id>central</id>
             <name>team-d-releases</name>
-            <url>https://localhost:8081/artifactory/libs-release-local</url>
+            <url>http://localhost:8081/artifactory/libs-release-local</url>
         </repository>
-    </distributionManagement>
-    -->
-    <!--
-    <distributionManagement>
+
         <snapshotRepository>
             <id>snapshots</id>
-            <name>13212b80be97-snapshots</name>
-            <url>https://localhost:8081/artifactory/libs-snapshot-local</url>
+            <name>team-d-snapshots</name>
+            <url>http://localhost:8081/artifactory/libs-snapshot-local</url>
         </snapshotRepository>
     </distributionManagement>
+
+    <!--
+    <repositories>
+        <repository>
+            <snapshots>
+                <enabled>false</enabled>
+            </snapshots>
+            <id>central</id>
+            <name>libs-release</name>
+            <url>http://localhost:8081/artifactory/libs-release</url>
+        </repository>
+        <repository>
+            <snapshots />
+            <id>snapshots</id>
+            <name>libs-snapshot</name>
+            <url>http://localhost:8081/artifactory/libs-snapshot</url>
+        </repository>
+    </repositories>
     -->
 
-    <dependencies>
-        <dependency>
-            <groupId>org.json</groupId>
-            <artifactId>json</artifactId>
-            <version>${versions.json}</version>
-        </dependency>
-        <!-- Dependencies for the OpenEJB framework (provided at runtime by the app server) -->
-        <dependency>
-            <groupId>org.apache.tomee</groupId>
-            <artifactId>javaee-api</artifactId>
-            <version>${versions.javaee}</version>
-            <scope>provided</scope>
-        </dependency>
-        <dependency>
-            <groupId>org.apache.tomee</groupId>
-            <artifactId>openejb-core</artifactId>
-            <version>${versions.openejb}</version>
-            <scope>provided</scope>
-        </dependency>
-        <dependency>
-            <groupId>org.apache.tomee</groupId>
-            <artifactId>tomee-embedded</artifactId>
-            <version>${versions.tomee}</version>
-            <scope>provided</scope>
-        </dependency>
-        <!-- Dependency to integrate REST clients (order matters for CXF) (provided) -->
-        <dependency>
-            <groupId>org.apache.tomee</groupId>
-            <artifactId>openejb-cxf</artifactId>
-            <version>${versions.openejb}</version>
-            <scope>provided</scope>
-        </dependency>
-        <dependency>
-            <groupId>org.apache.tomee</groupId>
-            <artifactId>openejb-cxf-rs</artifactId>
-            <version>${versions.openejb}</version>
-            <scope>provided</scope>
-        </dependency>
-        <!-- Dependencies for the JSF framework (provided)-->
-        <dependency>
-            <groupId>org.apache.myfaces.core</groupId>
-            <artifactId>myfaces-api</artifactId>
-            <version>${versions.myface}</version>
-            <scope>provided</scope>
-        </dependency>
-        <!-- Dependencies for the testing frameworks (Junit, Mockito & Arquillian) (tests only) -->
-        <dependency>
-            <groupId>junit</groupId>
-            <artifactId>junit</artifactId>
-            <version>${versions.junit}</version>
-            <scope>test</scope>
-        </dependency>
-        <dependency>
-            <groupId>org.mockito</groupId>
-            <artifactId>mockito-core</artifactId>
-            <version>${versions.mockito}</version>
-            <scope>test</scope>
-        </dependency>
-        <dependency>
-            <groupId>com.github.cukespace</groupId>
-            <artifactId>cukespace-core</artifactId>
-            <version>${versions.cukespace}</version>
-            <scope>test</scope>
-        </dependency>
-        <dependency>
-            <groupId>org.jboss.arquillian.junit</groupId>
-            <artifactId>arquillian-junit-container</artifactId>
-            <version>${versions.arquillian.junit}</version>
-            <scope>test</scope>
-        </dependency>
-        <dependency>
-            <groupId>org.jboss.shrinkwrap.resolver</groupId>
-            <artifactId>shrinkwrap-resolver-depchain</artifactId>
-            <version>${versions.shrinkwrap}</version>
-            <type>pom</type>
-            <scope>test</scope>
-        </dependency>
-        <dependency>
-            <groupId>org.apache.tomee</groupId>
-            <artifactId>arquillian-tomee-embedded</artifactId>
-            <version>${versions.tomee}</version>
-            <scope>test</scope>
-        </dependency>
-    </dependencies>
+    <!--<dependencies>-->
+        <!--<dependency>-->
+            <!--<groupId>org.json</groupId>-->
+            <!--<artifactId>json</artifactId>-->
+            <!--<version>${versions.json}</version>-->
+        <!--</dependency>-->
+        <!--&lt;!&ndash; Dependencies for the OpenEJB framework (provided at runtime by the app server) &ndash;&gt;-->
+        <!--<dependency>-->
+            <!--<groupId>org.apache.tomee</groupId>-->
+            <!--<artifactId>javaee-api</artifactId>-->
+            <!--<version>${versions.javaee}</version>-->
+            <!--<scope>provided</scope>-->
+        <!--</dependency>-->
+        <!--<dependency>-->
+            <!--<groupId>org.apache.tomee</groupId>-->
+            <!--<artifactId>openejb-core</artifactId>-->
+            <!--<version>${versions.openejb}</version>-->
+            <!--<scope>provided</scope>-->
+        <!--</dependency>-->
+        <!--<dependency>-->
+            <!--<groupId>org.apache.tomee</groupId>-->
+            <!--<artifactId>tomee-embedded</artifactId>-->
+            <!--<version>${versions.tomee}</version>-->
+            <!--<scope>provided</scope>-->
+        <!--</dependency>-->
+        <!--&lt;!&ndash; Dependency to integrate REST clients (order matters for CXF) (provided) &ndash;&gt;-->
+        <!--<dependency>-->
+            <!--<groupId>org.apache.tomee</groupId>-->
+            <!--<artifactId>openejb-cxf</artifactId>-->
+            <!--<version>${versions.openejb}</version>-->
+            <!--<scope>provided</scope>-->
+        <!--</dependency>-->
+        <!--<dependency>-->
+            <!--<groupId>org.apache.tomee</groupId>-->
+            <!--<artifactId>openejb-cxf-rs</artifactId>-->
+            <!--<version>${versions.openejb}</version>-->
+            <!--<scope>provided</scope>-->
+        <!--</dependency>-->
+        <!--&lt;!&ndash; Dependencies for the JSF framework (provided)&ndash;&gt;-->
+        <!--<dependency>-->
+            <!--<groupId>org.apache.myfaces.core</groupId>-->
+            <!--<artifactId>myfaces-api</artifactId>-->
+            <!--<version>${versions.myface}</version>-->
+            <!--<scope>provided</scope>-->
+        <!--</dependency>-->
+        <!--&lt;!&ndash; Dependencies for the testing frameworks (Junit, Mockito & Arquillian) (tests only) &ndash;&gt;-->
+        <!--<dependency>-->
+            <!--<groupId>junit</groupId>-->
+            <!--<artifactId>junit</artifactId>-->
+            <!--<version>${versions.junit}</version>-->
+            <!--<scope>test</scope>-->
+        <!--</dependency>-->
+        <!--<dependency>-->
+            <!--<groupId>org.mockito</groupId>-->
+            <!--<artifactId>mockito-core</artifactId>-->
+            <!--<version>${versions.mockito}</version>-->
+            <!--<scope>test</scope>-->
+        <!--</dependency>-->
+        <!--<dependency>-->
+            <!--<groupId>com.github.cukespace</groupId>-->
+            <!--<artifactId>cukespace-core</artifactId>-->
+            <!--<version>${versions.cukespace}</version>-->
+            <!--<scope>test</scope>-->
+        <!--</dependency>-->
+        <!--<dependency>-->
+            <!--<groupId>org.jboss.arquillian.junit</groupId>-->
+            <!--<artifactId>arquillian-junit-container</artifactId>-->
+            <!--<version>${versions.arquillian.junit}</version>-->
+            <!--<scope>test</scope>-->
+        <!--</dependency>-->
+        <!--<dependency>-->
+            <!--<groupId>org.jboss.shrinkwrap.resolver</groupId>-->
+            <!--<artifactId>shrinkwrap-resolver-depchain</artifactId>-->
+            <!--<version>${versions.shrinkwrap}</version>-->
+            <!--<type>pom</type>-->
+            <!--<scope>test</scope>-->
+        <!--</dependency>-->
+        <!--<dependency>-->
+            <!--<groupId>org.apache.tomee</groupId>-->
+            <!--<artifactId>arquillian-tomee-embedded</artifactId>-->
+            <!--<version>${versions.tomee}</version>-->
+            <!--<scope>test</scope>-->
+        <!--</dependency>-->
+    <!--</dependencies>-->
 
 
-    <build>
-        <plugins>
-            <plugin>
-                <groupId>org.apache.tomee.maven</groupId>
-                <artifactId>tomee-maven-plugin</artifactId>
-                <version>${versions.tomee}</version>
-                <configuration>
-                    <!-- From TomEE to TomEE+ to support the web services stack -->
-                    <tomeeClassifier>plus</tomeeClassifier>
-                    <args>-Xmx512m -XX:PermSize=256m</args>
-                    <deployOpenEjbApplication>true</deployOpenEjbApplication>
-                </configuration>
-            </plugin>
-        </plugins>
-    </build>
 
 </project>

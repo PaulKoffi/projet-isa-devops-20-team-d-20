@@ -1,23 +1,23 @@
-package fr.unice.polytech.isa.dd;
+package fr.unice.polytech.isa.dd.entities;
 import org.joda.time.DateTime;
-import javax.persistence.*;
-import javax.validation.constraints.NotNull;
+//import javax.persistence.*;
+//import javax.validation.constraints.NotNull;
 import java.io.Serializable;
 import java.util.Objects;
 
-@Entity
+//@Entity
 public class Package implements Serializable {
 
-    @NotNull
+//    @NotNull
     private String id;
 
-    @NotNull
+//    @NotNull
     private double weight;
 
-    @NotNull
+//    @NotNull
     private DateTime deliveryDate;
 
-    @NotNull
+//    @NotNull
     private String provider_id;
 
     public Package() {

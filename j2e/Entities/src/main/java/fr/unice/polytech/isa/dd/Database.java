@@ -1,13 +1,3 @@
-package fr.unice.polytech.isa.dd;
-
-
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-
-public class Database {
-
 
     private List<Delivery> deliveryList;
     private List<Customer> customerList;

@@ -1,17 +1,17 @@
-package fr.unice.polytech.isa.dd;
-import javax.persistence.*;
-import javax.validation.constraints.NotNull;
+package fr.unice.polytech.isa.dd.entities;
+//import javax.persistence.*;
+//import javax.validation.constraints.NotNull;
 import java.io.Serializable;
 import java.util.HashSet;
 import java.util.Set;
 
-@Entity
+//@Entity
 public class Provider implements Serializable {
 
-    @NotNull
+//    @NotNull
     private String id;
 
-    @NotNull
+//    @NotNull
     private String name;
 
     private Set<Package> packages = new HashSet<>();

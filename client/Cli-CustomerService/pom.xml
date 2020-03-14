@@ -84,7 +84,7 @@
                                     <wsdl>${basedir}/src/main/resources/DeliveryWebService.wsdl</wsdl>
                                     <extraargs>
                                         <extraarg>-p</extraarg>
-                                        <extraarg>http://www.polytech.unice.fr/si/4a/isa/dd/delivery=stubs.delivery
+                                        <extraarg>http://www.polytech.unice.fr/si/4a/isa/dd/deliveryService=stubs.delivery
                                         </extraarg>
                                     </extraargs>
                                 </wsdlOption>
