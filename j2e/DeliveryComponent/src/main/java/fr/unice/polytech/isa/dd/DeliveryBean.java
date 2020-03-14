@@ -22,8 +22,10 @@ public class DeliveryBean implements DeliveryInterface, NextDeliveryInterface {
         List<Provider> provider_set = Database.getInstance().getProviderList();
         for(Provider pro : provider_set){
             List<Delivery> alldeliveries = getAllDeliveries(pro.getId());
-            alldeliveries = alldeliveries.stream().filter(d -> d.getStatus()).collect(Collectors.toList());
-            this.deliveries_by_provider.put(pro,alldeliveries);
+            if(!alldeliveries.isEmpty()) {
+                alldeliveries = alldeliveries.stream().filter(d -> d.getStatus()).collect(Collectors.toList());
+                this.deliveries_by_provider.put(pro, alldeliveries);
+            }
         }
         return deliveries_by_provider;
     }

@@ -51,6 +51,14 @@ public class Bill implements Serializable {
         return id;
     }
 
+    public Provider getProvider() {
+        return provider;
+    }
+
+    public double getBillAmount() {
+        return billAmount;
+    }
+
     public DateTime getBillDate() {
         return billDate;
     }
