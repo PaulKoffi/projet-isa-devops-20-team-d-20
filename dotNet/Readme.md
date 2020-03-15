@@ -1,8 +1,4 @@
-# TCF Third-part system (.Net)
-
-  * Author: Sébastien Mosser [mosser@i3s.unice.fr](mosser@i3s.unice.fr)
-  * Reviewer: Anne-Marie Déry [pinna@polytech.unice.fr](pinna@polytech.unice.fr)
-  * Version: 02.2016
+# Third-part system (.Net)
 
   
 Third-part systems are implemented in this case study as a .Net service using the REST paradigm (_i.e._, exposing resources instead of procedures), implemented using the C# language.
@@ -19,7 +15,6 @@ The code is kept as simple as possible, and consists in only four files:
 
   * `BusinessObjects.cs`: The different data structure to be used to support the payment service (_i.e._, `PaymentRequest`, `Payment` and `PaymentStatus`);
   * `IPaymentService.cs`: the interface that models the resources exposed by the service:
-    * a `mailbox` to receive `PaymentRequest`s;
     * a list of all `payments` performed on the system;
     * a way to access to a dedicated payment thanks to its identifier: `payments/{id}`. 
   * `PaymentService.cs`: the concrete class that implement the previously described interface;

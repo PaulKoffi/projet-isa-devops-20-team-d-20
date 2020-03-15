@@ -34,8 +34,8 @@ namespace Partner.Service {
       foreach(KeyValuePair<int, Payment> entry in accounts)
        {
           if(entry.Value.BillId == identifier) {
-            return entry.Value;
-             }
+                     return entry.Value;
+          }
         }
          WebOperationContext.Current.OutgoingResponse.StatusCode = HttpStatusCode.NotFound;
          return null;
@@ -43,7 +43,7 @@ namespace Partner.Service {
 
     public List<int> GetAllPaymentIds()
     {
-      return accounts.Keys.ToList();
+      return accounts.Select (d => d.Value.BillId).ToList();
     }
 
 
