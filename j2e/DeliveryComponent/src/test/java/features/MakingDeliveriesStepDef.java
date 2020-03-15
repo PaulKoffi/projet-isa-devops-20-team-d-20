@@ -13,7 +13,6 @@ import fr.unice.polytech.isa.dd.entities.Delivery;
 import fr.unice.polytech.isa.dd.entities.Package;
 import fr.unice.polytech.isa.dd.entities.Provider;
 import io.cucumber.java8.Fr;
-import org.jcodings.util.Hash;
 import org.joda.time.DateTime;
 
 import javax.ejb.EJB;
@@ -34,6 +33,7 @@ public class MakingDeliveriesStepDef extends AbstractDeliveryTest implements Fr 
     private List<Provider> providers = Database.getInstance().getProviderList();
     private List<Delivery> delivs = Database.getInstance().getDeliveryList();
     private Delivery delivery;
+    private HashMap<Provider,List<Delivery>> providerListHashMap;
 
     public void initializeDatabaseDeliveryTest() {
         Customer c = new Customer("Pm", "adresse1");
@@ -59,6 +59,22 @@ public class MakingDeliveriesStepDef extends AbstractDeliveryTest implements Fr 
 
         for (int i = 0; i < arg1; i++){
             delivs.add(new Delivery(c,new Package(""+i,10.0,dt,pro1.getId()),dt,null));
+        }
+    }
+    public void initializeDatabaseDeliveryTestWithMutipleProviders(int arg1, String arg2,String arg3) {
+        Customer c = new Customer("Pm", "adresse1");
+
+        DateTime dt = new DateTime();
+
+        Provider pro1 = new Provider("1", arg2);
+        Provider pro2 = new Provider("2",arg3);
+        providers.add(pro1);providers.add(pro2);
+
+        for (int i = 0; i < arg1; i++){
+            delivs.add(new Delivery(c,new Package(""+i,10.0,dt,pro1.getId()),dt,null));
+        }
+        for (int i = 0; i < arg1; i++){
+            delivs.add(new Delivery(c,new Package(""+i*2,10.0,dt,pro2.getId()),dt,null));
         }
     }
 
@@ -97,7 +113,6 @@ public class MakingDeliveriesStepDef extends AbstractDeliveryTest implements Fr 
     @Alors("Il devrait y avoir (\\d+) livraison")
     public void ilYLivraison(int arg0) {
         assertNotNull(nextDeliveryInterface.getNextDelivery());
-        delivs.get(0).setStatus(true);
     }
 
     @Et("après il n'y a plus de livraisons")
@@ -118,7 +133,7 @@ public class MakingDeliveriesStepDef extends AbstractDeliveryTest implements Fr 
     @Et("l'employé demande la prochaine livraison à envoyer")
     public void lEmployéDemandeLaProchaineLivraisonÀEnvoyer() {
         assertNotNull(nextDeliveryInterface.getNextDelivery());
-        delivs.get(0).setStatus(true);
+        providerListHashMap = deliveryInterface.getAllDayDeliveries();
     }
 
     @Et("après il devrait rester (\\d+) livraison")
@@ -128,8 +143,37 @@ public class MakingDeliveriesStepDef extends AbstractDeliveryTest implements Fr 
 
     @Et("le fournisseur a (\\d+) livraison à payer")
     public void leFournisseurALivraisonÀPayer(int arg0) {
-        HashMap<Provider,List<Delivery>> providerListHashMap = deliveryInterface.getAllDayDeliveries();
-        assertEquals(1,providerListHashMap.get(providers.get(0)).size());
+        assertEquals(arg0,providerListHashMap.get(providers.get(0)).size());
+        cleanDatabase();
+    }
+
+    @Quand("Lentreprise doit livrer (\\d+) colis de 2 fournisseurs de noms (.*) et (.*)")
+    public void lentrepriseDoitLivrerColisDeFournisseursDeNomsAGEtPK(int arg0,String arg1,String arg2) {
+        initializeDatabaseDeliveryTestWithMutipleProviders(arg0,arg1,arg2);
+        delivs = databaseTest.getDeliveryList();
+        providers = databaseTest.getProviderList();
+        nextDeliveryInterface = new DeliveryBean();
+        deliveryInterface = new DeliveryBean();
+    }
+
+    @Et("l'employé effectue les (\\d+) livraison de AG et une livraison de PK")
+    public void lEmployéEffectueLesLivraisonDeAGEtUneLivraisonDePK(int arg0) {
+        delivery = nextDeliveryInterface.getNextDelivery();
+        delivery = nextDeliveryInterface.getNextDelivery();
+        delivery = nextDeliveryInterface.getNextDelivery();
+        providerListHashMap = deliveryInterface.getAllDayDeliveries();
+
+        assertNotNull(nextDeliveryInterface.getNextDelivery());
+    }
+
+    @Alors("(.*) devra devra payer (\\d+) livraisons pour cette journée")
+    public void agDevraDevraPayerLivraisonsPourCetteJournée(String arg0,int arg1) {
+        assertEquals(arg1,providerListHashMap.get(providers.get(0)).size());
+    }
+
+    @Et("(.*) devra en payer (\\d+)")
+    public void pkDevraEnPayer(String arg0,int arg1) {
+        assertEquals(arg1,providerListHashMap.get(providers.get(1)).size());
         cleanDatabase();
     }
 }

@@ -50,11 +50,11 @@ public class DeliveryBeanTest {
 
         assertNotNull(nextdelivery);
 
-        delivs.get(0).setStatus(true);
+       // delivs.get(0).setStatus(true);
         nextdelivery = deliveryBeantest.getNextDelivery();
         assertTrue(delivs.get(1).equals(nextdelivery));
 
-        delivs.get(1).setStatus(true);
+        //delivs.get(1).setStatus(true);
         nextdelivery = deliveryBeantest.getNextDelivery();
         assertFalse(delivs.get(1).equals(nextdelivery));
     }
