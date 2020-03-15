@@ -4,13 +4,14 @@ import org.joda.time.DateTime;
 //import javax.persistence.*;
 //import javax.validation.constraints.NotNull;
 import java.io.Serializable;
+import java.util.Random;
 //import java.util.Date;
 
 //@Entity
 public class Delivery implements Serializable {
 
-//    @Id
-//    @GeneratedValue(strategy = GenerationType.AUTO)
+ //   @Id
+ //   @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
 
 //    @NotNull
@@ -40,6 +41,7 @@ public class Delivery implements Serializable {
     }
 
     public Delivery(Customer c, Package p, DateTime d, String b) {
+        id = new Random().nextInt();
         customer = c;
         packageDelivered = p;
         deliveryDate = d;
