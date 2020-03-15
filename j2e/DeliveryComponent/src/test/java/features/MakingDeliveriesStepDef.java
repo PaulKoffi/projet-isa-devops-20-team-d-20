@@ -13,12 +13,13 @@ import fr.unice.polytech.isa.dd.entities.Delivery;
 import fr.unice.polytech.isa.dd.entities.Package;
 import fr.unice.polytech.isa.dd.entities.Provider;
 import io.cucumber.java8.Fr;
-import io.cucumber.java8.PendingException;
+import org.jcodings.util.Hash;
 import org.joda.time.DateTime;
 
 import javax.ejb.EJB;
 import static org.junit.Assert.*;
 
+import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
 
@@ -47,6 +48,18 @@ public class MakingDeliveriesStepDef extends AbstractDeliveryTest implements Fr 
         Delivery d1 = new Delivery(c, pk1, dt, null);
         delivs.add(d1);
 
+    }
+    public void initializeDatabaseDeliveryTestWithParam(int arg1, String arg2) {
+        Customer c = new Customer("Pm", "adresse1");
+
+        DateTime dt = new DateTime();
+
+        Provider pro1 = new Provider("1", arg2);
+        providers.add(pro1);
+
+        for (int i = 0; i < arg1; i++){
+            delivs.add(new Delivery(c,new Package(""+i,10.0,dt,pro1.getId()),dt,null));
+        }
     }
 
     public void cleanDatabase(){
@@ -90,6 +103,33 @@ public class MakingDeliveriesStepDef extends AbstractDeliveryTest implements Fr 
     @Et("après il n'y a plus de livraisons")
     public void aprèsIlNYAPlusDeLivraisons() {
         assertNull(nextDeliveryInterface.getNextDelivery());
+        cleanDatabase();
+    }
+
+    @Quand("Lentreprise doit livrer (\\d+) colis dun seul fournisseur de nom (.*)")
+    public void lEntrepriseDoitLivrerColisDUnSeulFournisseurDeNom(int arg0, String arg1) {
+        initializeDatabaseDeliveryTestWithParam(arg0,arg1);
+        delivs = databaseTest.getDeliveryList();
+        providers = databaseTest.getProviderList();
+        nextDeliveryInterface = new DeliveryBean();
+        deliveryInterface = new DeliveryBean();
+    }
+
+    @Et("l'employé demande la prochaine livraison à envoyer")
+    public void lEmployéDemandeLaProchaineLivraisonÀEnvoyer() {
+        assertNotNull(nextDeliveryInterface.getNextDelivery());
+        delivs.get(0).setStatus(true);
+    }
+
+    @Et("après il devrait rester (\\d+) livraison")
+    public void aprèsIlDevraitResterLivraison(int arg0) {
+        assertNotNull(nextDeliveryInterface.getNextDelivery());
+    }
+
+    @Et("le fournisseur a (\\d+) livraison à payer")
+    public void leFournisseurALivraisonÀPayer(int arg0) {
+        HashMap<Provider,List<Delivery>> providerListHashMap = deliveryInterface.getAllDayDeliveries();
+        assertEquals(1,providerListHashMap.get(providers.get(0)).size());
         cleanDatabase();
     }
 }

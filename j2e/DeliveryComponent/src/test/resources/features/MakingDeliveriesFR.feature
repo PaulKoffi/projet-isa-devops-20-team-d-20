@@ -13,3 +13,9 @@
         Et l'employé regarde la prochaine livraison
         Alors Il devrait y avoir 1 livraison
         Et après il n'y a plus de livraisons
+
+       Scénario: Il y plusieurs d'un seul fournisseur
+         Quand Lentreprise doit livrer 2 colis dun seul fournisseur de nom AG1
+         Et l'employé demande la prochaine livraison à envoyer
+         Et après il devrait rester 1 livraison
+         Et le fournisseur a 1 livraison à payer
