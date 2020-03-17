@@ -41,6 +41,23 @@ public class GeneratingBillsStepDefs extends AbstractBillingTest implements Fr {
         }
     }
 
+    public void initializeDatabaseTestWithMutipleProviders(int arg1, String arg2,String arg3) {
+        Customer c = new Customer("Pm", "adresse1");
+
+        DateTime dt = new DateTime();
+
+        Provider pro1 = new Provider("1", arg2);
+        Provider pro2 = new Provider("2",arg3);
+        providers.add(pro1);providers.add(pro2);
+
+        for (int i = 0; i < arg1; i++){
+            deliveries.add(new Delivery(c,new Package(""+i,10.0,dt,pro1.getId()),dt,null));
+        }
+        for (int i = 0; i < arg1; i++){
+            deliveries.add(new Delivery(c,new Package(""+i*2,10.0,dt,pro2.getId()),dt,null));
+        }
+    }
+
     public void cleanDatabase(){
         for(Iterator<Provider> itpor = providers.iterator(); itpor.hasNext();){
             itpor.next();
@@ -50,13 +67,17 @@ public class GeneratingBillsStepDefs extends AbstractBillingTest implements Fr {
             itdel.next();
             itdel.remove();
         }
+        for (Iterator<Bill> itbill = bills.iterator();itbill.hasNext();){
+            itbill.next();
+            itbill.remove();
+        }
     }
 
     public GeneratingBillsStepDefs() {
         Quand("^l'employé demande la prochaine livraison$", () -> {
             del = nextDelivery.getNextDelivery();
         });
-        Alors("^il y (\\d+) livraisons$", (Integer arg0) -> {
+        Alors("^il y a (\\d+) livraisons$", (Integer arg0) -> {
             assertNull(del);
         });
         Et("^donc il y a (\\d+) facture$", (Integer arg0) -> {
@@ -70,7 +91,18 @@ public class GeneratingBillsStepDefs extends AbstractBillingTest implements Fr {
                 del = nextDelivery.getNextDelivery();
             }
         });
-        Alors("^il y (\\d+) facture$", (Integer arg0) -> {
+        Alors("^il y a (\\d+) facture$", (Integer arg0) -> {
+            billinggenerator.generateBill();
+            assertEquals(arg0.intValue(),bills.size());
+            cleanDatabase();
+        });
+        Quand("^l'employé envoie les (\\d+) livraisons du fournisseurs (.*) et (.*)$", (Integer arg0,String arg1,String arg2) -> {
+            initializeDatabaseTestWithMutipleProviders(arg0,arg1,arg2);
+            while(del != null){
+                del = nextDelivery.getNextDelivery();
+            }
+        });
+        Alors("^(\\d+) factures sont générées$", (Integer arg0) -> {
             billinggenerator.generateBill();
             assertEquals(arg0.intValue(),bills.size());
             cleanDatabase();
