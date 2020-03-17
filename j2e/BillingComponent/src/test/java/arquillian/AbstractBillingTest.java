@@ -1,7 +1,7 @@
 package arquillian;
 
 import fr.unice.polytech.isa.dd.DeliveryBean;
-import fr.unice.polytech.isa.dd.business.BillingBean;
+import fr.unice.polytech.isa.dd.BillingBean;
 import fr.unice.polytech.isa.dd.entities.*;
 
 import fr.unice.polytech.isa.dd.entities.Package;

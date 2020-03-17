@@ -4,8 +4,8 @@ import arquillian.AbstractBillingTest;
 import fr.unice.polytech.isa.dd.DeliveryBean;
 import fr.unice.polytech.isa.dd.DeliveryInterface;
 import fr.unice.polytech.isa.dd.NextDeliveryInterface;
-import fr.unice.polytech.isa.dd.business.BillingBean;
-import fr.unice.polytech.isa.dd.business.BillingGeneratedInterface;
+import fr.unice.polytech.isa.dd.BillingBean;
+import fr.unice.polytech.isa.dd.BillingGeneratedInterface;
 import fr.unice.polytech.isa.dd.entities.*;
 import fr.unice.polytech.isa.dd.entities.Package;
 import io.cucumber.java8.Fr;
@@ -38,6 +38,23 @@ public class GeneratingBillsStepDefs extends AbstractBillingTest implements Fr {
 
         for (int i = 0; i < arg1; i++){
             deliveries.add(new Delivery(c,new Package(""+i,10.0,dt,pro1.getId()),dt,null));
+        }
+    }
+
+    public void initializeDatabaseTestWithMutipleProviders(int arg1, String arg2,String arg3) {
+        Customer c = new Customer("Pm", "adresse1");
+
+        DateTime dt = new DateTime();
+
+        Provider pro1 = new Provider("1", arg2);
+        Provider pro2 = new Provider("2",arg3);
+        providers.add(pro1);providers.add(pro2);
+
+        for (int i = 0; i < arg1; i++){
+            deliveries.add(new Delivery(c,new Package(""+i,10.0,dt,pro1.getId()),dt,null));
+        }
+        for (int i = 0; i < arg1; i++){
+            deliveries.add(new Delivery(c,new Package(""+i*2,10.0,dt,pro2.getId()),dt,null));
         }
     }
 
@@ -79,9 +96,16 @@ public class GeneratingBillsStepDefs extends AbstractBillingTest implements Fr {
             assertEquals(arg0.intValue(),bills.size());
             cleanDatabase();
         });
-        Quand("^l'employé envoie les (\\d+) livraisons du fournisseurs AG et PK$", (Integer arg0) -> {
+        Quand("^l'employé envoie les (\\d+) livraisons du fournisseurs (.*) et (.*)$", (Integer arg0,String arg1,String arg2) -> {
+            initializeDatabaseTestWithMutipleProviders(arg0,arg1,arg2);
+            while(del != null){
+                del = nextDelivery.getNextDelivery();
+            }
         });
         Alors("^(\\d+) factures sont générées$", (Integer arg0) -> {
+            billinggenerator.generateBill();
+            assertEquals(arg0.intValue(),bills.size());
+            cleanDatabase();
         });
 
     }
