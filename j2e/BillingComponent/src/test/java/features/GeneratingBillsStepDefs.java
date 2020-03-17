@@ -50,13 +50,17 @@ public class GeneratingBillsStepDefs extends AbstractBillingTest implements Fr {
             itdel.next();
             itdel.remove();
         }
+        for (Iterator<Bill> itbill = bills.iterator();itbill.hasNext();){
+            itbill.next();
+            itbill.remove();
+        }
     }
 
     public GeneratingBillsStepDefs() {
         Quand("^l'employé demande la prochaine livraison$", () -> {
             del = nextDelivery.getNextDelivery();
         });
-        Alors("^il y (\\d+) livraisons$", (Integer arg0) -> {
+        Alors("^il y a (\\d+) livraisons$", (Integer arg0) -> {
             assertNull(del);
         });
         Et("^donc il y a (\\d+) facture$", (Integer arg0) -> {
@@ -70,10 +74,14 @@ public class GeneratingBillsStepDefs extends AbstractBillingTest implements Fr {
                 del = nextDelivery.getNextDelivery();
             }
         });
-        Alors("^il y (\\d+) facture$", (Integer arg0) -> {
+        Alors("^il y a (\\d+) facture$", (Integer arg0) -> {
             billinggenerator.generateBill();
             assertEquals(arg0.intValue(),bills.size());
             cleanDatabase();
+        });
+        Quand("^l'employé envoie les (\\d+) livraisons du fournisseurs AG et PK$", (Integer arg0) -> {
+        });
+        Alors("^(\\d+) factures sont générées$", (Integer arg0) -> {
         });
 
     }
