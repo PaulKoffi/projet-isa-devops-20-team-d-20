@@ -40,18 +40,16 @@ public class BillingBeanTest {
         Delivery d1 = new Delivery(c,package1,d,null) ;
         d1.setStatus(true);
         db.getDeliveryList().add(d1);
-        List<Delivery> ds = new ArrayList<>();
+        ds = new ArrayList<>();
         ds.add(d1);
         b = new Bill(p1, ds);
-
-
     }
 
     @Test
     public void GenerateBillTest() {
 
         bg.generateBill();
-        DeliveryBean d = new DeliveryBean();
+        //DeliveryBean d = new DeliveryBean();
         assertEquals(1, db.getBillList().size());
         assertEquals(b.getProvider(), db.getBillList().get(0).getProvider());
         assertEquals(b.getDeliveries().get(0), db.getBillList().get(0).getDeliveries().get(0));

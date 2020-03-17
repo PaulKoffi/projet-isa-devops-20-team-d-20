@@ -19,7 +19,7 @@ public class BillingBean implements BillingGeneratedInterface {
 
     Database db = Database.getInstance();
 
-    @EJB private DeliveryBean deliveryBean;
+    @EJB(name ="delivery-stateless") private DeliveryInterface deliveryBean;
 
     public BillingBean() { }
 
