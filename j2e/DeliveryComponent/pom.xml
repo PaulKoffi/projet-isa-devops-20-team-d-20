@@ -12,6 +12,7 @@
 
   <!--<groupId>fr.unice.polytech.isa.dd</groupId>-->
   <artifactId>DeliveryComponent</artifactId>
+  <packaging>war</packaging>
 
 
   <properties>
