@@ -5,9 +5,7 @@ package fr.unice.polytech.isa.dd.entities;
 import java.io.Serializable;
 import java.util.Date;
 
-enum DRONE_STATES {
-    AVAILABLE, AWAITING_DELIVER, IN_DELIVERING, AWAITING_LOADING, IN_LOADING, AWAITING_TO_BE_AVAILABLE, AWAITING_REPAIR, BEING_REPAIRED
-}
+
 //@Entity
 public class DroneStatus implements Serializable {
 
@@ -23,6 +21,10 @@ public class DroneStatus implements Serializable {
 
 //    @NotNull
     private Date timeEndState;
+
+    public DroneStatus(){
+
+    }
 
     public DroneStatus(DRONE_STATES state, Date hourBeginning, Date hourEnd) {
         libelleStatusDrone=  state;

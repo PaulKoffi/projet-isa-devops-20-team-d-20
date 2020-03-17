@@ -2,7 +2,7 @@
 <wsdl:definitions name="DeliveryWebServiceService" targetNamespace="http://www.polytech.unice.fr/si/4a/isa/dd/deliveryService"
                   xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:xsd="http://www.w3.org/2001/XMLSchema"
                   xmlns:tns="http://www.polytech.unice.fr/si/4a/isa/dd/deliveryService"
-                  xmlns:ns1="http://schemas.xmlsoap.org/soap/http"
+                  xmlns:ns1="http://www.polytech.unice.fr/si/4a/isa/dd/deliveryService"
                   xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/">
     <wsdl:types>
         <xs:schema xmlns:tns="http://www.polytech.unice.fr/si/4a/isa/dd/deliveryService"
@@ -12,6 +12,10 @@
             <xs:element name="getNextDelivery" type="tns:getNextDelivery"/>
 
             <xs:element name="getNextDeliveryResponse" type="tns:getNextDeliveryResponse"/>
+
+            <xs:element name="initializeDelivery" type="tns:initializeDelivery"/>
+
+            <xs:element name="initializeDeliveryResponse" type="tns:initializeDeliveryResponse"/>
 
             <xs:complexType name="getNextDelivery">
                 <xs:sequence/>
@@ -75,25 +79,47 @@
                 <xs:sequence/>
             </xs:complexType>
 
+            <xs:complexType name="initializeDelivery">
+                <xs:sequence/>
+            </xs:complexType>
+
+            <xs:complexType name="initializeDeliveryResponse">
+                <xs:sequence/>
+            </xs:complexType>
+
         </xs:schema>
     </wsdl:types>
     <wsdl:message name="getNextDeliveryResponse">
-        <wsdl:part name="parameters" element="tns:getNextDeliveryResponse">
+        <wsdl:part name="parameters" element="ns1:getNextDeliveryResponse">
         </wsdl:part>
     </wsdl:message>
     <wsdl:message name="getNextDelivery">
-        <wsdl:part name="parameters" element="tns:getNextDelivery">
+        <wsdl:part name="parameters" element="ns1:getNextDelivery">
+        </wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="initializeDelivery">
+        <wsdl:part name="parameters" element="ns1:initializeDelivery">
+        </wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="initializeDeliveryResponse">
+        <wsdl:part name="parameters" element="ns1:initializeDeliveryResponse">
         </wsdl:part>
     </wsdl:message>
     <wsdl:portType name="DeliveryWebService">
         <wsdl:operation name="getNextDelivery">
-            <wsdl:input name="getNextDelivery" message="tns:getNextDelivery">
+            <wsdl:input name="getNextDelivery" message="ns1:getNextDelivery">
             </wsdl:input>
-            <wsdl:output name="getNextDeliveryResponse" message="tns:getNextDeliveryResponse">
+            <wsdl:output name="getNextDeliveryResponse" message="ns1:getNextDeliveryResponse">
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="initializeDelivery">
+            <wsdl:input name="initializeDelivery" message="ns1:initializeDelivery">
+            </wsdl:input>
+            <wsdl:output name="initializeDeliveryResponse" message="ns1:initializeDeliveryResponse">
             </wsdl:output>
         </wsdl:operation>
     </wsdl:portType>
-    <wsdl:binding name="DeliveryWebServiceServiceSoapBinding" type="tns:DeliveryWebService">
+    <wsdl:binding name="DeliveryWebServiceServiceSoapBinding" type="ns1:DeliveryWebService">
         <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
         <wsdl:operation name="getNextDelivery">
             <soap:operation soapAction="" style="document"/>
@@ -104,9 +130,18 @@
                 <soap:body use="literal"/>
             </wsdl:output>
         </wsdl:operation>
+        <wsdl:operation name="initializeDelivery">
+            <soap:operation soapAction="" style="document"/>
+            <wsdl:input name="initializeDelivery">
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output name="initializeDeliveryResponse">
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
     </wsdl:binding>
     <wsdl:service name="DeliveryWebServiceService">
-        <wsdl:port name="DeliveryWebServicePort" binding="tns:DeliveryWebServiceServiceSoapBinding">
+        <wsdl:port name="DeliveryWebServicePort" binding="ns1:DeliveryWebServiceServiceSoapBinding">
             <soap:address location="http://localhost:8080/DeliveryComponent/webservices/DeliveryWS"/>
         </wsdl:port>
     </wsdl:service>

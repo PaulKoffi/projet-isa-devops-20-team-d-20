@@ -13,7 +13,7 @@ public class Database {
     private List<Customer> customerList;
     private List<Provider> providerList;
     private List<Bill> billList;
-
+//    private static boolean initialize = false;
 
 
     private Database() {
@@ -21,10 +21,24 @@ public class Database {
         deliveryList = new ArrayList<>();
         providerList = new ArrayList<>();
         billList = new ArrayList<>();
+//        if(initialize){
+//            System.out.println("okki");
+//        this.initializeDatabase();
+//        }
+    }
+
+    public void clearDatabase() {
+        customerList.clear();
+        deliveryList.clear();
+        providerList.clear();
+        billList.clear();
     }
 
     public void initializeDatabase() {
-        Customer c = new Customer("Pm", "adresse1");
+        Customer c = new Customer("Paul Marie", "adresse1");
+        Customer c1 = new Customer("Paul Koffi", "adresse2");
+        Customer c2 = new Customer("Messan Aurore", "adresse3");
+
         customerList.add(c);
 
         DateTime dt = new DateTime();
@@ -35,12 +49,12 @@ public class Database {
         providerList.add(pro2);
 
         Package pk1 = new Package("1", 2.0, dt, "1");
-        Package pk2 = new Package("2", 2.0, dt, "1");
-        Package pk3 = new Package("3", 2.0, dt, "2");
+        Package pk2 = new Package("2", 4.0, dt, "1");
+        Package pk3 = new Package("3", 6.0, dt, "2");
 
         Delivery d1 = new Delivery(c, pk1, dt, null);
-        Delivery d2 = new Delivery(c, pk2, dt, null);
-        Delivery d3 = new Delivery(c, pk3, dt, null);
+        Delivery d2 = new Delivery(c1, pk2, dt, null);
+        Delivery d3 = new Delivery(c2, pk3, dt, null);
         deliveryList.add(d1);
         deliveryList.add(d2);
         deliveryList.add(d3);
@@ -65,5 +79,7 @@ public class Database {
         return providerList;
     }
 
-    public List<Bill> getBillList() { return billList; }
+    public List<Bill> getBillList() {
+        return billList;
+    }
 }
