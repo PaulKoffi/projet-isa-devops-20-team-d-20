@@ -18,12 +18,16 @@ public class BankAPI {
         JSONObject payment;
         try {
             String response = WebClient.create(url).path("/payments/" + id).get(String.class);
-            payment = new JSONObject(response);
+            if (response != null) {
+                payment = new JSONObject(response);
+                return true;
+            }
         } catch (Exception e) {
             throw new ExternalPartnerException(url + "payments/" + id, e);
         }
         // Assessing the payment status
-        return (payment.getInt("Status") == 0);
+        //return (payment.getInt("Status") == 0);
+        return false;
     }
 
 }
