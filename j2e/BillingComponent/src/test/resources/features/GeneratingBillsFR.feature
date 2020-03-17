@@ -10,5 +10,5 @@
         Et donc il y a 0 facture
 
       Scénario: Il y a plusieurs livraisons à faire d'un seul fournisseur
-        Quand l'employé effectue les 2 prochaines livraisons
+        Quand l'employé effectue les 2 prochaines livraisons du fournisseur AG
         Alors il y 1 facture
