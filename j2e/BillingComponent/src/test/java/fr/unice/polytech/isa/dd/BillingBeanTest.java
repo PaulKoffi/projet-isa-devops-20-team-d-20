@@ -55,4 +55,15 @@ public class BillingBeanTest {
         assertEquals(b.getDeliveries().get(0), db.getBillList().get(0).getDeliveries().get(0));
 
     }
+
+    @Test
+    public void checkstatutTest( )
+    {
+        bg.checkstatut(3);
+        //System.out.println(bg.checkstatut(1));
+
+        assertTrue(bg.checkstatut(3));;
+    }
+
+
 }

@@ -13,17 +13,21 @@ public class BankAPI {
     }
 
     public BankAPI() { this("localhost", "9090"); }
-
-    public boolean performPayment(String id) throws ExternalPartnerException {
-        JSONObject payment;
+    public JSONObject performPayment(int id) throws ExternalPartnerException {
+        JSONObject payment=null;
         try {
             String response = WebClient.create(url).path("/payments/" + id).get(String.class);
-            payment = new JSONObject(response);
+
+            //if (response != null) {
+                payment = new JSONObject(response);
+                //return true;
+            //}
         } catch (Exception e) {
-            throw new ExternalPartnerException(url + "payments/" + id, e);
+            throw new ExternalPartnerException(url + "/payments/" + id, e);
         }
         // Assessing the payment status
-        return (payment.getInt("Status") == 0);
+        //return (payment.getInt("Status") == 0);
+        return payment;
     }
 
 }
