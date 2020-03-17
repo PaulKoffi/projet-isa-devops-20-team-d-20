@@ -25,7 +25,7 @@ public class DeliveryBean implements DeliveryInterface, NextDeliveryInterface {
         List<Provider> provider_set = Database.getInstance().getProviderList();
         for (Provider pro : provider_set) {
             List<Delivery> alldeliveries = getAllDeliveries(pro.getId());
-            if(!alldeliveries.isEmpty()) {
+            if (!alldeliveries.isEmpty()) {
                 alldeliveries = alldeliveries.stream().filter(d -> d.getStatus()).collect(Collectors.toList());
                 this.deliveries_by_provider.put(pro, alldeliveries);
             }
@@ -48,18 +48,16 @@ public class DeliveryBean implements DeliveryInterface, NextDeliveryInterface {
     @Override
     public Delivery getNextDelivery() {
         /******* TEST ******/
-       // Database.getInstance().initializeDatabase();
+        // Database.getInstance().initializeDatabase();
         System.out.println("Passage dans mon service");
         List<Delivery> deliveries = Database.getInstance().getDeliveryList();
-        if (deliveries != null) {
+        if (deliveries.size() !=0) {
             for (Delivery del : deliveries
             ) {
-//                if(del.getPrice()>=20){
-                    if (!del.getStatus()) {
-                        del.setStatus(true);
-                        return del;
-                    }
-//                }
+                if (!del.getStatus()) {
+                    del.setStatus(true);
+                    return del;
+                }
             }
         }
         return null;

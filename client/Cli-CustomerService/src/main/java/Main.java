@@ -18,6 +18,10 @@ public class Main extends Shell<DDPublicAPI> {
                 // Getting out of here
                 Bye.class,
 
+                // init delivery list
+                Initialize.class,
+
+
                 // Get next delivery
                 GetNextDelivery.class
         );

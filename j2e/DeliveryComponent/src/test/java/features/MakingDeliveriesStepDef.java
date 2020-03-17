@@ -95,6 +95,7 @@ public class MakingDeliveriesStepDef extends AbstractDeliveryTest implements Fr 
     }
     @Alors("^Il y a (\\d+) livraisons$")
     public void il_y_a_livraisons(int arg1) {
+//        Database.getInstance().clearDatabase();
         nextDeliveryInterface = new DeliveryBean();
         assertNull(nextDeliveryInterface.getNextDelivery());
     }
