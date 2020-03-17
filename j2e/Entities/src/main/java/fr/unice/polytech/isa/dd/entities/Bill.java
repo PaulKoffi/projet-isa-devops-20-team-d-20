@@ -86,4 +86,27 @@ public class Bill implements Serializable {
         return Objects.equals(id, that.id) && Objects.equals(provider, that.provider) && Objects.equals(billAmount, that.billAmount);
     }
 
+    public DateTime getPaymentDate() {
+        return paymentDate;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public void setBillDate(DateTime billDate) {
+        this.billDate = billDate;
+    }
+
+    public void setBillAmount(double billAmount) {
+        this.billAmount = billAmount;
+    }
+
+    public void setProvider(Provider provider) {
+        this.provider = provider;
+    }
+
+    public void setDeliveries(List<Delivery> deliveries) {
+        this.deliveries = deliveries;
+    }
 }

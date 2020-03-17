@@ -3,6 +3,7 @@ package fr.unice.polytech.isa.dd.webservice;
 //import fr.unice.polytech.isa.dd.entities.Delivery;
 
 import fr.unice.polytech.isa.dd.entities.Delivery;
+import fr.unice.polytech.isa.dd.entities.DroneStatus;
 
 import javax.jws.WebMethod;
 import javax.jws.WebParam;
@@ -21,5 +22,13 @@ public interface DeliveryWebService {
     @WebMethod
     @WebResult(name="the_next_delivery")
     Delivery getNextDelivery();
+
+    @WebMethod
+    @WebResult(name="initialize_delivery_database")
+    void initializeDelivery();
+
+//    @WebMethod
+//    @WebResult(name="the_next_enum")
+//    Delivery getN(@WebParam(name = "delivery")  DroneStatus d);
 
 }

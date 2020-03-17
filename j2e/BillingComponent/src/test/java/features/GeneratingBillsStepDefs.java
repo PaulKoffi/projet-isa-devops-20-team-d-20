@@ -75,6 +75,7 @@ public class GeneratingBillsStepDefs extends AbstractBillingTest implements Fr {
 
     public GeneratingBillsStepDefs() {
         Quand("^l'employé demande la prochaine livraison$", () -> {
+//            Database.getInstance().clearDatabase();
             del = nextDelivery.getNextDelivery();
         });
         Alors("^il y a (\\d+) livraisons$", (Integer arg0) -> {
