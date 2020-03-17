@@ -1,4 +1,4 @@
-package fr.unice.polytech.isa.dd.business;
+package fr.unice.polytech.isa.dd;
 
 import fr.unice.polytech.isa.dd.*;
 import fr.unice.polytech.isa.dd.entities.*;
