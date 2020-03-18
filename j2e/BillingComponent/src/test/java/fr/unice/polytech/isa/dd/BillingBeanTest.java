@@ -7,6 +7,8 @@ import org.joda.time.DateTime;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
+import javax.ejb.EJB;
+
 
 import java.util.ArrayList;
 import java.util.List;
@@ -16,9 +18,12 @@ import static org.junit.Assert.*;
 
 public class BillingBeanTest {
 
+
+    @EJB private BillingGeneratedInterface bg = new BillingBean();
+    @EJB private CheckTransferStatus ct = new BillingBean();
+
     private List<Provider> providers;
     private  List<Delivery> ds;
-    private BillingBean bg;
     Database db = Database.getInstance();
     private Provider p1;
     private Provider p2;
@@ -30,9 +35,7 @@ public class BillingBeanTest {
     @Before
     public void setUp() {
         db.clearDatabase();
-        bg = new BillingBean();
-
-       Customer c = new Customer("Doni","10 rue des lucioles");
+        Customer c = new Customer("Doni","10 rue des lucioles");
         DateTime d = new DateTime();
         p1 = new Provider("1","p1");
         p2 = new Provider("2","p2");
@@ -51,7 +54,6 @@ public class BillingBeanTest {
     public void GenerateBillTest() {
 
         bg.generateBill();
-        //DeliveryBean d = new DeliveryBean();
         assertEquals(1, db.getBillList().size());
         assertEquals(b.getProvider(), db.getBillList().get(0).getProvider());
         assertEquals(b.getDeliveries().get(0), db.getBillList().get(0).getDeliveries().get(0));
@@ -61,16 +63,16 @@ public class BillingBeanTest {
     @Test
     public void checkstatutTest( )
     {
-        bg.checkstatut(1);
+        ct.checkstatut(1);
         //System.out.println(bg.checkstatut(1));
-        assertTrue(bg.checkstatut(1));;
+        assertTrue(ct.checkstatut(1));;
     }
 
     @Test
     public void getAllPaidBillsTest() throws ExternalPartnerException {
         bg.generateBill();
         db.getBillList().get(0).setId(1);
-        assertEquals(1, bg.getAllPaidBills().size());
+        assertEquals(1, ct.getAllPaidBills().size());
 
     }
 }

@@ -8,10 +8,7 @@ import org.json.JSONObject;
 import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Map;
-import java.util.Properties;
+import java.util.*;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -20,8 +17,7 @@ public class BillingBean implements BillingGeneratedInterface,CheckTransferStatu
     Database db = Database.getInstance();
     private static final Logger log = Logger.getLogger(Logger.class.getName());
 
-    @EJB
-    private DeliveryBean deliveryBean;
+    @EJB private DeliveryInterface delivery = new DeliveryBean();
 
     private BankAPI bank;
     public BillingBean() {bank=new BankAPI(); }
@@ -29,9 +25,8 @@ public class BillingBean implements BillingGeneratedInterface,CheckTransferStatu
 
     @Override
     public void generateBill() {
-        deliveryBean = new DeliveryBean();
 
-        for (Map.Entry<Provider, List<Delivery>> entry : deliveryBean.getAllDayDeliveries().entrySet()) {
+        for (Map.Entry<Provider, List<Delivery>> entry : delivery.getAllDayDeliveries().entrySet()) {
             // System.out.println("[Key] : " + entry.getKey() + " [Value] : " + entry.getValue().size());
             db.getBillList().add(new Bill(entry.getKey() , entry.getValue()));
         }
