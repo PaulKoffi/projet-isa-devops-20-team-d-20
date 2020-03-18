@@ -22,9 +22,7 @@ public class BillingBeanTest {
     @EJB private BillingGeneratedInterface bg = new BillingBean();
     @EJB private CheckTransferStatus ct = new BillingBean();
 
-    private List<Provider> providers;
     private  List<Delivery> ds;
-    private BillingBean bg;
     Database db = Database.getInstance();
     private Provider p1;
     private Provider p2;
@@ -65,12 +63,9 @@ public class BillingBeanTest {
     @Test
     public void checkstatutTest( )
     {
-        ct.checkstatut(1);
-        //System.out.println(bg.checkstatut(1));
-        assertTrue(ct.checkstatut(1));;
         bg.generateBill();
-        assertTrue(bg.checkstatut(1));
-        assertFalse(bg.checkstatut(2));
+        assertTrue(ct.checkstatut(1));
+        assertFalse(ct.checkstatut(2));
     }
 
     @Test
