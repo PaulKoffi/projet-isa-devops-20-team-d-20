@@ -35,13 +35,14 @@ public class Bill implements Serializable {
         // Necessary for JPA instantiation process
     }
 
-    public Bill(Provider p, List<Delivery> ds) {
+    public Bill(int i ,Provider p, List<Delivery> ds) {
         provider = p;
         deliveries = ds;
         billDate = new DateTime();
         for (Delivery d : ds) {
             billAmount+= d.getPrice();
         }
+        id = i;
     }
 
     public int getId() {

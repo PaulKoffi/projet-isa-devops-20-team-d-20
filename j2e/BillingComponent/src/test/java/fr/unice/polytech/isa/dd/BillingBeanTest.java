@@ -44,7 +44,7 @@ public class BillingBeanTest {
         db.getDeliveryList().add(d1);
         ds = new ArrayList<>();
         ds.add(d1);
-        b = new Bill(p1, ds);
+        b = new Bill(1,p1, ds);
     }
 
     @Test
@@ -61,9 +61,9 @@ public class BillingBeanTest {
     @Test
     public void checkstatutTest( )
     {
-        bg.checkstatut(1);
-        //System.out.println(bg.checkstatut(1));
-        assertTrue(bg.checkstatut(1));;
+        bg.generateBill();
+        assertTrue(bg.checkstatut(1));
+        assertFalse(bg.checkstatut(2));
     }
 
     @Test
