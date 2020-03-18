@@ -2,6 +2,7 @@ package fr.unice.polytech.isa.dd.entities;
 
 
 import org.apache.cxf.jaxrs.client.WebClient;
+import org.json.JSONArray;
 import org.json.JSONObject;
 
 public class BankAPI {
@@ -13,7 +14,7 @@ public class BankAPI {
     }
 
     public BankAPI() { this("localhost", "9090"); }
-    public JSONObject performPayment(int id) throws ExternalPartnerException {
+    public JSONObject getPayment(int id) throws ExternalPartnerException {
         JSONObject payment=null;
         try {
             String response = WebClient.create(url).path("/payments/" + id).get(String.class);
@@ -28,6 +29,20 @@ public class BankAPI {
         // Assessing the payment status
         //return (payment.getInt("Status") == 0);
         return payment;
+    }
+
+    public JSONArray getPayements() throws ExternalPartnerException {
+        JSONArray res=null;
+        try {
+            String response = WebClient.create(url).path("/payments").get(String.class);
+            res = new JSONArray(response);
+
+        } catch (Exception e) {
+            throw new ExternalPartnerException(url + "/payments", e);
+        }
+        // Assessing the payment status
+        //return (payment.getInt("Status") == 0);
+        return res;
     }
 
 }

@@ -15,7 +15,7 @@ namespace Partner.Service {
   {
     private Dictionary<int, Payment> accounts = new Dictionary<int, Payment>(){
     {1, new Payment() {Identifier= 1, CountNumberProvider="000100", Amount=30.0, Date="15-03-2020", BillId= 3}},
-    {2, new Payment() {Identifier=2, CountNumberProvider="000200", Amount=20.0, Date="15-03-2020", BillId= 4}}
+    {2, new Payment() {Identifier=2, CountNumberProvider="000200", Amount=20.0, Date="15-03-2020", BillId= 1}}
     };
 
     private int counter;
