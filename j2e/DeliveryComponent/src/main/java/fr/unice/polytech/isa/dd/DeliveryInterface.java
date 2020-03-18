@@ -11,8 +11,8 @@ import java.util.List;
 public interface DeliveryInterface {
 
     //Changer le type de retour de ces fonctions en Livraison
-    public HashMap<Provider,List<Delivery>> getAllDayDeliveries();
-    public List<Delivery> getAllDeliveries(String provider_id);
+     HashMap<Provider,List<Delivery>> getAllDayDeliveries();
+     List<Delivery> getAllDeliveries(String provider_id);
 
 
 }

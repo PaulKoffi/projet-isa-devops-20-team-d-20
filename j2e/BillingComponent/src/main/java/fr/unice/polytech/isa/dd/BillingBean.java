@@ -15,69 +15,56 @@ import java.util.Properties;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-public class BillingBean implements BillingGeneratedInterface, CheckTransferStatus {
+public class BillingBean implements BillingGeneratedInterface,CheckTransferStatus {
 
     Database db = Database.getInstance();
     private static final Logger log = Logger.getLogger(Logger.class.getName());
 
-    @EJB
-    private DeliveryBean deliveryBean;
+    @EJB private DeliveryInterface delivery = new DeliveryBean();
 
     private BankAPI bank;
-
-    public BillingBean() {
-        bank = new BankAPI();
-    }
+    public BillingBean() {bank=new BankAPI(); }
 
 
     @Override
     public void generateBill() {
         deliveryBean = new DeliveryBean();
-        int i = 1;
+
         for (Map.Entry<Provider, List<Delivery>> entry : deliveryBean.getAllDayDeliveries().entrySet()) {
             // System.out.println("[Key] : " + entry.getKey() + " [Value] : " + entry.getValue().size());
-            db.getBillList().add(new Bill(i, entry.getKey(), entry.getValue()));
-            i++;
+            db.getBillList().add(new Bill(entry.getKey() , entry.getValue()));
         }
     }
 
     @Override
     public boolean checkstatut(int id) {
-        boolean status = false;
+        boolean status=false ;
         try {
-            JSONObject resp = bank.getPayment(id);
+            JSONObject resp= bank.getPayment(id);
             double amount = resp.getDouble("Amount");
-            System.out.println("Amount " + amount);
+            status = true;
             //TODO
-//            status = true;
             //Must also update the paymentDate  with the date of the transfer and paymentStatus attribute after checking the amount of the transfer of the bill in database
-            Bill b = findBillById(id);
-
-            if (b != null) {
-                // verifier si le montant de la facture est bon normalement
-                status = true;
+            Bill b= findBillById(id);
+            if ( (b != null)) {
                 b.setBillStatus("PAID");
-            } else {
-                System.out.println("b is null");
             }
 
         } catch (ExternalPartnerException e) {
-            return false;
-//            System.out.println("ERROR");
-//            log.log(Level.INFO, "Error while exchanging with external partner", e);
+            log.log(Level.INFO, "Error while exchanging with external partner", e);
         }
-        return status;
+        return(status);
     }
 
     @Override
     public List<Bill> getAllPaidBills() throws ExternalPartnerException {
         List<Bill> bills = new ArrayList<>();
         JSONArray res = bank.getPayements();
-        for (int i = 0; i < res.length(); i++) {
+        for (int i=0; i<res.length(); i++) {
             Bill b = findBillById(res.getInt(i));
             if (b != null) {
                 b.setBillStatus("PAID");
-                //  System.out.println(b.getBillStatus());
+              //  System.out.println(b.getBillStatus());
                 bills.add(b);
             }
         }
@@ -85,8 +72,8 @@ public class BillingBean implements BillingGeneratedInterface, CheckTransferStat
     }
 
     public Bill findBillById(int id) {
-        for (Bill b : db.getBillList()) {
-            if (b.getId() == id) {
+        for (Bill b: db.getBillList()) {
+            if (b.getId() ==id) {
                 return b;
             }
         }
