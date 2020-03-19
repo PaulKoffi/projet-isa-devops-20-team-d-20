@@ -7,6 +7,7 @@ import org.json.JSONObject;
 
 import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
+import javax.ejb.Stateless;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
@@ -15,6 +16,7 @@ import java.util.Properties;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
+@Stateless
 public class BillingBean implements BillingGeneratedInterface, CheckTransferStatus {
 
     Database db = Database.getInstance();

@@ -34,6 +34,18 @@ public class Provider implements Serializable {
         return id;
     }
 
+    public void setId(String id) {
+        this.id = id;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public void setPackages(Set<Package> packages) {
+        this.packages = packages;
+    }
+
     public String getName() {
         return name;
     }

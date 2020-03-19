@@ -42,12 +42,12 @@
       <version>${versions.openejb}</version>
       <scope>provided</scope>
     </dependency>
-    <dependency>
-      <groupId>org.apache.tomee</groupId>
-      <artifactId>tomee-embedded</artifactId>
-      <version>${versions.tomee}</version>
-      <scope>provided</scope>
-    </dependency>
+    <!--<dependency>-->
+      <!--<groupId>org.apache.tomee</groupId>-->
+      <!--<artifactId>tomee-embedded</artifactId>-->
+      <!--<version>${versions.tomee}</version>-->
+      <!--<scope>provided</scope>-->
+    <!--</dependency>-->
     <!-- Dependency to integrate REST clients (order matters for CXF) (provided) -->
     <dependency>
       <groupId>org.apache.tomee</groupId>

@@ -15,16 +15,18 @@ public class GetNextDelivery extends Command<DDPublicAPI> {
 	public void execute() {
 		Delivery d = shell.system.dws.getNextDelivery();
 		if(d != null){
+			System.out.println("<-------------------/"+"\\------------------------->");
 			System.out.println("Le prix de cette livraison est " + d.getPrice());
 			System.out.println("Le nom du client est " + d.getCustomer().getName());
+			System.out.println("<-------------------/"+"\\------------------------->");
 		}else {
-			System.out.println("  No delivery ");
+			System.out.println("Pas de livraison effectuées dans la journée");
 		}
 	}
 
 	@Override
 	public String describe() {
-		return "List Next Delivery";
+		return "-----> Afficher la prochaine livraison";
 	}
 
 }

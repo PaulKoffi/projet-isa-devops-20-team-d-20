@@ -21,9 +21,10 @@ public class Main extends Shell<DDPublicAPI> {
                 // init delivery list
                 Initialize.class,
 
-
                 // Get next delivery
-                GetNextDelivery.class
+                GetNextDelivery.class,
+
+                GetDayBill.class
         );
     }
 

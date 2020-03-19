@@ -31,8 +31,7 @@ namespace Partner.Service {
 
     public Payment FindPaymentById(int identifier)
     {
-      Console.WriteLine("Ici");
-      Console.WriteLine(identifier);
+      Console.WriteLine("Consultation du payement de la facture qui a pour ID : "+identifier);
       foreach(KeyValuePair<int, Payment> entry in accounts)
        {
           if(entry.Value.BillId == identifier) {

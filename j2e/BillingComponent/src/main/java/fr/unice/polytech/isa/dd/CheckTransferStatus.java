@@ -3,11 +3,13 @@ package fr.unice.polytech.isa.dd;
 import fr.unice.polytech.isa.dd.entities.Bill;
 import fr.unice.polytech.isa.dd.entities.ExternalPartnerException;
 
+import javax.ejb.Local;
 import java.util.List;
 
+@Local
 public interface CheckTransferStatus {
 
-    public boolean checkstatut(int id);
+    boolean checkstatut(int id);
 
-    public List<Bill> getAllPaidBills() throws ExternalPartnerException;
+    List<Bill> getAllPaidBills() throws ExternalPartnerException;
 }

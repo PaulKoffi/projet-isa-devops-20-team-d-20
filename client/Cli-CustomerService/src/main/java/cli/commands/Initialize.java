@@ -18,7 +18,7 @@ public class Initialize extends Command<DDPublicAPI> {
 
     @Override
     public String describe() {
-        return "Init Delivery List in Database";
+        return "----> Initialiser la liste des livraisons de la journée";
     }
 
 }
