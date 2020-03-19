@@ -1,12 +1,7 @@
-package fr.unice.polytech.isa.dd.webservice;
-
-//import fr.unice.polytech.isa.dd.entities.Delivery;
-
+package fr.unice.polytech.isa.dd;
 import fr.unice.polytech.isa.dd.entities.Delivery;
-import fr.unice.polytech.isa.dd.entities.DroneStatus;
 
 import javax.jws.WebMethod;
-import javax.jws.WebParam;
 import javax.jws.WebResult;
 import javax.jws.WebService;
 

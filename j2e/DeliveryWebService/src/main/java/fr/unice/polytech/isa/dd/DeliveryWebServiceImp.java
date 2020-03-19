@@ -1,9 +1,6 @@
-package fr.unice.polytech.isa.dd.webservice;
-
-import fr.unice.polytech.isa.dd.entities.Delivery;
-import fr.unice.polytech.isa.dd.NextDeliveryInterface;
+package fr.unice.polytech.isa.dd;
 import fr.unice.polytech.isa.dd.entities.Database;
-
+import fr.unice.polytech.isa.dd.entities.Delivery;
 
 import javax.ejb.EJB;
 import javax.ejb.Stateless;

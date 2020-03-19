@@ -1,8 +1,6 @@
-package fr.unice.polytech.isa.dd.webservice;
+package fr.unice.polytech.isa.dd;
 
 import fr.unice.polytech.isa.dd.entities.Bill;
-import fr.unice.polytech.isa.dd.entities.Customer;
-import fr.unice.polytech.isa.dd.entities.Delivery;
 import fr.unice.polytech.isa.dd.entities.ExternalPartnerException;
 
 import javax.jws.WebMethod;

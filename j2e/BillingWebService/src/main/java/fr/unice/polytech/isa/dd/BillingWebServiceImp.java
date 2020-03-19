@@ -1,5 +1,4 @@
-package fr.unice.polytech.isa.dd.webservice;
-import fr.unice.polytech.isa.dd.*;
+package fr.unice.polytech.isa.dd;
 import fr.unice.polytech.isa.dd.entities.*;
 
 import javax.ejb.EJB;
