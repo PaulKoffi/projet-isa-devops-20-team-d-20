@@ -125,10 +125,9 @@
     </dependencies>
 
 
-
-
     <build>
         <finalName>DeliveryWebService</finalName>
+        <defaultGoal>package</defaultGoal>
         <pluginManagement><!-- lock down plugins versions to avoid using Maven defaults (may be moved to parent pom) -->
             <plugins>
                 <plugin>
@@ -163,6 +162,46 @@
                 <plugin>
                     <artifactId>maven-deploy-plugin</artifactId>
                     <version>2.8.2</version>
+                </plugin>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-surefire-plugin</artifactId>
+                    <version>${versions.maven.surefire}</version>
+                    <configuration>
+                        <forkMode>always</forkMode>
+                        <!-- otherwise openejb embedded and tomee embedded shares the same context and EJBContainer is broken -->
+                        <reuseForks>false</reuseForks>
+                        <!--<excludes>-->
+                        <!--<exclude>**/PaymentIntegrationTest.java</exclude>-->
+                        <!--<exclude>features/*</exclude>-->
+                        <!--</excludes>-->
+                    </configuration>
+                    <executions>
+                        <execution>
+                            <id>integration-test</id>
+                            <goals>
+                                <goal>test</goal>
+                            </goals>
+                            <phase>integration-test</phase>
+                            <configuration>
+                                <excludes>
+                                    <exclude>**/*Test.java</exclude>
+                                </excludes>
+                                <!--<includes>-->
+                                <!--<include>**/PaymentIntegrationTest.java</include>-->
+                                <!--</includes>-->
+                            </configuration>
+                        </execution>
+                    </executions>
+                </plugin>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-compiler-plugin</artifactId>
+                    <version>${versions.maven.compiler}</version>
+                    <configuration>
+                        <source>${versions.java}</source>
+                        <target>${versions.java}</target>
+                    </configuration>
                 </plugin>
                 <plugin>
                     <groupId>org.apache.tomee.maven</groupId>

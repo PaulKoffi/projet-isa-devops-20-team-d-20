@@ -16,6 +16,7 @@
         <module>client/Cli-CustomerService</module>
         <module>j2e/DeliveryWebService</module>
         <module>j2e/BillingWebService</module>
+        <module>j2e/Web</module>
     </modules>
 
     <properties>

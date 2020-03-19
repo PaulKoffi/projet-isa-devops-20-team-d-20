@@ -23,7 +23,7 @@ public class DDPublicAPI {
         URL wsdlLocation = DDPublicAPI.class.getResource("/DeliveryWebService.wsdl");
         DeliveryWebServiceService factory = new DeliveryWebServiceService(wsdlLocation);
         this.dws = factory.getDeliveryWebServicePort();
-        String address = "http://" + host + ":" + port + "/DeliveryComponent/webservices/DeliveryWS";
+        String address = "http://" + host + ":" + port + "/Web/webservices/DeliveryWS";
         ((BindingProvider) dws).getRequestContext().put(BindingProvider.ENDPOINT_ADDRESS_PROPERTY, address);
     }
 
@@ -31,7 +31,7 @@ public class DDPublicAPI {
         URL wsdlLocation = DDPublicAPI.class.getResource("/BillingWebService.wsdl");
         BillingWebServiceService factory = new BillingWebServiceService(wsdlLocation);
         this.bws = factory.getBillingWebServicePort();
-        String address = "http://" + host + ":" + port + "/BillingComponent/webservices/BillingWS";
+        String address = "http://" + host + ":" + port + "/Web/webservices/BillingWS";
         ((BindingProvider) bws).getRequestContext().put(BindingProvider.ENDPOINT_ADDRESS_PROPERTY, address);
     }
 }
