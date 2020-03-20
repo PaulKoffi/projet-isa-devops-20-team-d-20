@@ -22,12 +22,15 @@ public class BillingBean implements BillingGeneratedInterface, CheckTransferStat
     Database db = Database.getInstance();
     private static final Logger log = Logger.getLogger(Logger.class.getName());
 
-    @EJB private DeliveryInterface delivery = new DeliveryBean();
+    @EJB
+    private DeliveryInterface delivery = new DeliveryBean();
+//    @EJB(name = "DeliveryBean") private DeliveryInterface delivery;
 
-    private BankAPI bank;
+
+    private BankAPI bank = new BankAPI();;
 
     public BillingBean() {
-        bank = new BankAPI();
+
     }
 
 
@@ -36,8 +39,10 @@ public class BillingBean implements BillingGeneratedInterface, CheckTransferStat
         int i = 1;
         for (Map.Entry<Provider, List<Delivery>> entry : delivery.getAllDayDeliveries().entrySet()) {
             // System.out.println("[Key] : " + entry.getKey() + " [Value] : " + entry.getValue().size());
-            db.getBillList().add(new Bill(i, entry.getKey(), entry.getValue()));
-            i++;
+            if (!entry.getValue().isEmpty()) {
+                db.getBillList().add(new Bill(i, entry.getKey(), entry.getValue()));
+                i++;
+            }
         }
     }
 
@@ -84,8 +89,11 @@ public class BillingBean implements BillingGeneratedInterface, CheckTransferStat
         return bills;
     }
 
+    @Override
     public Bill findBillById(int id) {
+//        System.out.println(" T "+ db.getBillList().size());
         for (Bill b : db.getBillList()) {
+//            System.out.println("Fact "+b.getId());
             if (b.getId() == id) {
                 return b;
             }

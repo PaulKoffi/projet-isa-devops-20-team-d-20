@@ -20,6 +20,8 @@ public class GetDayBill extends Command<DDPublicAPI> {
     @Override
     public void execute() {
         List<Bill> result = shell.system.bws.generateBill();
+        System.out.println();
+        System.out.println("------------------------------------------------  F  ----------------------------------------------------");
         if (result.size() != 0) {
             for(Bill b: result) {
                 System.out.println("<-------------------/"+"\\------------------------->");
@@ -29,8 +31,9 @@ public class GetDayBill extends Command<DDPublicAPI> {
                 System.out.println("<-------------------/"+"\\------------------------->");
             }
         } else {
-            System.out.println("Pas de livraison effectuées dans la journée");
+            System.out.println("Pas de Factures disponibles");
         }
+        System.out.println("---------------------------------------------------------------------------------------------------------");
     }
 
     @Override

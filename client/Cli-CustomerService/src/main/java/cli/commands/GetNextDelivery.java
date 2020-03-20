@@ -20,7 +20,7 @@ public class GetNextDelivery extends Command<DDPublicAPI> {
 			System.out.println("Le nom du client est " + d.getCustomer().getName());
 			System.out.println("<-------------------/"+"\\------------------------->");
 		}else {
-			System.out.println("Pas de livraison effectuées dans la journée");
+			System.out.println("Aucune prochaine livraison !");
 		}
 	}
 

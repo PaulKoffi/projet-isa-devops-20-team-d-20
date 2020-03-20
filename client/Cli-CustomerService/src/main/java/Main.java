@@ -24,7 +24,9 @@ public class Main extends Shell<DDPublicAPI> {
                 // Get next delivery
                 GetNextDelivery.class,
 
-                GetDayBill.class
+                GetDayBill.class,
+
+                CheckStatus.class
         );
     }
 

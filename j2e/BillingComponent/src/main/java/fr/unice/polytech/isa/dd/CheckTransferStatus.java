@@ -9,6 +9,8 @@ import java.util.List;
 @Local
 public interface CheckTransferStatus {
 
+    Bill findBillById(int id);
+
     boolean checkstatut(int id);
 
     List<Bill> getAllPaidBills() throws ExternalPartnerException;

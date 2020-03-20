@@ -43,13 +43,13 @@ public class Database {
 
         DateTime dt = new DateTime();
 
-        Provider pro1 = new Provider("1", "Aug1");
-        Provider pro2 = new Provider("2", "Aug2");
+        Provider pro1 = new Provider("1", "AMAZON");
+        Provider pro2 = new Provider("2", "LILLY");
         providerList.add(pro1);
         providerList.add(pro2);
 
         Package pk1 = new Package("1", 2.0, dt, "1");
-        Package pk2 = new Package("2", 4.0, dt, "1");
+        Package pk2 = new Package("2", 7.0, dt, "1");
         Package pk3 = new Package("3", 6.0, dt, "2");
 
         Delivery d1 = new Delivery(c, pk1, dt, null);

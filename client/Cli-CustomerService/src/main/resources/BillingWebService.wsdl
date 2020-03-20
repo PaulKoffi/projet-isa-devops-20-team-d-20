@@ -20,7 +20,7 @@
             </xs:complexType>
             <xs:complexType name="checkstatutResponse">
                 <xs:sequence>
-                    <xs:element name="billStatus" type="xs:boolean"/>
+                    <xs:element minOccurs="0" name="billStatus" type="xs:string"/>
                 </xs:sequence>
             </xs:complexType>
             <xs:complexType name="generateBill">

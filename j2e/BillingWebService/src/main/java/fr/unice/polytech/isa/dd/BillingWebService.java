@@ -20,6 +20,6 @@ public interface BillingWebService {
 
     @WebMethod
     @WebResult(name = "billStatus")
-    boolean checkstatut(@WebParam(name="id") int id) throws ExternalPartnerException;
+    String checkstatut(@WebParam(name="id") int id) throws ExternalPartnerException;
 
 }

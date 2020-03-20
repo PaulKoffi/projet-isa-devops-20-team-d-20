@@ -21,6 +21,9 @@ public class Drone implements Serializable {
 //    @NotNull
     private DroneStatus droneStatus = new DroneStatus(DRONE_STATES.AVAILABLE, new Date(), null);
 
+    public Drone(){
+
+    }
 
     public Drone(int n_battery, int  n_flightHours) {
         battery=  n_battery;

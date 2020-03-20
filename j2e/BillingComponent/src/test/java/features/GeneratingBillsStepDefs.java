@@ -99,13 +99,15 @@ public class GeneratingBillsStepDefs extends AbstractBillingTest implements Fr {
         });
         Quand("^l'employé envoie les (\\d+) livraisons du fournisseurs (.*) et (.*)$", (Integer arg0,String arg1,String arg2) -> {
             initializeDatabaseTestWithMutipleProviders(arg0,arg1,arg2);
+            del = nextDelivery.getNextDelivery();
+//            System.out.println("etat de del " + (del == null));
             while(del != null){
                 del = nextDelivery.getNextDelivery();
             }
         });
         Alors("^(\\d+) factures sont générées$", (Integer arg0) -> {
             billinggenerator.generateBill();
-            assertEquals(arg0.intValue(),bills.size());
+            assertEquals(arg0.intValue(),Database.getInstance().getBillList().size());
             cleanDatabase();
         });
 
