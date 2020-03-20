@@ -10,15 +10,15 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.stream.Collectors;
 
-@Stateless
+@Stateless(name="delivery-stateless")
 public class DeliveryBean implements DeliveryInterface, NextDeliveryInterface {
 
 
-    HashMap<Provider, List<Delivery>> deliveries_by_provider;
+    HashMap<Provider, List<Delivery>> deliveries_by_provider = new HashMap<>();
 
-    public DeliveryBean() {
+    /*public DeliveryBean() {
         deliveries_by_provider = new HashMap<>();
-    }
+    }*/
 
     @Override
     public HashMap<Provider, List<Delivery>> getAllDayDeliveries() {
@@ -49,7 +49,7 @@ public class DeliveryBean implements DeliveryInterface, NextDeliveryInterface {
     public Delivery getNextDelivery() {
         /******* TEST ******/
         // Database.getInstance().initializeDatabase();
-        System.out.println("Passage dans mon service");
+       // System.out.println("Passage dans mon service");
         List<Delivery> deliveries = Database.getInstance().getDeliveryList();
         if (deliveries.size() !=0) {
             for (Delivery del : deliveries

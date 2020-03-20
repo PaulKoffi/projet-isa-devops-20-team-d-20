@@ -11,7 +11,7 @@ import static org.junit.Assert.*;
 
 public class DeliveryBeanTest {
 
-    Database database = Database.getInstance();
+    /*Database database = Database.getInstance();
 
     @org.junit.Test
     public void getAllDayDeliveries() {
@@ -57,5 +57,5 @@ public class DeliveryBeanTest {
         //delivs.get(1).setStatus(true);
         nextdelivery = deliveryBeantest.getNextDelivery();
         assertFalse(delivs.get(1).equals(nextdelivery));
-    }
+    }*/
 }

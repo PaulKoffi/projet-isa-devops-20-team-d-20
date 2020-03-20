@@ -9,26 +9,22 @@ import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
 import javax.ejb.Stateless;
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Map;
-import java.util.Properties;
+import java.util.*;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-
-@Stateless
+@Stateless(name="bill-stateless")
 public class BillingBean implements BillingGeneratedInterface, CheckTransferStatus {
 
     Database db = Database.getInstance();
     private static final Logger log = Logger.getLogger(Logger.class.getName());
 
-    @EJB
-    private DeliveryInterface delivery = new DeliveryBean();
-//    @EJB(name = "DeliveryBean") private DeliveryInterface delivery;
+    @EJB(name = "delivery-stateless") private DeliveryInterface delivery;
 
+    private BankAPI bank = new BankAPI();
 
-    private BankAPI bank = new BankAPI();;
-
+    /*public BillingBean() {
+        bank = new BankAPI();
+    }*/
     public BillingBean() {
 
     }
