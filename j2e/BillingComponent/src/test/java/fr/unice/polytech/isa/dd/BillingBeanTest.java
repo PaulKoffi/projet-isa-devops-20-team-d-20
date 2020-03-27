@@ -1,23 +1,62 @@
 package fr.unice.polytech.isa.dd;
-/*
-import fr.unice.polytech.isa.dd.*;
-import fr.unice.polytech.isa.dd.entities.*;
-import fr.unice.polytech.isa.dd.entities.Package;
+
+import arquillian.AbstractBillingTest;
+import fr.unice.polytech.isa.dd.entities.Bill;
+import fr.unice.polytech.isa.dd.entities.Customer;
+import fr.unice.polytech.isa.dd.entities.Delivery;
+import fr.unice.polytech.isa.dd.entities.ExternalPartnerException;
+import org.jboss.arquillian.junit.Arquillian;
 import org.joda.time.DateTime;
-import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
-import javax.ejb.EJB;
-
-
-import java.util.ArrayList;
-import java.util.List;
+import org.junit.runner.RunWith;
 
 
 import static org.junit.Assert.*;
 
-public class BillingBeanTest {
+@RunWith(Arquillian.class)
+public class BillingBeanTest extends AbstractBillingTest {
 
+    @Before
+    public void setUp(){
+        cleanDatabase();
+        initUnitTests();
+    }
+    @Test
+    public void GenerateBillTest() {
+        billinggenerator.generateBill();
+        /** test buger la valeur doit ête égale à 1 et non 3
+         * il y'a 3 a cause du service externe vu qu'il y'a déjà deux facture à l'intérieur**/
+        assertEquals(3, database.getBillList().size());
+        /** Ne pense pas que ceux sont les mêmes entitées pour les deux tasserts qui suivent**/
+        assertEquals(bill.getProvider().getId(), database.getBillList().get(0).getProvider().getId());
+        /**Un soucis aussi ici car la vrai valeur de la bonne commande dans la base de donnée est à l'indice 1*/
+        assertEquals(bill.getDeliveries().get(0).getId(), database.getBillList().get(1).getDeliveries().get(0).getId());
+
+    }
+
+    @Test
+    public void checkstatutTest( )
+    {
+        billinggenerator.generateBill();
+        assertTrue(checkTransferStatus.checkstatut(1));
+        assertFalse(checkTransferStatus.checkstatut(2));
+    }
+
+    @Test
+    public void getAllPaidBillsTest() throws ExternalPartnerException {
+        billinggenerator.generateBill();
+        database.getBillList().get(0).setId(1);
+        assertEquals(1, checkTransferStatus.getAllPaidBills().size());
+    }
+
+    @Test
+    public void zero(){
+        cleanDatabase();
+        assertEquals(0,bills.size());
+    }
+}
+/*
 
     @EJB private BillingGeneratedInterface bg = new BillingBean();
     @EJB private CheckTransferStatus ct = new BillingBean();

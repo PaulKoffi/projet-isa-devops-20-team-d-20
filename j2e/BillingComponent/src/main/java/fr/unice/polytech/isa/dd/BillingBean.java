@@ -36,7 +36,7 @@ public class BillingBean implements BillingGeneratedInterface, CheckTransferStat
         for (Map.Entry<Provider, List<Delivery>> entry : delivery.getAllDayDeliveries().entrySet()) {
             // System.out.println("[Key] : " + entry.getKey() + " [Value] : " + entry.getValue().size());
             if (!entry.getValue().isEmpty()) {
-                db.getBillList().add(new Bill(i, entry.getKey(), entry.getValue()));
+                db.getBillList().add(new Bill( i,entry.getKey(), entry.getValue()));
                 i++;
             }
         }

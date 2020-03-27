@@ -3,30 +3,33 @@ import org.joda.time.DateTime;
 
 //import javax.persistence.*;
 //import javax.validation.constraints.NotNull;
+import javax.persistence.*;
+import javax.validation.constraints.NotNull;
 import java.io.Serializable;
 import java.util.Random;
 //import java.util.Date;
 
-//@Entity
+@Entity
+@Embeddable
 public class Delivery implements Serializable {
 
- //   @Id
- //   @GeneratedValue(strategy = GenerationType.AUTO)
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
 
-//    @NotNull
+    @NotNull
     private Customer customer;
 
-//    @NotNull
+    @NotNull
     private Package packageDelivered;
 
-//    @NotNull
+    @NotNull
     private DateTime deliveryDate;
 
-//    @NotNull
+    @NotNull
     private String beginTime;
 
-//    @NotNull
+    @NotNull
     private String endTime;
 
     private int customerMark;

@@ -2,10 +2,7 @@ package fr.unice.polytech.isa.dd.entities;
 
 import org.joda.time.DateTime;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import java.io.Serializable;
 import java.util.List;
@@ -34,7 +31,7 @@ public class Bill implements Serializable {
     @NotNull
     private Provider provider;
 
-    @NotNull
+    @ElementCollection
     private List<Delivery> deliveries;
 
     public Bill() {
@@ -91,6 +88,18 @@ public class Bill implements Serializable {
         if (o == null || getClass() != o.getClass()) return false;
         Bill that = (Bill) o;
         return Objects.equals(id, that.id) && Objects.equals(provider, that.provider) && Objects.equals(billAmount, that.billAmount);
+    }
+
+    /**
+     * Améliorer cette fonction
+     * @return
+     */
+    @Override
+    public int hashCode(){
+        int result = 0;
+        result = 31 * result + 120;
+        result = 31 * result + 15;
+        return result;
     }
 
     public DateTime getPaymentDate() {

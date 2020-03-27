@@ -6,30 +6,36 @@ import fr.unice.polytech.isa.dd.entities.*;
 import fr.unice.polytech.isa.dd.entities.Package;
 import org.jboss.arquillian.container.test.api.Deployment;
 import org.jboss.shrinkwrap.api.ShrinkWrap;
+import org.jboss.shrinkwrap.api.asset.ClassLoaderAsset;
 import org.jboss.shrinkwrap.api.asset.EmptyAsset;
 import org.jboss.shrinkwrap.api.spec.WebArchive;
 import org.joda.time.DateTime;
 
 import javax.ejb.EJB;
+import javax.xml.crypto.Data;
 import java.security.Provider;
+import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
 public abstract class AbstractBillingTest {
 
-    @EJB
-    protected Database database;
+
+    protected Database database = Database.getInstance();
     @EJB(name = "delivery-stateless") protected NextDeliveryInterface nextDelivery ;
     @EJB(name = "bill-stateless") protected BillingGeneratedInterface billinggenerator ;
+    @EJB (name = "bill-stateless") protected CheckTransferStatus checkTransferStatus;
 
-    protected List<Delivery> deliveries = Database.getInstance().getDeliveryList();
+    protected List<Delivery> deliveries = database.getDeliveryList();
     protected List<fr.unice.polytech.isa.dd.entities.Provider> providers = Database.getInstance().getProviderList();
     protected List<Bill> bills = Database.getInstance().getBillList();
     protected Delivery del;
+    protected Bill bill;
 
     @Deployment
     public static WebArchive createDeployement(){
         return ShrinkWrap.create(WebArchive.class)
+                .addAsManifestResource(new ClassLoaderAsset("META-INF/test-persistence.xml"), "persistence.xml")
                 .addAsWebInfResource(EmptyAsset.INSTANCE,"beans.xml")
                 .addPackage(Delivery.class.getPackage())
                 .addPackage(DeliveryBean.class.getPackage())
@@ -79,5 +85,23 @@ public abstract class AbstractBillingTest {
         providers.clear();
         deliveries.clear();
         bills.clear();
+    }
+
+    public void initUnitTests(){
+        cleanDatabase();
+        database.clearDatabase();
+        Customer c = new Customer("Doni","10 rue des lucioles");
+        DateTime d = new DateTime();
+        fr.unice.polytech.isa.dd.entities.Provider p1 = new fr.unice.polytech.isa.dd.entities.Provider("1","p1");
+        fr.unice.polytech.isa.dd.entities.Provider p2 = new fr.unice.polytech.isa.dd.entities.Provider("2","p2");
+        database.getProviderList().add( p1);
+        database.getProviderList().add( p2);
+        Package package1 = new Package("1",2.0,d,"1");
+        Delivery d1 = new Delivery(c,package1,d,null) ;
+        d1.setStatus(true);
+        database.getDeliveryList().add(d1);
+        List <Delivery> deliveries1 = new ArrayList<>();
+        deliveries1.add(d1);
+        bill = new Bill(4,p1, deliveries1);
     }
 }
