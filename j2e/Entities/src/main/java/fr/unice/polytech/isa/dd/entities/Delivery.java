@@ -9,27 +9,27 @@ import java.io.Serializable;
 import java.util.Random;
 //import java.util.Date;
 
-@Entity
-@Embeddable
+//@Embeddable
 public class Delivery implements Serializable {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    //@Id
+    //@GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
 
-    @NotNull
+    //@NotNull
+
     private Customer customer;
 
-    @NotNull
+    //@NotNull
     private Package packageDelivered;
 
-    @NotNull
+    //@NotNull
     private DateTime deliveryDate;
 
-    @NotNull
+    //@NotNull
     private String beginTime;
 
-    @NotNull
+    //@NotNull
     private String endTime;
 
     private int customerMark;
@@ -44,7 +44,7 @@ public class Delivery implements Serializable {
     }
 
     public Delivery(Customer c, Package p, DateTime d, String b) {
-        id = new Random().nextInt();
+        //id = new Random().nextInt();
         customer = c;
         packageDelivered = p;
         deliveryDate = d;

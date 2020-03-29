@@ -34,11 +34,11 @@ public class DeliveryBean implements DeliveryInterface, NextDeliveryInterface {
     }
 
     @Override
-    public List<Delivery> getAllDeliveries(String provider_id) {
+    public List<Delivery> getAllDeliveries(int provider_id) {
         List<Delivery> deliveries = Database.getInstance().getDeliveryList();
         List<Delivery> provider_deliveries = new ArrayList<>();
         for (Delivery dev : deliveries) {
-            if (dev.getPackageDelivered().getProvider_id().equals(provider_id)) {
+            if (dev.getPackageDelivered().getProvider_id()==(provider_id)) {
                 provider_deliveries.add(dev);
             }
         }

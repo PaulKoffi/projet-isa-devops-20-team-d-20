@@ -10,28 +10,35 @@ import org.joda.time.DateTime;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
+import utils.Init;
 
+
+import javax.ejb.EJB;
 
 import static org.junit.Assert.*;
 
 @RunWith(Arquillian.class)
 public class BillingBeanTest extends AbstractBillingTest {
 
+    @EJB(name = "bill-stateless") private BillingGeneratedInterface billinggenerator ;
+    @EJB (name = "bill-stateless") private CheckTransferStatus checkTransferStatus;
+    private Init init = new Init();
+
     @Before
     public void setUp(){
-        cleanDatabase();
-        initUnitTests();
+        init.cleanDatabase();
+        init.initUnitTests();
     }
     @Test
     public void GenerateBillTest() {
         billinggenerator.generateBill();
         /** test buger la valeur doit ête égale à 1 et non 3
          * il y'a 3 a cause du service externe vu qu'il y'a déjà deux facture à l'intérieur**/
-        assertEquals(3, database.getBillList().size());
+        assertEquals(3, init.getDatabase().getBillList().size());
         /** Ne pense pas que ceux sont les mêmes entitées pour les deux tasserts qui suivent**/
-        assertEquals(bill.getProvider().getId(), database.getBillList().get(0).getProvider().getId());
+        assertEquals(init.getBill().getProvider().getId(), init.getDatabase().getBillList().get(0).getProvider().getId());
         /**Un soucis aussi ici car la vrai valeur de la bonne commande dans la base de donnée est à l'indice 1*/
-        assertEquals(bill.getDeliveries().get(0).getId(), database.getBillList().get(1).getDeliveries().get(0).getId());
+        assertEquals(init.getBill().getDeliveries().get(0).getId(), init.getDatabase().getBillList().get(1).getDeliveries().get(0).getId());
 
     }
 
@@ -46,14 +53,15 @@ public class BillingBeanTest extends AbstractBillingTest {
     @Test
     public void getAllPaidBillsTest() throws ExternalPartnerException {
         billinggenerator.generateBill();
-        database.getBillList().get(0).setId(1);
+        init.getDatabase().getBillList().get(0).setId(1);
         assertEquals(1, checkTransferStatus.getAllPaidBills().size());
     }
 
     @Test
     public void zero(){
-        cleanDatabase();
-        assertEquals(0,bills.size());
+        init.cleanDatabase();
+        assertEquals(0,init.getBills().size());
+        init.cleanDatabase();
     }
 }
 /*

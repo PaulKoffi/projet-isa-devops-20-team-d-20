@@ -12,6 +12,8 @@ import org.jboss.shrinkwrap.api.spec.WebArchive;
 import org.joda.time.DateTime;
 
 import javax.ejb.EJB;
+import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
 import javax.xml.crypto.Data;
 import java.security.Provider;
 import java.util.ArrayList;
@@ -20,22 +22,22 @@ import java.util.List;
 
 public abstract class AbstractBillingTest {
 
-
+/*
     protected Database database = Database.getInstance();
     @EJB(name = "delivery-stateless") protected NextDeliveryInterface nextDelivery ;
     @EJB(name = "bill-stateless") protected BillingGeneratedInterface billinggenerator ;
     @EJB (name = "bill-stateless") protected CheckTransferStatus checkTransferStatus;
+    @PersistenceContext(name="dd_persistence_unit") protected EntityManager entityManager ;
 
     protected List<Delivery> deliveries = database.getDeliveryList();
     protected List<fr.unice.polytech.isa.dd.entities.Provider> providers = Database.getInstance().getProviderList();
     protected List<Bill> bills = Database.getInstance().getBillList();
     protected Delivery del;
-    protected Bill bill;
+    protected Bill bill;*/
 
     @Deployment
     public static WebArchive createDeployement(){
         return ShrinkWrap.create(WebArchive.class)
-                .addAsManifestResource(new ClassLoaderAsset("META-INF/test-persistence.xml"), "persistence.xml")
                 .addAsWebInfResource(EmptyAsset.INSTANCE,"beans.xml")
                 .addPackage(Delivery.class.getPackage())
                 .addPackage(DeliveryBean.class.getPackage())
@@ -45,10 +47,11 @@ public abstract class AbstractBillingTest {
                 .addPackage(Package.class.getPackage())
                 .addPackage(Bill.class.getPackage())
                 .addPackage(BillingBean.class.getPackage())
+                //.addAsManifestResource(new ClassLoaderAsset("META-INF/persistence.xml"), "persistence.xml")
                 ;
     }
 
-
+/*
 
     public void initialiatizeFirstTest(int arg1, String arg2){
         Customer c = new Customer("Pm", "adresse1");
@@ -103,5 +106,5 @@ public abstract class AbstractBillingTest {
         List <Delivery> deliveries1 = new ArrayList<>();
         deliveries1.add(d1);
         bill = new Bill(4,p1, deliveries1);
-    }
+    }*/
 }

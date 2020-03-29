@@ -1,27 +1,31 @@
 package fr.unice.polytech.isa.dd.entities;
 //import javax.persistence.*;
 //import javax.validation.constraints.NotNull;
+import javax.persistence.*;
+import javax.validation.constraints.NotNull;
 import java.io.Serializable;
 import java.util.HashSet;
 import java.util.Set;
 
-//@Entity
+//@Embeddable
 public class Provider implements Serializable {
 
-//    @NotNull
-    private String id;
+    //@Id
+    //@GeneratedValue(strategy = GenerationType.AUTO)
+    private int id;
 
-//    @NotNull
+    //@NotNull
     private String name;
 
-    private Set<Package> packages = new HashSet<>();
+    //@ElementCollection
+    private Set<Package> packages;
 
 
     public Provider() {
         // Necessary for JPA instantiation process
     }
 
-    public Provider(String i,String n) {
+    public Provider(int i,String n) {
         id = i;
         name = n;
     }
@@ -30,11 +34,12 @@ public class Provider implements Serializable {
 
     public Set<Package> getPackages() { return packages; }
 
-    public String getId() {
+
+    public int getId() {
         return id;
     }
 
-    public void setId(String id) {
+    public void setId(int id) {
         this.id = id;
     }
 

@@ -2,14 +2,16 @@ package fr.unice.polytech.isa.dd.entities;
 import org.joda.time.DateTime;
 //import javax.persistence.*;
 //import javax.validation.constraints.NotNull;
+import javax.persistence.*;
 import java.io.Serializable;
 import java.util.Objects;
 
-//@Entity
+///@Embeddable
 public class Package implements Serializable {
 
-//    @NotNull
-    private String id;
+   // @Id
+   // @GeneratedValue(strategy = GenerationType.AUTO)
+    private int id;
 
 //    @NotNull
     private double weight;
@@ -18,13 +20,13 @@ public class Package implements Serializable {
     private DateTime deliveryDate;
 
 //    @NotNull
-    private String provider_id;
+    private int provider_id;
 
     public Package() {
         // Necessary for JPA instantiation process
     }
 
-    public Package(String i,Double w,DateTime d, String pro_id) {
+    public Package(int i,Double w,DateTime d, int pro_id) {
         id = i;
         weight = w;
         deliveryDate = d;
@@ -35,8 +37,33 @@ public class Package implements Serializable {
         return weight;
     }
 
-    public String getProvider_id() {
+    public void setWeight(double weight) {
+        this.weight = weight;
+    }
+
+    public int getProvider_id() {
         return provider_id;
+    }
+
+    public void setProvider_id(int provider_id) {
+        this.provider_id = provider_id;
+    }
+
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public DateTime getDeliveryDate() {
+        return deliveryDate;
+    }
+
+    public void setDeliveryDate(DateTime deliveryDate) {
+        this.deliveryDate = deliveryDate;
     }
 
     /*** ecriture de la méthode hash à faire ****/

@@ -8,30 +8,30 @@ import java.io.Serializable;
 import java.util.List;
 import java.util.Objects;
 
-@Entity
+//@Entity
 public class Bill implements Serializable {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+  //  @Id
+   // @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
 
-    @NotNull
+    //@NotNull
     private DateTime billDate; //Date où la facture a été emise
 
-    @NotNull
+    //@NotNull
     private DateTime paymentDate; //Date du reglement de la facture
 
-    @NotNull
+    //@NotNull
     private double billAmount = 0.0; //Montant de la facture
 
     //PAID or UNPAID. May be have to use an enum
-   @NotNull
+   //@NotNull
     private String billStatus = "UNPAID";
 
-    @NotNull
+    //@NotNull
     private Provider provider;
 
-    @ElementCollection
+   //@ElementCollection
     private List<Delivery> deliveries;
 
     public Bill() {
@@ -47,6 +47,7 @@ public class Bill implements Serializable {
         }
         id = i;
     }
+
 
     public int getId() {
         return id;

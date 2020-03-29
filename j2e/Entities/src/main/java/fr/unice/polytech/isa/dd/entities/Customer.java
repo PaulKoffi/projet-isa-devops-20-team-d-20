@@ -1,20 +1,21 @@
 package fr.unice.polytech.isa.dd.entities;
-//import javax.persistence.*;
-//import javax.validation.constraints.NotNull;
+
+import javax.persistence.*;
+import javax.validation.constraints.NotNull;
 import java.io.Serializable;
 import java.util.Objects;
 
-//@Entity
+@Entity
 public class Customer implements Serializable {
 
-//    @Id
-//    @GeneratedValue(strategy = GenerationType.AUTO)
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
 
-//    @NotNull
+    @NotNull
     private String name;
 
-//    @NotNull
+    @NotNull
     private String address;
 
     public Customer() {
@@ -38,8 +39,16 @@ public class Customer implements Serializable {
         return name;
     }
 
+    public void setId(int id) {
+        this.id = id;
+    }
+
     public void setName(String name) {
         this.name = name;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
     }
 
 
@@ -51,6 +60,17 @@ public class Customer implements Serializable {
         if (o == null || getClass() != o.getClass()) return false;
         Customer that = (Customer) o;
         return Objects.equals(name, that.name) && Objects.equals(address, that.address);
+    }
+
+    /**
+     * Améliorer cette fonction
+     * @return
+     */
+    @Override
+    public int hashCode(){
+        int result = getName() != null ? getName().hashCode() : 0;
+        result = 31 * result + (getAddress() != null ? getAddress().hashCode() : 0);
+        return result;
     }
 
 }

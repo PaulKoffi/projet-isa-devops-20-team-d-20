@@ -12,7 +12,7 @@ public interface DeliveryInterface {
 
     //Changer le type de retour de ces fonctions en Livraison
      HashMap<Provider,List<Delivery>> getAllDayDeliveries();
-     List<Delivery> getAllDeliveries(String provider_id);
+     List<Delivery> getAllDeliveries(int provider_id);
 
 
 }
