@@ -18,6 +18,7 @@
         <module>j2e/BillingWebService</module>
         <module>j2e/Web</module>
       <module>j2e/PlanningComponent</module>
+      <module>j2e/PlanningWebService</module>
     </modules>
 
     <properties>
