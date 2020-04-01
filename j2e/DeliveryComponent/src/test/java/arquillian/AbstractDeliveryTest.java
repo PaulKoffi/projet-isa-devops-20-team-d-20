@@ -59,7 +59,7 @@ public abstract class AbstractDeliveryTest {
         fr.unice.polytech.isa.dd.entities.Provider pro1 = new fr.unice.polytech.isa.dd.entities.Provider(1, "Aug1");
         providers.add(pro1);
 
-        Package pk1 = new Package(1, 2.0, dt, 1);
+        Package pk1 = new Package(1, 2.0, dt,pro1);
 
         Delivery d1 = new Delivery(c, pk1, dt, null);
         delivs.add(d1);
@@ -74,7 +74,7 @@ public abstract class AbstractDeliveryTest {
         providers.add(pro1);
 
         for (int i = 0; i < arg1; i++){
-            delivs.add(new Delivery(c,new Package(i,10.0,dt,pro1.getId()),dt,null));
+            delivs.add(new Delivery(c,new Package(i,10.0,dt,pro1),dt,null));
         }
     }
     public void initializeDatabaseDeliveryTestWithMutipleProviders(int arg1, String arg2,String arg3) {
@@ -87,10 +87,10 @@ public abstract class AbstractDeliveryTest {
         providers.add(pro1);providers.add(pro2);
 
         for (int i = 0; i < arg1; i++){
-            delivs.add(new Delivery(c,new Package(i,10.0,dt,pro1.getId()),dt,null));
+            delivs.add(new Delivery(c,new Package(i,10.0,dt,pro1),dt,null));
         }
         for (int i = 0; i < arg1; i++){
-            delivs.add(new Delivery(c,new Package(i*2,10.0,dt,pro2.getId()),dt,null));
+            delivs.add(new Delivery(c,new Package(i*2,10.0,dt,pro2),dt,null));
         }
     }
 }

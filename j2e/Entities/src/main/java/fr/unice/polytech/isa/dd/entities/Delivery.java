@@ -9,17 +9,17 @@ import java.io.Serializable;
 import java.util.Random;
 //import java.util.Date;
 
-//@Entity
+@Entity
 public class Delivery implements Serializable {
 
-    //@Id
-    //@GeneratedValue(strategy = GenerationType.AUTO)
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
 
-    //@NotNull
+    @ManyToOne
     private Customer customer;
 
-    //@NotNull
+    @OneToOne
     private Package packageDelivered;
 
     //@NotNull

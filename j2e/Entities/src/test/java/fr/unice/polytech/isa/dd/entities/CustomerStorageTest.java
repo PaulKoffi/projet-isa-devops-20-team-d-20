@@ -65,4 +65,50 @@ public class CustomerStorageTest extends AbstractEntitiesTest {
         assertEquals(provider, entityManager.find(Provider.class, provider.getId()));
     }
 
+    @Test
+    @Transactional(TransactionMode.COMMIT)
+    public void testCustomerDeliveriesStorage(){
+        Customer customer = new Customer("Pm","earth");
+        entityManager.persist(customer);
+
+        Provider provider = new Provider();
+        provider.setName("Aug");
+        entityManager.persist(provider);
+
+        Package package1 = new Package();
+        package1.setWeight(10.0);
+        package1.setProvider(provider);
+        entityManager.persist(package1);
+        provider.add(package1);
+
+        Package package2 = new Package();
+        package2.setWeight(20.0);
+        package2.setProvider(provider);
+        entityManager.persist(package2);
+        provider.add(package2);
+
+        Delivery delivery1 = new Delivery();
+        delivery1.setCustomer(customer);
+        delivery1.setPackageDelivered(package1);
+        entityManager.persist(delivery1);
+        customer.add_a_customer_delivery(delivery1);
+
+        Delivery delivery2 = new Delivery();
+        delivery1.setCustomer(customer);
+        delivery1.setPackageDelivered(package2);
+        entityManager.persist(delivery2);
+        customer.add_a_customer_delivery(delivery2);
+
+
+        int iddel1 = delivery1.getId();
+        customer.getCustomer_deliveries().remove(delivery1);
+        entityManager.remove(delivery1);
+
+        assertNull(entityManager.find(Delivery.class, iddel1));
+        assertNotNull(entityManager.find(Delivery.class, delivery2.getId()));
+        assertEquals(1, customer.getCustomer_deliveries().size());
+        assertEquals(delivery2, customer.getCustomer_deliveries().toArray()[0]);
+        assertEquals(customer, entityManager.find(Customer.class, customer.getId()));
+    }
+
 }

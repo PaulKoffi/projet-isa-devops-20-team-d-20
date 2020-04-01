@@ -3,7 +3,9 @@ package fr.unice.polytech.isa.dd.entities;
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import java.io.Serializable;
+import java.util.HashSet;
 import java.util.Objects;
+import java.util.Set;
 
 @Entity
 public class Customer implements Serializable {
@@ -17,6 +19,9 @@ public class Customer implements Serializable {
 
     @NotNull
     private String address;
+
+    @OneToMany(mappedBy = "customer")
+    private Set<Delivery> customer_deliveries = new HashSet<>();
 
     public Customer() {
         // Necessary for JPA instantiation process
@@ -49,6 +54,17 @@ public class Customer implements Serializable {
 
     public void setAddress(String address) {
         this.address = address;
+    }
+
+    public Set<Delivery> getCustomer_deliveries() {
+        return customer_deliveries;
+    }
+
+    public void setCustomer_deliveries(Set<Delivery> customer_deliveries) {
+        this.customer_deliveries = customer_deliveries;
+    }
+    public void add_a_customer_delivery(Delivery delivery){
+        this.customer_deliveries.add(delivery);
     }
 
 
