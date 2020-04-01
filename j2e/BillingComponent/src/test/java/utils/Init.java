@@ -31,7 +31,7 @@ public class Init {
         providers.add(pro1);
 
         for (int i = 0; i < arg1; i++){
-            deliveries.add(new Delivery(c,new fr.unice.polytech.isa.dd.entities.Package(i,10.0,dt,pro1.getId()),dt,null));
+            deliveries.add(new Delivery(c,new fr.unice.polytech.isa.dd.entities.Package(i,10.0,dt,pro1),dt,null));
         }
     }
 
@@ -46,10 +46,10 @@ public class Init {
         providers.add(pro1);providers.add(pro2);
 
         for (int i = 0; i < arg1; i++){
-            deliveries.add(new Delivery(c,new fr.unice.polytech.isa.dd.entities.Package(i,10.0,dt,pro1.getId()),dt,null));
+            deliveries.add(new Delivery(c,new fr.unice.polytech.isa.dd.entities.Package(i,10.0,dt,pro1),dt,null));
         }
         for (int i = 0; i < arg1; i++){
-            deliveries.add(new Delivery(c,new fr.unice.polytech.isa.dd.entities.Package(i*2,10.0,dt,pro2.getId()),dt,null));
+            deliveries.add(new Delivery(c,new fr.unice.polytech.isa.dd.entities.Package(i*2,10.0,dt,pro2),dt,null));
         }
     }
 
@@ -68,7 +68,7 @@ public class Init {
         fr.unice.polytech.isa.dd.entities.Provider p2 = new fr.unice.polytech.isa.dd.entities.Provider(2,"p2");
         database.getProviderList().add( p1);
         database.getProviderList().add( p2);
-        fr.unice.polytech.isa.dd.entities.Package package1 = new Package(1,2.0,d,1);
+        fr.unice.polytech.isa.dd.entities.Package package1 = new Package(1,2.0,d,p1);
         Delivery d1 = new Delivery(c,package1,d,null) ;
         d1.setStatus(true);
         database.getDeliveryList().add(d1);
