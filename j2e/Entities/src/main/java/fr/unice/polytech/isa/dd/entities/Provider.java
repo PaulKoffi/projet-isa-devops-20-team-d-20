@@ -20,6 +20,9 @@ public class Provider implements Serializable {
     @OneToMany(mappedBy = "provider")
     private Set<Package> packages = new HashSet<>();
 
+    @OneToMany(mappedBy = "provider")
+    private Set<Bill> provider_bills = new HashSet<>();
+
 
     public Provider() {
         // Necessary for JPA instantiation process
@@ -31,6 +34,8 @@ public class Provider implements Serializable {
     }
 
     public void add(Package p) { this.packages.add(p); }
+
+    public void add(Bill b) {this.provider_bills.add(b);}
 
     public Set<Package> getPackages() { return packages; }
 
@@ -50,6 +55,15 @@ public class Provider implements Serializable {
     public void setPackages(Set<Package> packages) {
         this.packages = packages;
     }
+
+    public Set<Bill> getProvider_bills() {
+        return provider_bills;
+    }
+
+    public void setProvider_bills(Set<Bill> provider_bills) {
+        this.provider_bills = provider_bills;
+    }
+
 
     public String getName() {
         return name;

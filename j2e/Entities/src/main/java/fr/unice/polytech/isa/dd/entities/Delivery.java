@@ -22,6 +22,9 @@ public class Delivery implements Serializable {
     @OneToOne
     private Package packageDelivered;
 
+    @ManyToOne
+    private Bill bill;
+
     //@NotNull
     private DateTime deliveryDate;
 

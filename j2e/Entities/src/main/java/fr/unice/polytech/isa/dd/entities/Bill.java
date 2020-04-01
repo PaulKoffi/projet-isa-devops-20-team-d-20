@@ -7,12 +7,13 @@ import javax.validation.constraints.NotNull;
 import java.io.Serializable;
 import java.util.List;
 import java.util.Objects;
+import java.util.Set;
 
-//@Entity
+@Entity
 public class Bill implements Serializable {
 
-  //  @Id
-   // @GeneratedValue(strategy = GenerationType.AUTO)
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
 
     //@NotNull
@@ -28,10 +29,10 @@ public class Bill implements Serializable {
    //@NotNull
     private String billStatus = "UNPAID";
 
-    //@NotNull
+    @ManyToOne
     private Provider provider;
 
-   //@ElementCollection
+    @OneToMany(mappedBy = "bill")
     private List<Delivery> deliveries;
 
     public Bill() {
@@ -47,7 +48,6 @@ public class Bill implements Serializable {
         }
         id = i;
     }
-
 
     public int getId() {
         return id;
