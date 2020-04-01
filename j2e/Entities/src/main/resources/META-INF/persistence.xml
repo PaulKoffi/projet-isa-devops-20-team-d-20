@@ -8,6 +8,8 @@
     <jta-data-source>DDDataSource</jta-data-source>
 
     <class>fr.unice.polytech.isa.dd.entities.Customer</class>
+    <class>fr.unice.polytech.isa.dd.entities.Provider</class>
+    <class>fr.unice.polytech.isa.dd.entities.Package</class>
 
     <exclude-unlisted-classes>true</exclude-unlisted-classes>
 

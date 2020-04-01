@@ -9,7 +9,7 @@ import java.io.Serializable;
 import java.util.Random;
 //import java.util.Date;
 
-//@Embeddable
+//@Entity
 public class Delivery implements Serializable {
 
     //@Id
@@ -17,7 +17,6 @@ public class Delivery implements Serializable {
     private int id;
 
     //@NotNull
-
     private Customer customer;
 
     //@NotNull

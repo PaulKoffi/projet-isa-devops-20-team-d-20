@@ -7,18 +7,18 @@ import java.io.Serializable;
 import java.util.HashSet;
 import java.util.Set;
 
-//@Embeddable
+@Entity
 public class Provider implements Serializable {
 
-    //@Id
-    //@GeneratedValue(strategy = GenerationType.AUTO)
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
 
-    //@NotNull
+    @NotNull
     private String name;
 
-    //@ElementCollection
-    private Set<Package> packages;
+    @OneToMany(mappedBy = "provider")
+    private Set<Package> packages = new HashSet<>();
 
 
     public Provider() {

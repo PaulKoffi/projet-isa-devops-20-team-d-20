@@ -3,34 +3,35 @@ import org.joda.time.DateTime;
 //import javax.persistence.*;
 //import javax.validation.constraints.NotNull;
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
 import java.io.Serializable;
 import java.util.Objects;
 
-///@Embeddable
+@Entity
 public class Package implements Serializable {
 
-   // @Id
-   // @GeneratedValue(strategy = GenerationType.AUTO)
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
 
-//    @NotNull
+    @NotNull
     private double weight;
 
 //    @NotNull
     private DateTime deliveryDate;
 
-//    @NotNull
-    private int provider_id;
+    @ManyToOne
+    private Provider provider;
 
     public Package() {
         // Necessary for JPA instantiation process
     }
 
-    public Package(int i,Double w,DateTime d, int pro_id) {
+    public Package(int i,Double w,DateTime d, Provider pro) {
         id = i;
         weight = w;
         deliveryDate = d;
-        provider_id = pro_id;
+        provider = pro;
     }
 
     public double getWeight() {
@@ -41,12 +42,16 @@ public class Package implements Serializable {
         this.weight = weight;
     }
 
-    public int getProvider_id() {
-        return provider_id;
+    public Provider getProvider() {
+        return provider;
     }
 
-    public void setProvider_id(int provider_id) {
-        this.provider_id = provider_id;
+    public int getProvider_id() {
+        return provider.getId();
+    }
+
+    public void setProvider(Provider provider) {
+        this.provider = provider;
     }
 
 

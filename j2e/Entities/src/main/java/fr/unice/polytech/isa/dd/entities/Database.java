@@ -48,9 +48,9 @@ public class Database {
         providerList.add(pro1);
         providerList.add(pro2);
 
-        Package pk1 = new Package(1, 2.0, dt, 1);
-        Package pk2 = new Package(2, 7.0, dt, 1);
-        Package pk3 = new Package(3, 6.0, dt, 1);
+        Package pk1 = new Package(1, 2.0, dt, pro1);
+        Package pk2 = new Package(2, 7.0, dt, pro1);
+        Package pk3 = new Package(3, 6.0, dt, pro1);
 
         Delivery d1 = new Delivery(c, pk1, dt, null);
         Delivery d2 = new Delivery(c1, pk2, dt, null);
