@@ -1,4 +1,4 @@
-package fr.unice.polytech.isa.dd.webservice;
+package fr.unice.polytech.isa.dd;
 
 import fr.unice.polytech.isa.dd.entities.Customer;
 import fr.unice.polytech.isa.dd.CustomerFinder;
