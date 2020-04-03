@@ -8,6 +8,13 @@ import org.json.JSONObject;
 import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
 import javax.ejb.Stateless;
+import javax.persistence.EntityManager;
+import javax.persistence.NoResultException;
+import javax.persistence.PersistenceContext;
+import javax.persistence.TypedQuery;
+import javax.persistence.criteria.CriteriaBuilder;
+import javax.persistence.criteria.CriteriaQuery;
+import javax.persistence.criteria.Root;
 import java.io.IOException;
 import java.util.*;
 import java.util.logging.Level;
@@ -15,7 +22,8 @@ import java.util.logging.Logger;
 @Stateless(name="bill-stateless")
 public class BillingBean implements BillingGeneratedInterface, CheckTransferStatus {
 
-    Database db = Database.getInstance();
+    @PersistenceContext private EntityManager entityManager;
+
     private static final Logger log = Logger.getLogger(Logger.class.getName());
 
     @EJB(name = "delivery-stateless") private DeliveryInterface delivery;
@@ -36,8 +44,12 @@ public class BillingBean implements BillingGeneratedInterface, CheckTransferStat
         for (Map.Entry<Provider, List<Delivery>> entry : delivery.getAllDayDeliveries().entrySet()) {
             // System.out.println("[Key] : " + entry.getKey() + " [Value] : " + entry.getValue().size());
             if (!entry.getValue().isEmpty()) {
-                db.getBillList().add(new Bill( i,entry.getKey(), entry.getValue()));
-                i++;
+                Bill new_bill = new Bill();
+                new_bill.setProvider(entry.getKey());
+                new_bill.setDeliveries(entry.getValue());
+                entityManager.persist(new_bill);
+                //db.getBillList().add(new Bill( i,entry.getKey(), entry.getValue()));
+                //i++;
             }
         }
     }
@@ -87,14 +99,31 @@ public class BillingBean implements BillingGeneratedInterface, CheckTransferStat
 
     @Override
     public Bill findBillById(int id) {
-//        System.out.println(" T "+ db.getBillList().size());
-        for (Bill b : db.getBillList()) {
-//            System.out.println("Fact "+b.getId());
-            if (b.getId() == id) {
-                return b;
-            }
+        CriteriaBuilder builder = entityManager.getCriteriaBuilder();
+        CriteriaQuery<Bill> criteria = builder.createQuery(Bill.class);
+        Root<Bill> root =  criteria.from(Bill.class);
+        criteria.select(root).where(builder.equal(root.get("id"),id));
+        TypedQuery<Bill> query = entityManager.createQuery(criteria);
+        try {
+            return Optional.of(query.getSingleResult()).get();
+        } catch (NoResultException nre){
+            return null;
         }
-        return null;
+    }
+
+    @Override
+    public List<Bill> get_bills(){
+        CriteriaBuilder builder = entityManager.getCriteriaBuilder();
+        CriteriaQuery<Bill> criteria = builder.createQuery(Bill.class);
+        Root<Bill> root =  criteria.from(Bill.class);
+        criteria.select(root);
+        TypedQuery<Bill> query = entityManager.createQuery(criteria);
+        try {
+            List<Bill> toReturn = new ArrayList<>(query.getResultList());
+            return Optional.of(toReturn).get();
+        } catch (NoResultException nre){
+            return null;
+        }
     }
 }
 
