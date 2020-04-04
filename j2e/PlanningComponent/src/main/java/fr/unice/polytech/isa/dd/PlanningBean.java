@@ -14,6 +14,7 @@ import javax.persistence.TypedQuery;
 import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Root;
+import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
 import java.util.Optional;
@@ -37,12 +38,16 @@ public class PlanningBean implements DeliveryRegistration, AvailableSlotTime {
         MyDate dt = new MyDate(delivery_date,hour_delivery);
         Delivery delivery = new Delivery();
         Package aPackage = findPackageByNumber(number);
+        assert aPackage != null;
         delivery.setPackageDelivered(aPackage);
         delivery.setDeliveryDate(delivery_date);
         delivery.setDeliveryBeginTimeInSeconds(dt.getDate_seconds());
         assert customer != null;
-        customer.add_a_customer_delivery(delivery);
-        entityManager.persist(delivery);
+        if(validslot){
+            customer.add_a_customer_delivery(delivery);
+            entityManager.persist(delivery);
+        }else throw  new Exception("Slot nont disponible");
+
     }
 
     private Package findPackageByNumber(int number) {
@@ -72,12 +77,14 @@ public class PlanningBean implements DeliveryRegistration, AvailableSlotTime {
     }
 
     private List<Delivery> all_deliveries(String delivery_date) throws Exception {
-        List<Delivery> deliveriesList = deliverySchedule.get_deliveries();
-        MyDate myDate = new MyDate(delivery_date,"00h00");
-        deliveriesList = deliveriesList.stream().filter(d->d.getDeliveryDate().equals(delivery_date)).collect(Collectors.toList());
-        deliveriesList.sort(Comparator.comparingInt(Delivery::getDeliveryBeginTimeInSeconds));
-
-        return deliveriesList;
+        if(!deliverySchedule.get_deliveries().isEmpty()){
+            List<Delivery> deliveriesList = deliverySchedule.get_deliveries();
+            MyDate myDate = new MyDate(delivery_date,"00h00");
+            deliveriesList = deliveriesList.stream().filter(d->d.getDeliveryDate().equals(delivery_date)).collect(Collectors.toList());
+            deliveriesList.sort(Comparator.comparingInt(Delivery::getDeliveryBeginTimeInSeconds));
+            return deliveriesList;
+        }
+        return null;
     }
 
     @Override
@@ -89,21 +96,26 @@ public class PlanningBean implements DeliveryRegistration, AvailableSlotTime {
         int minb = 0; int index_min = 0; int mine = 0;
         int max = 0; int index_max;
         //int min = sorted_filtered_list.get(0).getDeliveryBeginTimeInSeconds();
+        //assert sorted_filtered_list != null;
+        if(sorted_filtered_list != null && !sorted_filtered_list.isEmpty()){
+            while(index_min < sorted_filtered_list.size() ) {
+                int temp = sorted_filtered_list.get(index_min).getDeliveryBeginTimeInSeconds();
+                if (temp < adateseconds) {
+                    mine = sorted_filtered_list.get(index_min).getDeliveryEndTimeInSeconds();
+                }else break;
+                index_min++;
+            }
+            max = sorted_filtered_list.get(index_min).getDeliveryBeginTimeInSeconds();
 
-        while(index_min < sorted_filtered_list.size() ) {
-            int temp = sorted_filtered_list.get(index_min).getDeliveryBeginTimeInSeconds();
-            if (temp < adateseconds) {
-                mine = sorted_filtered_list.get(index_min).getDeliveryEndTimeInSeconds();
-            }else break;
-            index_min++;
-        }
-        max = sorted_filtered_list.get(index_min).getDeliveryBeginTimeInSeconds();
-
-        int diff1 =  adateseconds - mine;
-        int diff2 =  max - (adateseconds + min_slot );
+            int diff1 =  adateseconds - mine;
+            int diff2 =  max - (adateseconds + min_slot );
        /* System.out.println("/*********************************\n"+diff1+"******************\n");
         System.out.println("/*********************************\n"+diff2+"******************\n");*/
-        if(diff1 >= min_slot && diff2 >= min_slot){
+            if(diff1 >= min_slot && diff2 >= min_slot){
+                validslot = true;
+                return true;
+            }
+        }else{
             validslot = true;
             return true;
         }

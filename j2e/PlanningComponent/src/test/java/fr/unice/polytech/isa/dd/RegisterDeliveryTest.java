@@ -25,8 +25,8 @@ import static org.junit.Assert.*;
 @Transactional(TransactionMode.COMMIT)
 public class RegisterDeliveryTest extends AbstractPlanningTest {
 
-    @EJB(name = "planning-stateless")
-    DeliveryRegistration deliveryRegistration;
+    @EJB(name = "planning-stateless")  DeliveryRegistration deliveryRegistration;
+    @EJB(name = "planning-stateless")  AvailableSlotTime availableSlotTime;
     @EJB(name="delivery-stateless") DeliverySchedule deliverySchedule;
     @PersistenceContext
     private EntityManager entityManager;
@@ -49,7 +49,7 @@ public class RegisterDeliveryTest extends AbstractPlanningTest {
         entityManager.persist(provider);
 
         aPackage.setWeight(10.0);
-        aPackage.setSecret_number(2000);
+        aPackage.setSecret_number(2005);
         aPackage.setProvider(provider);
         entityManager.persist(aPackage);
         provider.add(aPackage);
@@ -77,8 +77,9 @@ public class RegisterDeliveryTest extends AbstractPlanningTest {
 
     @Test
     public void registertest() throws Exception {
-        deliveryRegistration.register_delivery("Paul","2000",adate,anhour);
-
+        System.out.println("/*********************************\n"+deliverySchedule.get_deliveries().size()+"******************\n");
+        availableSlotTime.valid_slot_time(adate,anhour);
+        deliveryRegistration.register_delivery("Paul","2005",adate,anhour);
         assertEquals(1,customer.getCustomer_deliveries().size());
     }
 }

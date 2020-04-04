@@ -39,6 +39,7 @@ public class AvailableSlotTest extends AbstractPlanningTest {
     private Customer customer = new Customer("Paul","where does he live");
     private Provider provider = new Provider();
     private Package aPackage = new Package();
+    private Package aPackageDemanded = new Package();
     private Delivery delivery1 = new Delivery();
     private Delivery delivery2 = new Delivery();
     String adate;
@@ -74,17 +75,29 @@ public class AvailableSlotTest extends AbstractPlanningTest {
         delivery2.setDeliveryEndTimeInSeconds(dt2.getDate_seconds()+ 2700);
         customer.add_a_customer_delivery(delivery2);
         entityManager.persist(delivery2);
+
+
+        aPackageDemanded.setSecret_number(2020);
+        aPackageDemanded.setProvider(provider);
+        aPackageDemanded.setWeight(30.0);
+        provider.add(aPackageDemanded);
+        entityManager.persist(aPackageDemanded);
     }
 
     @After
     public void cleanUp() throws SystemException, NotSupportedException, HeuristicRollbackException, HeuristicMixedException, RollbackException {
         utx.begin();
-        Delivery delivery = deliverySchedule.get_deliveries().get(0);
-        entityManager.merge(delivery);
-        entityManager.remove(delivery);
+        for( int i = 0; i < 3; i++){
+            Delivery delivery = deliverySchedule.get_deliveries().get(0);
+            entityManager.merge(delivery);
+            entityManager.remove(delivery);
+        }
 
         aPackage = entityManager.merge(aPackage);
         entityManager.remove(aPackage);
+
+        aPackageDemanded = entityManager.merge(aPackageDemanded);
+        entityManager.remove(aPackageDemanded);
 
         provider = entityManager.merge(provider);
         entityManager.remove(provider);
@@ -99,5 +112,8 @@ public class AvailableSlotTest extends AbstractPlanningTest {
     public void validslottest() throws Exception {
         boolean valid = availableSlotTime.valid_slot_time(adate,anhour);
         assertTrue(valid);
+        deliveryRegistration.register_delivery("Paul","2020",adate,anhour);
+        assertEquals(3,customer.getCustomer_deliveries().size());
+        assertEquals(3,deliverySchedule.get_deliveries().size());
     }
 }
