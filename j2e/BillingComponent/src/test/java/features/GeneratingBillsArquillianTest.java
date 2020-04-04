@@ -16,7 +16,6 @@ import org.joda.time.DateTime;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.runner.RunWith;
-import utils.Init;
 
 import javax.ejb.EJB;
 import javax.inject.Inject;

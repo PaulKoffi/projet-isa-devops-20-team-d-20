@@ -12,6 +12,7 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
+import utils.MyDate;
 
 import javax.ejb.EJB;
 import javax.inject.Inject;
@@ -23,11 +24,13 @@ import static org.junit.Assert.*;
 
 @RunWith(Arquillian.class)
 @Transactional(TransactionMode.COMMIT)
-public class RegisterDeliveryTest extends AbstractPlanningTest {
+public class AvailableSlotTest extends AbstractPlanningTest {
 
     @EJB(name = "planning-stateless")
     DeliveryRegistration deliveryRegistration;
-    @EJB(name="delivery-stateless") DeliverySchedule deliverySchedule;
+    @EJB(name = "planning-stateless")
+    AvailableSlotTime availableSlotTime;
+    @EJB(name = "delivery-stateless") DeliverySchedule deliverySchedule;
     @PersistenceContext
     private EntityManager entityManager;
     @Inject
@@ -36,13 +39,15 @@ public class RegisterDeliveryTest extends AbstractPlanningTest {
     private Customer customer = new Customer("Paul","where does he live");
     private Provider provider = new Provider();
     private Package aPackage = new Package();
+    private Delivery delivery1 = new Delivery();
+    private Delivery delivery2 = new Delivery();
     String adate;
     String anhour;
 
     @Before
-    public void setUp(){
+    public void setUp() throws Exception {
         adate = "31/12/2020";
-        anhour = "18h30";
+        anhour = "10h45";
         entityManager.persist(customer);
 
         provider.setName("Aug");
@@ -53,6 +58,22 @@ public class RegisterDeliveryTest extends AbstractPlanningTest {
         aPackage.setProvider(provider);
         entityManager.persist(aPackage);
         provider.add(aPackage);
+
+        MyDate dt = new MyDate(adate,"9h00");
+        delivery1.setPackageDelivered(aPackage);
+        delivery1.setDeliveryDate(adate);
+        delivery1.setDeliveryBeginTimeInSeconds(dt.getDate_seconds());
+        delivery1.setDeliveryEndTimeInSeconds(dt.getDate_seconds()+ 2700);
+        customer.add_a_customer_delivery(delivery1);
+        entityManager.persist(delivery1);
+
+        MyDate dt2 = new MyDate(adate,"12h15");
+        delivery2.setPackageDelivered(aPackage);
+        delivery2.setDeliveryDate(adate);
+        delivery2.setDeliveryBeginTimeInSeconds(dt2.getDate_seconds());
+        delivery2.setDeliveryEndTimeInSeconds(dt2.getDate_seconds()+ 2700);
+        customer.add_a_customer_delivery(delivery2);
+        entityManager.persist(delivery2);
     }
 
     @After
@@ -74,11 +95,9 @@ public class RegisterDeliveryTest extends AbstractPlanningTest {
         utx.commit();
     }
 
-
     @Test
-    public void registertest() throws Exception {
-        deliveryRegistration.register_delivery("Paul","2000",adate,anhour);
-
-        assertEquals(1,customer.getCustomer_deliveries().size());
+    public void validslottest() throws Exception {
+        boolean valid = availableSlotTime.valid_slot_time(adate,anhour);
+        assertTrue(valid);
     }
 }

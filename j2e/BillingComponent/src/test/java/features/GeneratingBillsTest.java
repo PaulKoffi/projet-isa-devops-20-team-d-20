@@ -109,14 +109,14 @@ public class GeneratingBillsTest extends AbstractBillingTest {
             nextDelivery.getNextDelivery();
         }
 
-        for(Provider provider : deliverySchedule.providerList()){
+      /*  for(Provider provider : deliverySchedule.providerList()){
             System.out.println("\n\n/**********************\n"+provider.getName()+" - "+provider.getId()+"\n****************************\n\n");
         }
         Map<Provider,List<Delivery>>providerListHashMap = deliveryInterface.getAllDayDeliveries();
         for (Map.Entry<Provider, List<Delivery>> entry : providerListHashMap.entrySet()
              ) {
             System.out.println("\n\n/**********************\n"+entry.getKey().getName()+"\n****************************\n\n");
-        }
+        }*/
 
     }
     //Ce test bug parce que la valeur doit être 2
