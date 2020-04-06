@@ -21,9 +21,6 @@ import javax.ejb.EJB;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
-import java.util.List;
-import java.util.Map;
-
 import static org.junit.Assert.assertEquals;
 
 
@@ -35,7 +32,7 @@ public class GeneratingBillsTest extends AbstractBillingTest {
     @PersistenceContext
     private EntityManager entityManager;
 
-    @EJB(name = "delivery-stateless") private NextDeliveryInterface nextDelivery ;
+    @EJB(name = "delivery-stateless") NextDeliveryInterface nextDeliveryInterface;
     @EJB(name = "bill-stateless") private BillingGeneratedInterface billinggenerator ;
     @EJB(name = "delivery-stateless") private DeliverySchedule deliverySchedule;
     @EJB(name = "delivery-stateless") private DeliveryInterface deliveryInterface;
@@ -106,7 +103,7 @@ public class GeneratingBillsTest extends AbstractBillingTest {
 
 
         for(int i= 0; i < 3;i++){
-            nextDelivery.getNextDelivery();
+            nextDeliveryInterface.getNextDelivery();
         }
 
       /*  for(Provider provider : deliverySchedule.providerList()){
