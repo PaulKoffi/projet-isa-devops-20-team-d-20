@@ -14,6 +14,8 @@ public class Package implements Serializable {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
 
+    private int secretNumber;
+
     @NotNull
     private double weight;
 
@@ -58,6 +60,13 @@ public class Package implements Serializable {
         this.provider = provider;
     }
 
+    public int getSecret_number() {
+        return secretNumber;
+    }
+
+    public void setSecret_number(int secret_number) {
+        this.secretNumber = secret_number;
+    }
 
     public int getId() {
         return id;

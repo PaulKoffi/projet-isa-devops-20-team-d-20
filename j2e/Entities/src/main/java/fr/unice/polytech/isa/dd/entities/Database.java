@@ -52,12 +52,12 @@ public class Database {
         Package pk2 = new Package(2, 7.0, dt, pro1);
         Package pk3 = new Package(3, 6.0, dt, pro1);
 
-        Delivery d1 = new Delivery(c, pk1, dt, null);
+        /*Delivery d1 = new Delivery(c, pk1, dt, null);
         Delivery d2 = new Delivery(c1, pk2, dt, null);
         Delivery d3 = new Delivery(c2, pk3, dt, null);
         deliveryList.add(d1);
         deliveryList.add(d2);
-        deliveryList.add(d3);
+        deliveryList.add(d3);*/
 
     }
 

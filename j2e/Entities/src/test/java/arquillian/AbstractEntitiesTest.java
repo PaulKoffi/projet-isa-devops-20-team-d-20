@@ -7,6 +7,7 @@ import org.jboss.shrinkwrap.api.ShrinkWrap;
 import org.jboss.shrinkwrap.api.asset.ClassLoaderAsset;
 import org.jboss.shrinkwrap.api.asset.EmptyAsset;
 import org.jboss.shrinkwrap.api.spec.WebArchive;
+import utils.MyDate;
 
 public abstract class AbstractEntitiesTest {
 
@@ -14,6 +15,7 @@ public abstract class AbstractEntitiesTest {
     public static WebArchive createDeployement(){
         return ShrinkWrap.create(WebArchive.class)
                 .addAsWebInfResource(EmptyAsset.INSTANCE,"beans.xml")
+                .addPackage(MyDate.class.getPackage())
                 .addPackage(Delivery.class.getPackage())
                 .addPackage(Customer.class.getPackage())
                 .addPackage(Provider.class.getPackage())

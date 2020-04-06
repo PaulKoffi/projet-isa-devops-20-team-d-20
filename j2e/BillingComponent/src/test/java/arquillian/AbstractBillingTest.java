@@ -47,7 +47,7 @@ public abstract class AbstractBillingTest {
                 //.addPackage(Package.class.getPackage())
                 //.addPackage(Bill.class.getPackage())
                 .addPackage(BillingBean.class.getPackage())
-                //.addAsManifestResource(new ClassLoaderAsset("META-INF/persistence.xml"), "persistence.xml")
+                .addAsManifestResource(new ClassLoaderAsset("META-INF/persistence.xml"), "persistence.xml")
                 ;
     }
 

@@ -12,7 +12,3 @@
       Scénario: Il y a plusieurs livraisons à faire d'un seul fournisseur
         Quand l'employé effectue les 2 prochaines livraisons du fournisseur AG
         Alors il y a 1 facture
-
-      Scénario: Il ya plusieurs livraisons à faire pour plusieurs fournisseur
-        Quand l'employé envoie les 2 livraisons du fournisseurs AM et PK
-        Alors 3 factures sont générées
