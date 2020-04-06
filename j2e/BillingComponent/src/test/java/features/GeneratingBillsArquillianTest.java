@@ -11,6 +11,8 @@ import fr.unice.polytech.isa.dd.CheckTransferStatus;
 import fr.unice.polytech.isa.dd.NextDeliveryInterface;
 import fr.unice.polytech.isa.dd.entities.Delivery;
 import io.cucumber.java8.Fr;
+import org.apache.cxf.feature.Features;
+import org.junit.Ignore;
 import org.junit.runner.RunWith;
 import utils.Init;
 
@@ -20,7 +22,7 @@ import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNull;
 
 @RunWith(CukeSpace.class)
-@CucumberOptions(features = "src/test/resources/")
+@CucumberOptions(features = "src/test/resources")
 public class GeneratingBillsArquillianTest extends AbstractBillingTest implements Fr {
 
     private Init init = new Init();

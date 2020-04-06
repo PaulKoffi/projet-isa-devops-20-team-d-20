@@ -8,6 +8,7 @@ import fr.unice.polytech.isa.dd.entities.ExternalPartnerException;
 import org.jboss.arquillian.junit.Arquillian;
 import org.joda.time.DateTime;
 import org.junit.Before;
+import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import utils.Init;

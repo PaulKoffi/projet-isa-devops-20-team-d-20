@@ -17,6 +17,8 @@ public class Package implements Serializable {
     @NotNull
     private double weight;
 
+    private int number;
+
 //    @NotNull
     private DateTime deliveryDate;
 
@@ -27,12 +29,14 @@ public class Package implements Serializable {
         // Necessary for JPA instantiation process
     }
 
-    public Package(int i,Double w,DateTime d, Provider pro) {
-        id = i;
+    public Package(int nb, Double w,DateTime d, Provider pro) {
+        number = nb;
         weight = w;
         deliveryDate = d;
         provider = pro;
     }
+
+    public int getNumber() { return number; }
 
     public double getWeight() {
         return weight;
