@@ -17,9 +17,9 @@
         <module>j2e/DeliveryWebService</module>
         <module>j2e/BillingWebService</module>
         <module>j2e/Web</module>
-      <module>j2e/PlanningComponent</module>
-      <module>j2e/PlanningWebService</module>
-      <module>j2e/CustomerRegisterWebService</module>
+        <module>j2e/PlanningComponent</module>
+        <module>j2e/PlanningWebService</module>
+        <module>j2e/CustomerRegisterWebService</module>
     </modules>
 
     <properties>
@@ -157,22 +157,22 @@
     </distributionManagement>
 
     <!--<build>-->
-        <!--<finalName>DroneDelivery</finalName>-->
-        <!--<pluginManagement>&lt;!&ndash; lock down plugins versions to avoid using Maven defaults (may be moved to parent pom) &ndash;&gt;-->
-            <!--<plugins>-->
-                <!--<plugin>-->
-                    <!--<groupId>org.apache.tomee.maven</groupId>-->
-                    <!--<artifactId>tomee-maven-plugin</artifactId>-->
-                    <!--<version>${versions.tomee}</version>-->
-                    <!--<configuration>-->
-                        <!--&lt;!&ndash; From TomEE to TomEE+ to support the web services stack &ndash;&gt;-->
-                        <!--<tomeeClassifier>plus</tomeeClassifier>-->
-                        <!--<args>-Xmx512m -XX:PermSize=256m</args>-->
-                        <!--<deployOpenEjbApplication>true</deployOpenEjbApplication>-->
-                    <!--</configuration>-->
-                <!--</plugin>-->
-            <!--</plugins>-->
-        <!--</pluginManagement>-->
+    <!--<finalName>DroneDelivery</finalName>-->
+    <!--<pluginManagement>&lt;!&ndash; lock down plugins versions to avoid using Maven defaults (may be moved to parent pom) &ndash;&gt;-->
+    <!--<plugins>-->
+    <!--<plugin>-->
+    <!--<groupId>org.apache.tomee.maven</groupId>-->
+    <!--<artifactId>tomee-maven-plugin</artifactId>-->
+    <!--<version>${versions.tomee}</version>-->
+    <!--<configuration>-->
+    <!--&lt;!&ndash; From TomEE to TomEE+ to support the web services stack &ndash;&gt;-->
+    <!--<tomeeClassifier>plus</tomeeClassifier>-->
+    <!--<args>-Xmx512m -XX:PermSize=256m</args>-->
+    <!--<deployOpenEjbApplication>true</deployOpenEjbApplication>-->
+    <!--</configuration>-->
+    <!--</plugin>-->
+    <!--</plugins>-->
+    <!--</pluginManagement>-->
     <!--</build>-->
 
 </project>
