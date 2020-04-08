@@ -8,6 +8,11 @@ public class DoneManagementBean implements DroneRegister, DroneStatus,AvailableD
     public void register(int n_battery, int n_flightHours) {
     }
 
+
+
+
+
+
     @Override
     public DroneStatus status(int idDrone) {
         return null;
