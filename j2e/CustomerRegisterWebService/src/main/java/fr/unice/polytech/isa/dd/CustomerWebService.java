@@ -13,7 +13,7 @@ import javax.jws.WebService;
 public interface CustomerWebService {
 
     @WebMethod
-    void register(@WebParam(name="customer_first_name") String firstName,
+    Boolean register(@WebParam(name="customer_first_name") String firstName,
                   @WebParam(name="customer_last_name") String lastName,
                   @WebParam(name="customer_adress") String adress);
 

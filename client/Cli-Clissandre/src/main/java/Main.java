@@ -20,6 +20,10 @@ public class Main extends Shell<DDPublicAPI> {
 
                 FindCustomer.class,
 
+                FindProvider.class,
+
+                RegisterProvider.class,
+
                 RegisterCustomer.class
         );
     }

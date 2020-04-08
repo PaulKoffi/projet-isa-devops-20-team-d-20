@@ -5,5 +5,5 @@ import javax.ejb.Local;
 @Local
 public interface CustomerRegistration {
 
-     void register(String customer_lastname,String customer_firstname,String customer_address );
+     Boolean register(String customer_lastname,String customer_firstname,String customer_address );
 }

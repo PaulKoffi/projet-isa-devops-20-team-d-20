@@ -35,7 +35,7 @@ public class Database {
     }
 
     public void initializeDatabase() {
-        Customer c = new Customer("Paul Marie", "adresse1");
+        /*Customer c = new Customer("Paul Marie", "adresse1");
         Customer c1 = new Customer("Paul Koffi", "adresse2");
         Customer c2 = new Customer("Messan Aurore", "adresse3");
 

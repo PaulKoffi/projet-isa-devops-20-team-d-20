@@ -5,6 +5,7 @@ import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import java.io.Serializable;
 import java.util.HashSet;
+import java.util.Objects;
 import java.util.Set;
 
 @Entity
@@ -28,8 +29,7 @@ public class Provider implements Serializable {
         // Necessary for JPA instantiation process
     }
 
-    public Provider(int i,String n) {
-        id = i;
+    public Provider(String n) {
         name = n;
     }
 
@@ -69,6 +69,23 @@ public class Provider implements Serializable {
         return name;
     }
 
-    /*** ecriture de la méthode hash + equals à faire ****/
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Provider that = (Provider) o;
+        return Objects.equals(name, that.name);
+    }
+
+    /**
+     * Améliorer cette fonction
+     * @return
+     */
+    @Override
+    public int hashCode(){
+        int result = getName() != null ? getName().hashCode() : 0;
+        result = 31 * result;
+        return result;
+    }
 
 }

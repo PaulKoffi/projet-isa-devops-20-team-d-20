@@ -89,6 +89,15 @@
                                         </extraarg>
                                     </extraargs>
                                 </wsdlOption>
+                                <wsdlOption>
+                                    <wsdl>${basedir}/src/main/resources/ProviderWebService.wsdl</wsdl>
+                                    <extraargs>
+                                        <extraarg>-p</extraarg>
+                                        <extraarg>
+                                            http://www.polytech.unice.fr/si/4a/isa/dd/providerService=stubs.provider
+                                        </extraarg>
+                                    </extraargs>
+                                </wsdlOption>
                             </wsdlOptions>
                         </configuration>
                         <goals>

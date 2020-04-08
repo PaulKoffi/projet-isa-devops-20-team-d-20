@@ -19,12 +19,13 @@ public class CustomerRegisterBean implements CustomerRegistration, CustomerFinde
     @PersistenceContext private EntityManager entityManager;
 
     @Override
-    public void register(String customer_lastname, String customer_firstname, String customer_address) {
+    public Boolean register(String customer_lastname, String customer_firstname, String customer_address) {
         //TODO
         Optional<Customer> customer = findCustomerByName(customer_firstname+" "+customer_lastname);
-        if(customer.isPresent()) return;
+        if(customer.isPresent()) return false;
         Customer new_customer = new Customer(customer_firstname+" "+customer_lastname,customer_address);
         entityManager.persist(new_customer);
+        return true;
         //listcutomer.add(customer);
     }
 

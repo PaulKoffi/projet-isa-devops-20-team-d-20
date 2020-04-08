@@ -16,9 +16,9 @@ public class CustomerWebServiceImp implements CustomerWebService {
     @EJB private CustomerRegistration registry;
 
     @Override
-    public void register(String firstName,String lastName,String adress){
+    public Boolean register(String firstName,String lastName,String adress){
         System.out.println("registerCustomer");
-        registry.register(firstName,lastName,adress);
+        return registry.register(firstName,lastName,adress);
     }
 
     @Override
