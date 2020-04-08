@@ -15,6 +15,8 @@ public class Status_management implements Serializable{
     @OneToOne
     private DroneStatus status;
 
+    public Status_management(){}
+
     public Status_management(Drone drone, DroneStatus status){
         this.drone = drone;
         this.status=status;
