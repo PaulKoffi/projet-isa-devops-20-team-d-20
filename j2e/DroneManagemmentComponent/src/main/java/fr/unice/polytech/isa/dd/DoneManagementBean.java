@@ -13,6 +13,11 @@ public class DoneManagementBean implements DroneRegister, DroneStatus,AvailableD
 
 
 
+
+
+
+
+
     @Override
     public DroneStatus status(int idDrone) {
         return null;
