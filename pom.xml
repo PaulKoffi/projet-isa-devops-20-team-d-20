@@ -23,9 +23,6 @@
         <module>client/Cli-Clissandre</module>
         <module>j2e/ProviderRegisterComponent</module>
         <module>j2e/ProviderRegisterWebService</module>
-      <module>j2e/PlanningComponent</module>
-      <module>j2e/PlanningWebService</module>
-      <module>j2e/CustomerRegisterWebService</module>
         <module>j2e/PackageRegisterComponent</module>
         <module>j2e/PackageRegisterWebService</module>
     </modules>
