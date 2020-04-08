@@ -1,22 +1,10 @@
 package fr.unice.polytech.isa.dd;
 
-import fr.unice.polytech.isa.dd.entities.Drone;
-
-public class DoneManagementBean implements DroneRegister, DroneStatus,AvailableDrone {
-
+public class DroneManagementBean implements AvailableDrone, DroneStatus, DroneRegister{
     @Override
     public void register(int n_battery, int n_flightHours) {
+
     }
-
-
-
-
-
-
-
-
-
-
 
     @Override
     public DroneStatus status(int idDrone) {
