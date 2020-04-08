@@ -20,6 +20,7 @@
         <module>j2e/PlanningComponent</module>
         <module>j2e/PlanningWebService</module>
         <module>j2e/CustomerRegisterWebService</module>
+        <module>client/Cli-Clissandre</module>
     </modules>
 
     <properties>

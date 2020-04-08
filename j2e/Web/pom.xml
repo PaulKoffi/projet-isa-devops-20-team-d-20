@@ -30,7 +30,7 @@
         </dependency>
         <dependency>
             <groupId>fr.unice.polytech.isa.dd</groupId>
-            <artifactId>PlanningWebService</artifactId>
+            <artifactId>CustomerRegisterWebService</artifactId>
             <version>1.0-SNAPSHOT</version>
             <scope>compile</scope>
         </dependency>

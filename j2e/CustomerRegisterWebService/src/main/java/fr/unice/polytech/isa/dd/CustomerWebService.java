@@ -9,7 +9,7 @@ import javax.jws.WebParam;
 import javax.jws.WebResult;
 import javax.jws.WebService;
 
-@WebService(targetNamespace = "http://www.polytech.unice.fr/si/4a/isa/dd/customer")
+@WebService(targetNamespace = "http://www.polytech.unice.fr/si/4a/isa/dd/customerService")
 public interface CustomerWebService {
 
     @WebMethod
