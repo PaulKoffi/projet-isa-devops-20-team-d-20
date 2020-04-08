@@ -19,8 +19,6 @@ public class Package implements Serializable {
     @NotNull
     private double weight;
 
-    private int number;
-
 //    @NotNull
     private DateTime deliveryDate;
 
@@ -31,14 +29,12 @@ public class Package implements Serializable {
         // Necessary for JPA instantiation process
     }
 
-    public Package(int nb, Double w,DateTime d, Provider pro) {
-        number = nb;
+    public Package(int secretN,Double w,DateTime d, Provider pro) {
+        secretN = secretN;
         weight = w;
         deliveryDate = d;
         provider = pro;
     }
-
-    public int getNumber() { return number; }
 
     public double getWeight() {
         return weight;
@@ -91,7 +87,14 @@ public class Package implements Serializable {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Package that = (Package) o;
-        return Objects.equals(id, that.id) && Double.compare(that.weight, weight) == 0;
+        return Objects.equals(secretNumber, that.secretNumber) && Double.compare(that.weight, weight) == 0;
+    }
+
+    @Override
+    public int hashCode(){
+        int result = getSecret_number();
+        result = 31 * result;
+        return result;
     }
 
 }

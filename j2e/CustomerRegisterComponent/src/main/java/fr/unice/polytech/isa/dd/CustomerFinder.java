@@ -7,5 +7,5 @@ import javax.ejb.Local;
 @Local
 public interface CustomerFinder {
 
-    public Customer findByName(String customer_name);
+    Customer findByName(String customer_name);
 }

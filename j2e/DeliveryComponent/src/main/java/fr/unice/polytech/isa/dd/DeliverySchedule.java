@@ -9,7 +9,7 @@ import java.util.List;
 @Local
 public interface DeliverySchedule {
 
-    public List<Provider> providerList();
+     List<Provider> providerList();
 
-    public List<Delivery> get_deliveries();
+     List<Delivery> get_deliveries();
 }
