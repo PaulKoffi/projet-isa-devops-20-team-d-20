@@ -15,4 +15,4 @@
 
       Scénario: Il ya plusieurs livraisons à faire pour plusieurs fournisseur
         Quand l'employé envoie les 2 livraisons du fournisseurs AM et PK
-        Alors 3 factures sont générées
+        Alors 4 factures sont générées

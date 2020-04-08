@@ -3,30 +3,35 @@ import org.joda.time.DateTime;
 
 //import javax.persistence.*;
 //import javax.validation.constraints.NotNull;
+import javax.persistence.*;
+import javax.validation.constraints.NotNull;
 import java.io.Serializable;
 import java.util.Random;
 //import java.util.Date;
 
-//@Entity
+@Entity
 public class Delivery implements Serializable {
 
- //   @Id
- //   @GeneratedValue(strategy = GenerationType.AUTO)
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
 
-//    @NotNull
+    @ManyToOne
     private Customer customer;
 
-//    @NotNull
+    @OneToOne
     private Package packageDelivered;
 
-//    @NotNull
+    @ManyToOne
+    private Bill bill;
+
+    //@NotNull
     private DateTime deliveryDate;
 
-//    @NotNull
+    //@NotNull
     private String beginTime;
 
-//    @NotNull
+    //@NotNull
     private String endTime;
 
     private int customerMark;
@@ -41,7 +46,7 @@ public class Delivery implements Serializable {
     }
 
     public Delivery(Customer c, Package p, DateTime d, String b) {
-        id = new Random().nextInt();
+        //id = new Random().nextInt();
         customer = c;
         packageDelivered = p;
         deliveryDate = d;
