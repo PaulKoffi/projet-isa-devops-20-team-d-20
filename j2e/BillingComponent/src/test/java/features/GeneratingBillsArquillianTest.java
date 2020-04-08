@@ -15,6 +15,7 @@ import org.jboss.arquillian.transaction.api.annotation.Transactional;
 import org.joda.time.DateTime;
 import org.junit.After;
 import org.junit.Before;
+import org.junit.Ignore;
 import org.junit.runner.RunWith;
 
 import javax.ejb.EJB;

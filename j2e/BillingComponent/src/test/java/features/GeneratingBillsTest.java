@@ -15,6 +15,7 @@ import fr.unice.polytech.isa.dd.entities.Package;
 import fr.unice.polytech.isa.dd.entities.Provider;
 import org.jboss.arquillian.transaction.api.annotation.TransactionMode;
 import org.jboss.arquillian.transaction.api.annotation.Transactional;
+import org.junit.Ignore;
 import org.junit.runner.RunWith;
 
 import javax.ejb.EJB;
@@ -40,7 +41,6 @@ public class GeneratingBillsTest extends AbstractBillingTest {
     @Quand("^l'employé envoie les (\\d+) livraisons du fournisseurs (.*) et (.*)$")
     public void livraisonsenvoyées(Integer arg0,String arg1,String arg2){
        /* init.initializeDatabaseTestWithMutipleProviders(arg0,arg1,arg2);
-
         for(int i= 0; i < init.getDeliveries().size();i++){
             Delivery delivery = nextDelivery.getNextDelivery();
         }*/

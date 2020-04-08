@@ -2,6 +2,8 @@ package features;
 
 import arquillian.AbstractDeliveryTest;
 import cucumber.api.CucumberOptions;
+import cucumber.api.java.en.Then;
+import cucumber.api.java.en.When;
 import cucumber.api.java.fr.Alors;
 import cucumber.api.java.fr.Et;
 import cucumber.api.java.fr.Quand;
@@ -20,6 +22,7 @@ import io.cucumber.java8.Fr;
 import org.jboss.arquillian.transaction.api.annotation.TransactionMode;
 import org.jboss.arquillian.transaction.api.annotation.Transactional;
 import org.joda.time.DateTime;
+import org.junit.Ignore;
 import org.junit.runner.RunWith;
 
 import javax.ejb.EJB;
@@ -30,7 +33,6 @@ import java.util.Iterator;
 import java.util.List;
 
 import static org.junit.Assert.*;
-
 
 @RunWith(CukeSpace.class)
 @CucumberOptions(features = "src/test/resources/")
