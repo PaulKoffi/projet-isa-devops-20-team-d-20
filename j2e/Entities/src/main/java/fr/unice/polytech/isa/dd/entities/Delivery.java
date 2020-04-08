@@ -26,6 +26,9 @@ public class Delivery implements Serializable {
     @ManyToOne
     private Bill bill;
 
+    @ManyToOne
+    private Drone drone;
+
     //@NotNull
     private String deliveryDate;
     private int deliveryBeginTimeInSeconds;
