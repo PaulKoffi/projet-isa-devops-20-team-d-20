@@ -26,9 +26,6 @@ public class DroneStatus implements Serializable {
     //    @NotNull
     private Date timeEndState;
 
-    public DroneStatus(){
-
-    }
 
     public DroneStatus(DRONE_STATES state, Date hourBeginning, Date hourEnd) {
         libelleStatusDrone=  state;
