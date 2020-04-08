@@ -1,5 +1,6 @@
 package fr.unice.polytech.isa.dd.entities;
 import org.joda.time.DateTime;
+import utils.MyDate;
 
 //import javax.persistence.*;
 //import javax.validation.constraints.NotNull;
@@ -26,13 +27,15 @@ public class Delivery implements Serializable {
     private Bill bill;
 
     //@NotNull
-    private DateTime deliveryDate;
+    private String deliveryDate;
+    private int deliveryBeginTimeInSeconds;
+    private int deliveryEndTimeInSeconds;
 
     //@NotNull
-    private String beginTime;
+    //private String beginTime;
 
     //@NotNull
-    private String endTime;
+    //private String endTime;
 
     private int customerMark;
 
@@ -45,23 +48,40 @@ public class Delivery implements Serializable {
         // Necessary for JPA instantiation process
     }
 
-    public Delivery(Customer c, Package p, DateTime d, String b) {
+    public Delivery(Customer c, Package p, String deliveryDateString, int begintimeinseconds) throws Exception {
         //id = new Random().nextInt();
         customer = c;
         packageDelivered = p;
-        deliveryDate = d;
-        beginTime = b;
+        deliveryDate = deliveryDateString;
+        deliveryBeginTimeInSeconds = begintimeinseconds;
+        deliveryEndTimeInSeconds = begintimeinseconds + 2700;
+        //beginTime = b;
         status = false;
         /**** Calcul du prix basique pour le moment basé sur le poids (10 Euros / grammes) ****/
         price = p.getWeight() * 10;
     }
 
 
-    public void setEndTime(String e) {
+    /*public void setEndTime(String e) {
         endTime = e;
         status = true;
+    }*/
+
+    public int getDeliveryBeginTimeInSeconds() {
+        return deliveryBeginTimeInSeconds;
     }
 
+    public int getDeliveryEndTimeInSeconds() {
+        return deliveryEndTimeInSeconds;
+    }
+
+    public void setDeliveryBeginTimeInSeconds(int deliveryBeginTimeInSeconds) {
+        this.deliveryBeginTimeInSeconds = deliveryBeginTimeInSeconds;
+    }
+
+    public void setDeliveryEndTimeInSeconds(int deliveryEndTimeInSeconds) {
+        this.deliveryEndTimeInSeconds = deliveryEndTimeInSeconds;
+    }
 
     public void setCustomerMark(int m) {
         customerMark = m;
@@ -87,17 +107,13 @@ public class Delivery implements Serializable {
         return packageDelivered;
     }
 
-    public DateTime getDeliveryDate() {
-        return deliveryDate;
-    }
-
-    public String getBeginTime() {
+    /*/public String getBeginTime() {
         return beginTime;
-    }
+    }*/
 
-    public String getEndTime() {
+    /*public String getEndTime() {
         return endTime;
-    }
+    }*/
 
     public int getCustomerMark() {
         return customerMark;
@@ -123,13 +139,16 @@ public class Delivery implements Serializable {
         this.packageDelivered = packageDelivered;
     }
 
-    public void setDeliveryDate(DateTime deliveryDate) {
-        this.deliveryDate = deliveryDate;
+    public String getDeliveryDate() {
+        return deliveryDate;
     }
 
-    public void setBeginTime(String beginTime) {
-        this.beginTime = beginTime;
+    public void setDeliveryDate(String deliveryDate) {
+        this.deliveryDate = deliveryDate;
     }
+    /*public void setBeginTime(String beginTime) {
+        this.beginTime = beginTime;
+    }*/
 
     public void setPrice(double price) {
         this.price = price;

@@ -10,7 +10,6 @@ import org.joda.time.DateTime;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import utils.Init;
 
 
 import javax.ejb.EJB;

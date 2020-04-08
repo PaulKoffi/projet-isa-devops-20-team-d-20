@@ -14,6 +14,8 @@ public class Package implements Serializable {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
 
+    private int secretNumber;
+
     @NotNull
     private double weight;
 
@@ -27,8 +29,8 @@ public class Package implements Serializable {
         // Necessary for JPA instantiation process
     }
 
-    public Package(int i,Double w,DateTime d, Provider pro) {
-        id = i;
+    public Package(int secretN,Double w,DateTime d, Provider pro) {
+        secretN = secretN;
         weight = w;
         deliveryDate = d;
         provider = pro;
@@ -54,6 +56,13 @@ public class Package implements Serializable {
         this.provider = provider;
     }
 
+    public int getSecret_number() {
+        return secretNumber;
+    }
+
+    public void setSecret_number(int secret_number) {
+        this.secretNumber = secret_number;
+    }
 
     public int getId() {
         return id;
@@ -78,7 +87,14 @@ public class Package implements Serializable {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Package that = (Package) o;
-        return Objects.equals(id, that.id) && Double.compare(that.weight, weight) == 0;
+        return Objects.equals(secretNumber, that.secretNumber) && Double.compare(that.weight, weight) == 0;
+    }
+
+    @Override
+    public int hashCode(){
+        int result = getSecret_number();
+        result = 31 * result;
+        return result;
     }
 
 }

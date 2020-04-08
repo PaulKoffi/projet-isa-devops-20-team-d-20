@@ -9,11 +9,11 @@ import javax.jws.WebParam;
 import javax.jws.WebResult;
 import javax.jws.WebService;
 
-@WebService(targetNamespace = "http://www.polytech.unice.fr/si/4a/isa/dd/customer")
+@WebService(targetNamespace = "http://www.polytech.unice.fr/si/4a/isa/dd/customerService")
 public interface CustomerWebService {
 
     @WebMethod
-    void register(@WebParam(name="customer_first_name") String firstName,
+    Boolean register(@WebParam(name="customer_first_name") String firstName,
                   @WebParam(name="customer_last_name") String lastName,
                   @WebParam(name="customer_adress") String adress);
 

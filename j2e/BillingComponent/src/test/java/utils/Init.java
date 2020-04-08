@@ -1,5 +1,5 @@
 package utils;
-
+/*
 import fr.unice.polytech.isa.dd.BillingGeneratedInterface;
 import fr.unice.polytech.isa.dd.CheckTransferStatus;
 import fr.unice.polytech.isa.dd.NextDeliveryInterface;
@@ -100,4 +100,4 @@ public class Init {
     public Database getDatabase() {
         return database;
     }
-}
+}*/

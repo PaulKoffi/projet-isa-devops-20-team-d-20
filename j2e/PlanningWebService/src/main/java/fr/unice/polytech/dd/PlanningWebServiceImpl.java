@@ -1,6 +1,5 @@
 package fr.unice.polytech.dd;
 
-import fr.unice.polytech.isa.dd.DeliveryRegistration;
 /*
 import javax.ejb.EJB;
 import javax.ejb.Stateless;

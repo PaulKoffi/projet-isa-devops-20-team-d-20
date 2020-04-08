@@ -8,7 +8,7 @@ import javax.ejb.EJB;
 import javax.ejb.Stateless;
 import javax.jws.WebService;
 
-@WebService(targetNamespace = "http://www.polytech.unice.fr/si/4a/isa/tcf/customers")
+@WebService(targetNamespace = "http://www.polytech.unice.fr/si/4a/isa/dd/customerService")
 @Stateless(name = "CustomerWS")
 public class CustomerWebServiceImp implements CustomerWebService {
 
@@ -16,12 +16,14 @@ public class CustomerWebServiceImp implements CustomerWebService {
     @EJB private CustomerRegistration registry;
 
     @Override
-    public void register(String firstName,String lastName,String adress){
-        registry.register(firstName,lastName,adress);
+    public Boolean register(String firstName,String lastName,String adress){
+        System.out.println("registerCustomer");
+        return registry.register(firstName,lastName,adress);
     }
 
     @Override
     public Customer findCustomer(String name){
+        System.out.println("findCustomer");
         return finder.findByName(name);
     }
 
