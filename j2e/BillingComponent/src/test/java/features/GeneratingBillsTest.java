@@ -25,7 +25,6 @@ import javax.persistence.PersistenceContext;
 import static org.junit.Assert.assertEquals;
 
 
-@Ignore
 @RunWith(CukeSpace.class)
 @CucumberOptions(features = "src/test/resources/features/BillsFR.feature")
 @Transactional(TransactionMode.COMMIT)

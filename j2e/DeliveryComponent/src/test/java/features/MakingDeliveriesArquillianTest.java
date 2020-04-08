@@ -34,7 +34,6 @@ import java.util.List;
 
 import static org.junit.Assert.*;
 
-@Ignore
 @RunWith(CukeSpace.class)
 @CucumberOptions(features = "src/test/resources/")
 @Transactional(TransactionMode.COMMIT)

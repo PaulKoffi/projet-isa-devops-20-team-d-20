@@ -32,7 +32,6 @@ import java.util.Map;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNull;
 
-@Ignore
 @RunWith(CukeSpace.class)
 @CucumberOptions(features = "src/test/resources/features/GeneratingBillsFR.feature")
 @Transactional(TransactionMode.COMMIT)
