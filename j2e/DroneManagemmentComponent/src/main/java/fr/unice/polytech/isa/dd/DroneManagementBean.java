@@ -39,7 +39,8 @@ public class DroneManagementBean implements AvailableDrone,DroneRegister,DroneSt
         int localTime1 = LocalTime.now().getMinute();
         String hour = ""+localTime+"h"+localTime1;
         MyDate dt = new MyDate(localDate,hour);
-        //fr.unice.polytech.isa.dd.entities.DroneStatus status= new fr.unice.polytech.isa.dd.entities.DroneStatus(DRONE_STATES.AVAILABLE);
+        fr.unice.polytech.isa.dd.entities.DroneStatus status= new fr.unice.polytech.isa.dd.entities.DroneStatus(new_drone,DRONE_STATES.AVAILABLE,dt.getDate());
         entityManager.persist(new_drone);
+        entityManager.persist(status);
     }
 }
