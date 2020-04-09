@@ -18,15 +18,15 @@
         <module>j2eSubmodules/DeliveryComponent</module>
         <module>j2eSubmodules/DeliveryWebService</module>
         <module>j2eSubmodules/DroneManagementComponent</module>
-        <module>client/Cli-CustomerService</module>
-        <module>j2e/Web</module>
-        <module>j2e/PlanningComponent</module>
-        <module>j2e/PlanningWebService</module>
+        <module>j2eSubmodules/PackageRegisterComponent</module>
+        <module>j2eSubmodules/PackageRegisterWebService</module>
+        <module>j2eSubmodules/PlanningComponent</module>
+        <module>j2eSubmodules/PlanningWebService</module>
+        <module>j2eSubmodules/ProviderRegisterComponent</module>
+        <module>j2eSubmodules/ProviderRegisterWebService</module>
+        <module>j2eSubmodules/Web</module>
+        <module>clientSubmodules/CliCustomerService</module>
         <module>client/Cli-Clissandre</module>
-        <module>j2e/ProviderRegisterComponent</module>
-        <module>j2e/ProviderRegisterWebService</module>
-        <module>j2e/PackageRegisterComponent</module>
-        <module>j2e/PackageRegisterWebService</module>
     </modules>
 
     <properties>

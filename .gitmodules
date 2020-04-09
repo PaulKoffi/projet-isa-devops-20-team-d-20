@@ -29,3 +29,35 @@
 	path = j2eSubmodules/DroneManagementComponent
 	url = https://github.com/pns-isa-devops/j2eSubmodules-DroneManagementComponent.git
 	branch = master
+[submodule "j2eSubmodules/PackageRegisterComponent"]
+	path = j2eSubmodules/PackageRegisterComponent
+	url = https://github.com/pns-isa-devops/j2eSubmodules-PackageRegisterComponent.git
+	branch = master
+[submodule "j2eSubmodules/PackageRegisterWebService"]
+	path = j2eSubmodules/PackageRegisterWebService
+	url = https://github.com/pns-isa-devops/j2eSubmodules-PackageRegisterWebService.git
+	branch = master
+[submodule "j2eSubmodules/PlanningComponent"]
+	path = j2eSubmodules/PlanningComponent
+	url = https://github.com/pns-isa-devops/j2eSubmodules-PlanningComponent.git
+	branch = master
+[submodule "j2eSubmodules/PlanningWebService"]
+	path = j2eSubmodules/PlanningWebService
+	url = https://github.com/pns-isa-devops/j2eSubmodules-PlanningWebService.git
+	branch = master
+[submodule "j2eSubmodules/ProviderRegisterComponent"]
+	path = j2eSubmodules/ProviderRegisterComponent
+	url = https://github.com/pns-isa-devops/j2eSubmodules-ProviderRegisterComponent.git
+	branch = master
+[submodule "j2eSubmodules/ProviderRegisterWebService"]
+	path = j2eSubmodules/ProviderRegisterWebService
+	url = https://github.com/pns-isa-devops/j2eSubmodules-ProviderRegisterWebService.git
+	branch = master
+[submodule "j2eSubmodules/Web"]
+	path = j2eSubmodules/Web
+	url = https://github.com/pns-isa-devops/j2eSubmodules-Web.git
+	branch = master
+[submodule "clientSubmodules/CliCustomerService"]
+	path = clientSubmodules/CliCustomerService
+	url = https://github.com/pns-isa-devops/clientSubmodules-CliCustomerService.git
+	branch = master
