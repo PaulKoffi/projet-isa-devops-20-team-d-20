@@ -6,8 +6,8 @@
 
   <groupId>fr.unice.polytech.isa.dd</groupId>
   <artifactId>PackageRegisterComponent</artifactId>
+  <packaging>jar</packaging>
   <version>1.0-SNAPSHOT</version>
-  <packaging>war</packaging>
 
   <name>PackageRegisterComponent Maven Webapp</name>
   <!-- FIXME change it to the project's website -->

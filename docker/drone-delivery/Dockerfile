@@ -5,11 +5,6 @@ MAINTAINER team-d (drone delivery isa-devops 2020)
 WORKDIR /usr/local/tomee/
 
 # Loading the executable server inside the image
-COPY ./BillingComponent.war ./webapps/.
-COPY ./BillingWebService.war ./webapps/.
-COPY ./CustomerRegisterComponent.war ./webapps/.
-COPY ./DeliveryComponent.war ./webapps/.
-COPY ./DeliveryWebService.war ./webapps/.
 COPY ./Web.war ./webapps/.
 
 # Creating the tomee/eemot user to access to the web admin console
