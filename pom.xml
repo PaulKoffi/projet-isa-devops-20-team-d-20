@@ -9,18 +9,23 @@
     <packaging>pom</packaging>
     <version>1.0-SNAPSHOT</version>
     <modules>
-        <module>j2e/CustomerRegisterComponent</module>
+
         <module>j2eSubmodules/Entities</module>
-        <module>j2e/DeliveryComponent</module>
-        <module>j2e/BillingComponent</module>
+        <module>j2eSubmodules/BillingComponent</module>
+        <module>j2eSubmodules/BillingWebService</module>
+        <module>j2eSubmodules/CustomerRegisterComponent</module>
+        <module>j2eSubmodules/CustomerRegisterWebService</module>
+        <module>j2eSubmodules/DeliveryComponent</module>
+        <module>j2eSubmodules/DeliveryWebService</module>
+        <module>j2eSubmodules/DroneManagementComponent</module>
+
         <module>client/Cli-CustomerService</module>
-        <module>j2e/DeliveryWebService</module>
-        <module>j2e/BillingWebService</module>
+
         <module>j2e/Web</module>
-        <module>j2e/DroneManagemmentComponent</module>
+
         <module>j2e/PlanningComponent</module>
         <module>j2e/PlanningWebService</module>
-        <module>j2e/CustomerRegisterWebService</module>
+
         <module>client/Cli-Clissandre</module>
         <module>j2e/ProviderRegisterComponent</module>
         <module>j2e/ProviderRegisterWebService</module>
