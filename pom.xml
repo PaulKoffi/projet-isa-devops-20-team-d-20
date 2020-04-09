@@ -18,14 +18,10 @@
         <module>j2eSubmodules/DeliveryComponent</module>
         <module>j2eSubmodules/DeliveryWebService</module>
         <module>j2eSubmodules/DroneManagementComponent</module>
-
         <module>client/Cli-CustomerService</module>
-
         <module>j2e/Web</module>
-
         <module>j2e/PlanningComponent</module>
         <module>j2e/PlanningWebService</module>
-
         <module>client/Cli-Clissandre</module>
         <module>j2e/ProviderRegisterComponent</module>
         <module>j2e/ProviderRegisterWebService</module>
