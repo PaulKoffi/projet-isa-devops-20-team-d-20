@@ -25,8 +25,9 @@
         <module>j2eSubmodules/ProviderRegisterComponent</module>
         <module>j2eSubmodules/ProviderRegisterWebService</module>
         <module>j2eSubmodules/Web</module>
+
         <module>clientSubmodules/CliCustomerService</module>
-        <module>client/Cli-Clissandre</module>
+        <module>clientSubmodules/CliClissandre</module>
     </modules>
 
     <properties>

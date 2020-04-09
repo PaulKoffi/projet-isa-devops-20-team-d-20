@@ -61,3 +61,7 @@
 	path = clientSubmodules/CliCustomerService
 	url = https://github.com/pns-isa-devops/clientSubmodules-CliCustomerService.git
 	branch = master
+[submodule "clientSubmodules/CliClissandre"]
+	path = clientSubmodules/CliClissandre
+	url = https://github.com/pns-isa-devops/clientSubmodules-CliClissandre.git
+	branch = master
