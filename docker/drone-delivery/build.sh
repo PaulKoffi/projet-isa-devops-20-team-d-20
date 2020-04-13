@@ -3,7 +3,7 @@
 #Preparing environment
 cd ../../
 mvn -q -DskipTests clean package
-cd j2e
+cd j2eSubmodules
 echo "Compiling the Drone Delivery system component by component"
 
 echo "Web"

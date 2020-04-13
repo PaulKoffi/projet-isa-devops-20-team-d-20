@@ -26,12 +26,25 @@ services:
       - "9090:9090"
 
   # CLIs
+  #customer service
   client-customer-service:
     image: team-d/dd-client-customer-service
     container_name: dd_client-customer-service
     command: "dd_system 8080"
     volumes:
-      - .:/host
+      - .:/host-customer-service
+    depends_on:
+      dd_system:
+        condition: service_healthy
+    stdin_open: true
+    tty: true
+  #clissandre
+  client-clissandre:
+    image: team-d/dd-client-clissandre
+    container_name: dd_client-clissandre
+    command: "dd_system 8080"
+    volumes:
+      - .:/host-clissandre
     depends_on:
       dd_system:
         condition: service_healthy
