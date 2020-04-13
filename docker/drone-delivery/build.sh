@@ -1,23 +1,15 @@
 #!/bin/bash
 
 #Preparing environment
-cd ../../
-mvn -q -DskipTests clean package
-cd j2eSubmodules
-echo "Compiling the Drone Delivery system component by component"
-
-echo "Web"
-cd Web
+cd ../../j2eSubmodules/Web
+echo "Compiling the Drone Delivery system Web component"
 mvn -q -DskipTests clean package
 cp ./target/Web.war ../../docker/drone-delivery/.
 mvn clean
-cd ..
-
 echo "Done"
-cd ..
 
 # building the docker image
-cd docker/drone-delivery/
+cd ../../docker/drone-delivery/
 docker build -t team-d/dd-internal .
 
 # cleaning up the environment
