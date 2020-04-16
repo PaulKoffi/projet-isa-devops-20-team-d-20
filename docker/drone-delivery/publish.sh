@@ -1,3 +1,3 @@
 #!/bin/bash
 
-docker push team-d/dd-internal
+docker push djotiham/dd-internal

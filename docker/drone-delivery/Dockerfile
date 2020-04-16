@@ -1,5 +1,5 @@
 FROM tomee:8-jdk-7.0.1-plus
-MAINTAINER team-d (drone delivery isa-devops 2020)
+MAINTAINER djotiham (drone delivery isa-devops 2020)
 
 # Working inside the local TomEE system
 WORKDIR /usr/local/tomee/
