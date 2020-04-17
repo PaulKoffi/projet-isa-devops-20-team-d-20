@@ -1,3 +1,3 @@
 #!/bin/bash
 
-docker push team-d/dd-client-clissandre
+docker push djotiham/dd-client-clissandre

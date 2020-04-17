@@ -10,7 +10,7 @@ mvn clean
 
 # building the docker image
 cd ../../docker/client/CliClissandre/
-docker build -t team-d/dd-client-clissandre .
+docker build -t djotiham/dd-client-clissandre .
 
 # cleaning up the environment
 rm -rf CliClissandre-1.0-SNAPSHOT-jar-with-dependencies.jar

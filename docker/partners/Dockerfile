@@ -1,5 +1,5 @@
 FROM mono:3.10
-MAINTAINER team-d (drone delivery isa-devops 2020)
+MAINTAINER djotiham (drone delivery isa-devops 2020)
 
 # Loading the executable server inside the image
 COPY ./server.exe ./server.exe

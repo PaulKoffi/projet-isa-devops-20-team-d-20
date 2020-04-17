@@ -1,5 +1,5 @@
 FROM openjdk:8
-MAINTAINER team-d (drone delivery isa-devops 2020)
+MAINTAINER djotiham (drone delivery isa-devops 2020)
 
 # Loading the executable server inside the image
 COPY ./CliCustomerService-1.0-SNAPSHOT-jar-with-dependencies.jar ./dd-client-CliCustomerService.jar

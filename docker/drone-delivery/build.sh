@@ -10,7 +10,7 @@ echo "Done"
 
 # building the docker image
 cd ../../docker/drone-delivery/
-docker build -t team-d/dd-internal .
+docker build -t djotiham/dd-internal .
 
 # cleaning up the environment
 rm -rf Web.war

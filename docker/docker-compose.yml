@@ -4,7 +4,7 @@ services:
 
   # The Drone Delivery service, a J2E system
   dd_system:
-    image: team-d/dd-internal
+    image: djotiham/dd-internal
     container_name: dd_system
     environment:
       - bank_host=dd_partners
@@ -18,7 +18,7 @@ services:
 
   # The external partners, implemented as .Net services
   external_partners:
-    image: team-d/dd-external
+    image: djotiham/dd-external
     container_name: dd_partners
     expose:
         - "9090"
@@ -28,7 +28,7 @@ services:
   # CLIs
   #customer service
   client-customer-service:
-    image: team-d/dd-client-customer-service
+    image: djotiham/dd-client-customer-service
     container_name: dd_client-customer-service
     command: "dd_system 8080"
     volumes:
@@ -40,7 +40,7 @@ services:
     tty: true
   #clissandre
   client-clissandre:
-    image: team-d/dd-client-clissandre
+    image: djotiham/dd-client-clissandre
     container_name: dd_client-clissandre
     command: "dd_system 8080"
     volumes:

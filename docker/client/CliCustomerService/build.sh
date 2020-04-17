@@ -10,7 +10,7 @@ mvn clean
 
 # building the docker image
 cd ../../docker/client/CliCustomerService/
-docker build -t team-d/dd-client-customer-service .
+docker build -t djotiham/dd-client-customer-service .
 
 # cleaning up the environment
 rm -rf CliCustomerService-1.0-SNAPSHOT-jar-with-dependencies.jar

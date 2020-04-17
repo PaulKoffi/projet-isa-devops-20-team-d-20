@@ -7,7 +7,7 @@ cp ./server.exe ../docker/partners/.
 
 # building the docker image
 cd ../docker/partners/
-docker build -t team-d/dd-external .
+docker build -t djotiham/dd-external .
 
 # cleaning up the environment
 rm -rf server.exe
