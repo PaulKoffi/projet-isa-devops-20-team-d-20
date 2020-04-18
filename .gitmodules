@@ -1,62 +1,48 @@
-[submodule "j2eSubmodules/Entities"]
-	path = j2eSubmodules/Entities
+[submodule "drone-delivery/Entities"]
+	path = drone-delivery/Entities
 	url = https://github.com/pns-isa-devops/projet-isa-devops-team-d-20-entities.git
-[submodule "j2eSubmodules/BillingComponent"]
-	path = j2eSubmodules/BillingComponent
+[submodule "drone-delivery/BillingComponent"]
+	path = drone-delivery/BillingComponent
 	url = https://github.com/pns-isa-devops/j2eSubmodules-BillingComponent.git
-	branch = master
-[submodule "j2eSubmodules/BillingWebService"]
-	path = j2eSubmodules/BillingWebService
+[submodule "drone-delivery/BillingWebService"]
+	path = drone-delivery/BillingWebService
 	url = https://github.com/pns-isa-devops/j2eSubmodules-BillingWebService.git
-	branch = master
-[submodule "j2eSubmodules/CustomerRegisterComponent"]
-	path = j2eSubmodules/CustomerRegisterComponent
+[submodule "drone-delivery/CustomerRegisterComponent"]
+	path = drone-delivery/CustomerRegisterComponent
 	url = https://github.com/pns-isa-devops/j2eSubmodules-CustomerRegisterComponent.git
-	branch = master
-[submodule "j2eSubmodules/CustomerRegisterWebService"]
-	path = j2eSubmodules/CustomerRegisterWebService
+[submodule "drone-delivery/CustomerRegisterWebService"]
+	path = drone-delivery/CustomerRegisterWebService
 	url = https://github.com/pns-isa-devops/j2eSubmodules-CustomerRegisterWebService.git
-	branch = master
-[submodule "j2eSubmodules/DeliveryComponent"]
-	path = j2eSubmodules/DeliveryComponent
+[submodule "drone-delivery/DeliveryComponent"]
+	path = drone-delivery/DeliveryComponent
 	url = https://github.com/pns-isa-devops/j2eSubmodules-DeliveryComponent.git
-	branch = master
-[submodule "j2eSubmodules/DeliveryWebService"]
-	path = j2eSubmodules/DeliveryWebService
+[submodule "drone-delivery/DeliveryWebService"]
+	path = drone-delivery/DeliveryWebService
 	url = https://github.com/pns-isa-devops/j2eSubmodules-DeliveryWebService.git
-	branch = master
-[submodule "j2eSubmodules/DroneManagementComponent"]
-	path = j2eSubmodules/DroneManagementComponent
+[submodule "drone-delivery/DroneManagementComponent"]
+	path = drone-delivery/DroneManagementComponent
 	url = https://github.com/pns-isa-devops/j2eSubmodules-DroneManagementComponent.git
-	branch = master
-[submodule "j2eSubmodules/PackageRegisterComponent"]
-	path = j2eSubmodules/PackageRegisterComponent
+[submodule "drone-delivery/PackageRegisterComponent"]
+	path = drone-delivery/PackageRegisterComponent
 	url = https://github.com/pns-isa-devops/j2eSubmodules-PackageRegisterComponent.git
-	branch = master
-[submodule "j2eSubmodules/PackageRegisterWebService"]
-	path = j2eSubmodules/PackageRegisterWebService
+[submodule "drone-delivery/PackageRegisterWebService"]
+	path = drone-delivery/PackageRegisterWebService
 	url = https://github.com/pns-isa-devops/j2eSubmodules-PackageRegisterWebService.git
-	branch = master
-[submodule "j2eSubmodules/PlanningComponent"]
-	path = j2eSubmodules/PlanningComponent
+[submodule "drone-delivery/PlanningComponent"]
+	path = drone-delivery/PlanningComponent
 	url = https://github.com/pns-isa-devops/j2eSubmodules-PlanningComponent.git
-	branch = master
-[submodule "j2eSubmodules/PlanningWebService"]
-	path = j2eSubmodules/PlanningWebService
+[submodule "drone-delivery/PlanningWebService"]
+	path = drone-delivery/PlanningWebService
 	url = https://github.com/pns-isa-devops/j2eSubmodules-PlanningWebService.git
-	branch = master
-[submodule "j2eSubmodules/ProviderRegisterComponent"]
-	path = j2eSubmodules/ProviderRegisterComponent
+[submodule "drone-delivery/ProviderRegisterComponent"]
+	path = drone-delivery/ProviderRegisterComponent
 	url = https://github.com/pns-isa-devops/j2eSubmodules-ProviderRegisterComponent.git
-	branch = master
-[submodule "j2eSubmodules/ProviderRegisterWebService"]
-	path = j2eSubmodules/ProviderRegisterWebService
+[submodule "drone-delivery/ProviderRegisterWebService"]
+	path = drone-delivery/ProviderRegisterWebService
 	url = https://github.com/pns-isa-devops/j2eSubmodules-ProviderRegisterWebService.git
-	branch = master
-[submodule "j2eSubmodules/Web"]
-	path = j2eSubmodules/Web
+[submodule "drone-delivery/Web"]
+	path = drone-delivery/Web
 	url = https://github.com/pns-isa-devops/j2eSubmodules-Web.git
-	branch = master
 [submodule "client/CliCustomerService"]
 	path = client/CliCustomerService
 	url = https://github.com/pns-isa-devops/clientSubmodules-CliCustomerService.git

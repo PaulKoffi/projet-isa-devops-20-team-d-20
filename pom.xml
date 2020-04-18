@@ -10,21 +10,21 @@
     <version>1.0-SNAPSHOT</version>
     <modules>
 
-        <module>j2eSubmodules/Entities</module>
-        <module>j2eSubmodules/BillingComponent</module>
-        <module>j2eSubmodules/BillingWebService</module>
-        <module>j2eSubmodules/CustomerRegisterComponent</module>
-        <module>j2eSubmodules/CustomerRegisterWebService</module>
-        <module>j2eSubmodules/DeliveryComponent</module>
-        <module>j2eSubmodules/DeliveryWebService</module>
-        <module>j2eSubmodules/DroneManagementComponent</module>
-        <module>j2eSubmodules/PackageRegisterComponent</module>
-        <module>j2eSubmodules/PackageRegisterWebService</module>
-        <module>j2eSubmodules/PlanningComponent</module>
-        <module>j2eSubmodules/PlanningWebService</module>
-        <module>j2eSubmodules/ProviderRegisterComponent</module>
-        <module>j2eSubmodules/ProviderRegisterWebService</module>
-        <module>j2eSubmodules/Web</module>
+        <module>drone-delivery/Entities</module>
+        <module>drone-delivery/BillingComponent</module>
+        <module>drone-delivery/BillingWebService</module>
+        <module>drone-delivery/CustomerRegisterComponent</module>
+        <module>drone-delivery/CustomerRegisterWebService</module>
+        <module>drone-delivery/DeliveryComponent</module>
+        <module>drone-delivery/DeliveryWebService</module>
+        <module>drone-delivery/DroneManagementComponent</module>
+        <module>drone-delivery/PackageRegisterComponent</module>
+        <module>drone-delivery/PackageRegisterWebService</module>
+        <module>drone-delivery/PlanningComponent</module>
+        <module>drone-delivery/PlanningWebService</module>
+        <module>drone-delivery/ProviderRegisterComponent</module>
+        <module>drone-delivery/ProviderRegisterWebService</module>
+        <module>drone-delivery/Web</module>
 
         <module>client/CliCustomerService</module>
         <module>client/CliClissandre</module>
