@@ -57,14 +57,12 @@
 	path = j2eSubmodules/Web
 	url = https://github.com/pns-isa-devops/j2eSubmodules-Web.git
 	branch = master
-[submodule "clientSubmodules/CliCustomerService"]
-	path = clientSubmodules/CliCustomerService
+[submodule "client/CliCustomerService"]
+	path = client/CliCustomerService
 	url = https://github.com/pns-isa-devops/clientSubmodules-CliCustomerService.git
-	branch = master
-[submodule "clientSubmodules/CliClissandre"]
-	path = clientSubmodules/CliClissandre
+[submodule "client/CliClissandre"]
+	path = client/CliClissandre
 	url = https://github.com/pns-isa-devops/clientSubmodules-CliClissandre.git
-	branch = master
 [submodule "partners/DotNet"]
 	path = partners/DotNet
 	url = https://github.com/pns-isa-devops/partners-DotNet.git
