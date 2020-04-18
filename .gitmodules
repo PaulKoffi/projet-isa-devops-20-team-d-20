@@ -65,3 +65,6 @@
 	path = clientSubmodules/CliClissandre
 	url = https://github.com/pns-isa-devops/clientSubmodules-CliClissandre.git
 	branch = master
+[submodule "partners/DotNet"]
+	path = partners/DotNet
+	url = https://github.com/pns-isa-devops/partners-DotNet.git
