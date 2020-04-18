@@ -1,7 +1,7 @@
 #!/bin/bash
 
 #Preparing environment
-cd ../../j2eSubmodules/Web
+cd ../../drone-delivery/Web
 echo "Compiling the Drone Delivery system Web component"
 mvn -q -DskipTests clean package
 cp ./target/Web.war ../../docker/drone-delivery/.

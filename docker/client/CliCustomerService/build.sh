@@ -1,7 +1,7 @@
 #!/bin/bash
 
 #Preparing environment
-cd ../../../clientSubmodules/CliCustomerService
+cd ../../../client/CliCustomerService
 echo "Compiling the customer service client system"
 mvn -q -DskipTests clean package assembly:single
 echo "Done"
