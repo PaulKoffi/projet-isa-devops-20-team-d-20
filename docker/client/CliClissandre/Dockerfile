@@ -11,4 +11,4 @@ VOLUME /host-clissandre
 ENTRYPOINT ["java", "-jar", "./dd-client-CliClissandre.jar"]
 
 # Default arguments to be forwarded to the entry point
-CMD ["localhost", "8080"]
+CMD ["localhost", "8083"]
