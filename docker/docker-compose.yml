@@ -10,9 +10,9 @@ services:
       - bank_host=dd_partners
       - bank_port=9090
     expose:
-      - "8083"
+      - "8000"
     ports:
-      - "8083:8083"
+      - "8000:8000"
     depends_on:
       - external_partners
 
@@ -30,7 +30,7 @@ services:
   client-customer-service:
     image: djotiham/dd-client-customer-service
     container_name: dd_client-customer-service
-    command: "dd_system 8083"
+    command: "dd_system 8000"
     volumes:
       - .:/host-customer-service
     depends_on:
@@ -42,7 +42,7 @@ services:
   client-clissandre:
     image: djotiham/dd-client-clissandre
     container_name: dd_client-clissandre
-    command: "dd_system 8083"
+    command: "dd_system 8000"
     volumes:
       - .:/host-clissandre
     depends_on:

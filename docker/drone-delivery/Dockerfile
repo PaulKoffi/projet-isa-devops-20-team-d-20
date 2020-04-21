@@ -22,10 +22,10 @@ COPY resources/start-dd.sh .
 RUN ["chmod", "u+x", "./start-dd.sh"]
 
 # Creating an health check verification to check TomEE status
-HEALTHCHECK --interval=5s CMD curl --fail http://localhost:8083/ || exit 1
+HEALTHCHECK --interval=5s CMD curl --fail http://localhost:8000/ || exit 1
 
 # exposing the 8080 port to support external connections
-EXPOSE 8083
+EXPOSE 8000
 
 # Starting the service
 ENTRYPOINT ["./start-dd.sh"]

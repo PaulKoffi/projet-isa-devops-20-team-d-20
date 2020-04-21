@@ -11,4 +11,4 @@ VOLUME /host-customer-service
 ENTRYPOINT ["java", "-jar", "./dd-client-CliCustomerService.jar"]
 
 # Default arguments to be forwarded to the entry point
-CMD ["localhost", "8083"]
+CMD ["localhost", "8000"]
