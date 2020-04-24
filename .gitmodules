@@ -70,3 +70,6 @@
 	path = partners/DotNet
 	url = https://github.com/pns-isa-devops/partners-DotNet.git
 	branch = master
+[submodule "drone-delivery/DroneWebService"]
+	path = drone-delivery/DroneWebService
+	url = https://github.com/pns-isa-devops/droneDelivery-DroneWebService.git

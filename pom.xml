@@ -24,6 +24,7 @@
         <module>drone-delivery/PlanningWebService</module>
         <module>drone-delivery/ProviderRegisterComponent</module>
         <module>drone-delivery/ProviderRegisterWebService</module>
+        <module>drone-delivery/DroneWebService</module>
         <module>drone-delivery/Web</module>
 
         <module>client/CliCustomerService</module>
