@@ -1,6 +1,6 @@
 package features;
 
-import arquillian.AbstractDroneDeliveryTest;
+/*import arquillian.AbstractDroneDeliveryTest;
 import cucumber.api.CucumberOptions;
 import cucumber.api.java.fr.Alors;
 import cucumber.api.java.fr.Et;
@@ -11,6 +11,7 @@ import fr.unice.polytech.isa.dd.entities.Bill;
 import fr.unice.polytech.isa.dd.entities.Customer;
 import fr.unice.polytech.isa.dd.entities.Delivery;
 import fr.unice.polytech.isa.dd.entities.Provider;
+import fr.unice.polytech.isa.dd.exceptions.*;
 import io.cucumber.java8.Fr;
 import org.jboss.arquillian.transaction.api.annotation.TransactionMode;
 import org.jboss.arquillian.transaction.api.annotation.Transactional;
@@ -47,24 +48,24 @@ public class TwoCustomersDeliveriesTest extends AbstractDroneDeliveryTest implem
     private Delivery delivery; private double sum = 0;
 
     @Quand("^Un employé enregistre un colis de numéro (\\d+) de (\\d+)kg d'un fournisseur du nom de (.*)$")
-    public void engistrepremiercolis(int arg0, double arg1, String arg3){
+    public void engistrepremiercolis(int arg0, double arg1, String arg3) throws AlreadyExistingProviderException, UnknownProviderException, AlreadyExistingPackageException {
 
-        providerRegistration.register(arg3);
-        Provider provider = providerFinder.findByName(arg3);
-        packageRegistration.register(String.valueOf(arg0),arg1,"12/04/2020",provider);
+        providerRegistration.registerProvider(arg3);
+        Provider provider = providerFinder.findProviderByName(arg3);
+        packageRegistration.register(String.valueOf(arg0),arg1,"12/04/2020",provider.getName());
     }
 
     @Et("^un autre colis de numéro (\\d+) de (\\d+)kg d'un fournisseur de nom (.*)$")
-    public void enregistresecondcolis(int arg0, int arg1,String arg2) {
-        providerRegistration.register(arg2);
-        Provider provider = providerFinder.findByName(arg2);
-        packageRegistration.register(String.valueOf(arg0), (double) arg1,"12/04/2020",provider);
+    public void enregistresecondcolis(int arg0, int arg1,String arg2) throws AlreadyExistingProviderException, UnknownProviderException, AlreadyExistingPackageException {
+        providerRegistration.registerProvider(arg2);
+        Provider provider = providerFinder.findProviderByName(arg2);
+        packageRegistration.register(String.valueOf(arg0), (double) arg1,"12/04/2020",provider.getName());
     }
 
     @Et("^un autre cois de numéro (\\d+) de (\\d+)kg du fournisseur (.*)$")
-    public void enregitertroisiemecolis(int arg0, int arg1,String arg2) {
-        Provider provider = providerFinder.findByName(arg2);
-        packageRegistration.register(String.valueOf(arg0), (double) arg1,"12/04/2020",provider);
+    public void enregitertroisiemecolis(int arg0, int arg1,String arg2) throws UnknownProviderException, AlreadyExistingPackageException {
+        Provider provider = providerFinder.findProviderByName(arg2);
+        packageRegistration.register(String.valueOf(arg0), (double) arg1,"12/04/2020",provider.getName());
     }
 
     @Quand("^un employé reçoit l'appel de madame (.*) (.*) résidant à l'adresse (.*)")
@@ -74,11 +75,11 @@ public class TwoCustomersDeliveriesTest extends AbstractDroneDeliveryTest implem
     }
 
     @Et("^il vérifie si elle existe déjà dans le système et l'enregistre si ce n'est pas le cas$")
-    public void enregistreoupas() {
-       Customer c =  customerFinder.findByName(customer1.getName());
+    public void enregistreoupas() throws UnknownCustomerException, AlreadyExistingCustomerException {
+       Customer c =  customerFinder.findCustomerByName(customer1.getName());
        assertNull(c);
        String [] names = customer1.getName().split(" ");
-       customerRegistration.register(names[1],names[0],customer1.getAddress());
+       customerRegistration.registerCustomer(names[1],names[0],customer1.getAddress());
     }
 
     @Et("^à la demande du client enregistre une livraison le (.*) à (.*) pour le colis (\\d+)$")
@@ -99,8 +100,8 @@ public class TwoCustomersDeliveriesTest extends AbstractDroneDeliveryTest implem
     }
 
     @Alors("^il remarque donc que cette dernière est dans le système$")
-    public void existe() {
-        customer1 = customerFinder.findByName(nameCustomer[1] +" " +nameCustomer[0]);
+    public void existe() throws UnknownCustomerException {
+        customer1 = customerFinder.findCustomerByName(nameCustomer[1] +" " +nameCustomer[0]);
         assertNotNull(customer1);
     }
 
@@ -135,11 +136,11 @@ public class TwoCustomersDeliveriesTest extends AbstractDroneDeliveryTest implem
     }
 
     @Alors("^il constate qu'elle n'est pas dans le système et donc l'enregistre$")
-    public void impo() {
-        Customer c =  customerFinder.findByName(customer2.getName());
+    public void impo() throws UnknownCustomerException, AlreadyExistingCustomerException {
+        Customer c =  customerFinder.findCustomerByName(customer2.getName());
         assertNull(c);
         String [] names = customer2.getName().split(" ");
-        customerRegistration.register(names[1],names[0],customer2.getAddress());
+        customerRegistration.registerCustomer(names[1],names[0],customer2.getAddress());
     }
 
     @Et("^cette dernière demande à être livrée le (.*) à (.*) pour le colis (\\d+)$")
@@ -151,14 +152,14 @@ public class TwoCustomersDeliveriesTest extends AbstractDroneDeliveryTest implem
     }
 
     @Alors("^l'employé lui dit que le colis (\\d+) n'existe pas$")
-    public void notin(int arg0) {
-        assertNull(packageFinder.findById(String.valueOf(arg0)));
+    public void notin(int arg0) throws UnknownPackageException {
+        assertNull(packageFinder.findPackageBySecretNumber(String.valueOf(arg0)));
     }
 
     @Alors("^elle change le numéro du colis en (\\d+)$")
-    public void change(Integer arg0) {
+    public void change(Integer arg0) throws UnknownPackageException {
         colisNumber = arg0;
-        assertNotNull(packageFinder.findById(String.valueOf(arg0)));
+        assertNotNull(packageFinder.findPackageBySecretNumber(String.valueOf(arg0)));
     }
 
     @Alors("^l'employé enregistre la livraison$")
@@ -184,10 +185,10 @@ public class TwoCustomersDeliveriesTest extends AbstractDroneDeliveryTest implem
     }
 
     @Quand("^Madame (.*) rappelle le (.*) pour reprogrammer sa livraison$")
-    public void rapp(String arg0,String arg1) {
+    public void rapp(String arg0,String arg1) throws UnknownCustomerException {
         MyDate.date_now = arg1;
         nameCustomer = arg0.split(" ");
-        customer1 = customerFinder.findByName(nameCustomer[1]+" " +nameCustomer[0]);
+        customer1 = customerFinder.findCustomerByName(nameCustomer[1]+" " +nameCustomer[0]);
     }
 
     @Alors("^elle donne la date du (.*) à (.*) de son colis (\\d+)$")
@@ -225,8 +226,8 @@ public class TwoCustomersDeliveriesTest extends AbstractDroneDeliveryTest implem
     }
 
     @Et("^(\\d+) pour le fournisseur (.*) de (\\d+)€$")
-    public void fact1(int arg0, String arg1, double arg2) {
-        Provider provider = providerFinder.findByName(arg1);
+    public void fact1(int arg0, String arg1, double arg2) throws UnknownProviderException {
+        Provider provider = providerFinder.findProviderByName(arg1);
         assertEquals(arg0,provider.getProvider_bills().size());
         for (Bill b: provider.getProvider_bills()) {
             sum+=b.getBillAmount();
@@ -235,8 +236,8 @@ public class TwoCustomersDeliveriesTest extends AbstractDroneDeliveryTest implem
         sum = 0.0;
     }
     @Et("^(.*) en a (\\d+) de (\\d+)€$")
-    public void fact2(String arg0, int arg1,double arg2) {
-        Provider provider = providerFinder.findByName(arg0);
+    public void fact2(String arg0, int arg1,double arg2) throws UnknownProviderException {
+        Provider provider = providerFinder.findProviderByName(arg0);
         assertEquals(arg1,provider.getProvider_bills().size());
         for (Bill b: provider.getProvider_bills()) {
             sum+=b.getBillAmount();
@@ -259,8 +260,8 @@ public class TwoCustomersDeliveriesTest extends AbstractDroneDeliveryTest implem
     @Et("^donc à la fin de la journée le fournisseur (.*) a (\\d+) factures à payer$")
     public void pr(String arg0, int arg1) throws Exception {
         billingGeneratedInterface.generateBill();
-        Provider provider = providerFinder.findByName(arg0);
+        Provider provider = providerFinder.findProviderByName(arg0);
         assertEquals(arg1,provider.getProvider_bills().size());
         assertEquals(3  ,billingGeneratedInterface.get_bills().size());
     }
-}
+}*/
