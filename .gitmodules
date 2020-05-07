@@ -73,3 +73,6 @@
 [submodule "drone-delivery/DroneWebService"]
 	path = drone-delivery/DroneWebService
 	url = https://github.com/pns-isa-devops/droneDelivery-DroneWebService.git
+[submodule "integration-tests/IntegrationTestsComponent"]
+	path = integration-tests/IntegrationTestsComponent
+	url = https://github.com/pns-isa-devops/integrationTests.git
