@@ -12,7 +12,7 @@ mvn clean
 cd ../../docker/client/CliCustomerService/
 docker build -t djotiham/dd-client-customer-service .
 # to remove old images
-docker rmi $(docker images -qa -f 'dangling=true')
+# docker rmi $(docker images -qa -f 'dangling=true')
 
 # cleaning up the environment
 rm -rf CliCustomerService-1.0-SNAPSHOT-jar-with-dependencies.jar

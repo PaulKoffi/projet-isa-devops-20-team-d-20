@@ -12,7 +12,7 @@ mvn clean
 cd ../../docker/client/CliClissandre/
 docker build -t djotiham/dd-client-clissandre .
 # to remove old images
-docker rmi $(docker images -qa -f 'dangling=true')
+# docker rmi $(docker images -qa -f 'dangling=true')
 
 # cleaning up the environment
 rm -rf CliClissandre-1.0-SNAPSHOT-jar-with-dependencies.jar

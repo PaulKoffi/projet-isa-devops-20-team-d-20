@@ -12,7 +12,7 @@ echo "Done"
 cd ../../docker/drone-delivery/
 docker build -t djotiham/dd-internal .
 # to remove old images
-docker rmi $(docker images -qa -f 'dangling=true')
+# docker rmi $(docker images -qa -f 'dangling=true')
 
 # cleaning up the environment
 rm -rf Web.war

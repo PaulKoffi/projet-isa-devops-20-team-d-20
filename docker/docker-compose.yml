@@ -12,7 +12,7 @@ services:
     expose:
       - "8000"
     ports:
-      - "8000:8000"
+      - "8000:8080"
     depends_on:
       - external_partners
 
@@ -42,7 +42,7 @@ services:
   client-clissandre:
     image: djotiham/dd-client-clissandre
     container_name: dd_client-clissandre
-    command: "dd_system 8000"
+    command: "dd_system 8080"
     volumes:
       - .:/host-clissandre
     depends_on:

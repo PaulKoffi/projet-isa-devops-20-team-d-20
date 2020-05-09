@@ -30,7 +30,7 @@
         <module>client/CliCustomerService</module>
         <module>client/CliClissandre</module>
 
-        <module>integration-tests/IntegrationTestsComponent</module>
+        <!--<module>integration-tests/IntegrationTestsComponent</module>-->
     </modules>
 
     <properties>
