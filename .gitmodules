@@ -76,3 +76,6 @@
 [submodule "integration-tests/IntegrationTestsComponent"]
 	path = integration-tests/IntegrationTestsComponent
 	url = https://github.com/pns-isa-devops/integrationTests.git
+[submodule "integration-tests/droneDelivery-IntegrationTests"]
+	path = integration-tests/droneDelivery-IntegrationTests
+	url = https://github.com/pns-isa-devops/droneDelivery-IntegrationTests.git

@@ -139,6 +139,12 @@ cd IntegrationTestsComponent
 git checkout master
 git pull
 cd ..
+## IntegrationTestsComponent
+echo "Checkout droneDelivery-IntegrationTests on branch Master"
+cd droneDelivery-IntegrationTests
+git checkout master
+git pull
+cd ..
 
 echo "Done"
 read -n 1 -s -r -p "Press any key to continue"
