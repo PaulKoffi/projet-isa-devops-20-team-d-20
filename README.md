@@ -88,5 +88,5 @@
   ## Pile technologique
   
   <p align="center">
-    <img src="./docs/tech_stack.png"/>
+    <img src="./docs/stack.jpg"/>
   </p>
