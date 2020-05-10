@@ -23,16 +23,19 @@
   Les clients peuvent alors passer leurs commandes à leurs fournisseurs habituels dont les transporteurs de colis en relation avec Livrair, effectueront des réservations chez Livrair pour livrer les clients par drone.
     
   L'architecture logicielle à développer dans ce document s'appuiera sur la pile suivante :
-  
+  <p align="center">
+      <img src="./docs/archi.png"/>
+  </p>
+    
   Le rapport d'Architecture est disponible [ici](https://github.com/pns-isa-devops/projet-isa-devops-20-team-d-20/blob/master/docs/architecture.pdf).
   
   ## Comment utiliser ce repository
   * La branche `master` (la branche par défaut) représente la dernière version stable du système.
   * La branche `develop` représente le système en cours de développement.
-    * Issues can be submitted using the [GitHub ticketing system](https://github.com/pns-isa-devops/projet-isa-devops-20-team-d-20/issues)
+    * Les issues peuvent être créés en utilisant le [système de ticket de Github](https://github.com/pns-isa-devops/projet-isa-devops-20-team-d-20/issues)
   
   ### Récupération du projet
-  Ce projet contient des sous-modules github et nécessite de ce fait de suivre les insctructions suivantes pour effectuer une récupération complète du projet.
+  Ce projet contient des sous-modules github et nécessite de ce fait de suivre les instructions suivantes pour effectuer une récupération complète du projet.
   1. Effectuer un clone classique du projet en faisant ```git clone url_du_repo``` ou en récupérant le zip depuis cette page.
   2. Lancer le script [gitUpdateAll.sh](./gitUpdateAll.sh) se trouvant dans à la racine.
     
@@ -42,7 +45,7 @@
     team-d@machine $ ./build.sh
     
   À l'issue de cette exécution, le projet aura été entièrement compilé et les images Docker des 3 parties j2e, .Net et client auront été construites.
-  ### Execution
+  ### Exécution
   Pour exécuter la démonstration, deux modes d'exécution s'offrent à vous :
   * Exécution avec maven :
   
@@ -82,7 +85,7 @@
     team-d@machine docker$ docker-compose down
 
   
-  ## Technological Stack
+  ## Pile technologique
   
   <p align="center">
     <img src="./docs/tech_stack.png"/>
