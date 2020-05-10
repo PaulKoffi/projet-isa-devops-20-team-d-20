@@ -40,11 +40,24 @@
   2. Lancer le script [gitUpdateAll.sh](./gitUpdateAll.sh) se trouvant dans à la racine.
     
   ### Compilation
-  Pour compiler la démonstration (parties j2e, .Net et client), exécutez simplement le script de compilation [build.sh](./build.sh). La première compilation peut prendre beaucoup de temps, étant donné que Maven devra télécharger toutes les dépendances java nécessaires pour construire et exécuter le système.
+  Le script de compilation a besoin de télécharger les différentes dépendances .jar depuis artifactory. Pour cela, il faut configurer le settings.xml de votre répertoire .m2 de maven afin que les .jar puissent être téléchargés lors de la compilation.
+  
+  **Rendez-vous donc dans le répertoire maven à la racine, puis copiez le fichier [settings.xml](./maven/settings.xml) qui s'y trouve et collez-le dans votre répertoire .m2 de maven.**
+  
+  **Attention : La construction des images docker échouera si ce fichier n'est pas mis dans le répertoire .m2 comme décrit ci-dessus.**    
+  
+  Le script de compilation combine la compilation des sources du projet et la construction des images docker des 3 systèmes mis en oeuvre.
+  
+  **Assurez-vous donc d'avoir bien docker installé sur votre machine avant de lancer le script suivant :** 
+
+  
+  Pour compiler la démonstration (parties j2e, .Net et client), exécutez simplement le script de compilation [build.sh](./build.sh). La première compilation peut prendre beaucoup de temps (vraiment beaucoup), étant donné que Maven devra télécharger toutes les dépendances java nécessaires pour construire et exécuter le système sans compter la construction des images docker qui se fait également à la suite.
   
     team-d@machine $ ./build.sh
     
   À l'issue de cette exécution, le projet aura été entièrement compilé et les images Docker des 3 parties j2e, .Net et client auront été construites.
+  
+  _(Une alternative si vous ne voulez par construire les images docker mais uniquement compiler le projet est de se rendre dans le fichier build.sh puis commenter toutes les lignes à partir de la ligne 16 avant de lancer le script)_
   ### Exécution
   Pour exécuter la démonstration, deux modes d'exécution s'offrent à vous :
   * Exécution avec maven :
