@@ -2,7 +2,7 @@
 
 #Preparing environment
 cd ../../partners/DotNet
-./compile.sh
+#./compile.sh
 cp ./server.exe ../../docker/partners/.
 
 # building the docker image
